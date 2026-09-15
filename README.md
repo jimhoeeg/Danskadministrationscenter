@@ -116,19 +116,42 @@ navigation og knapper udelades. Hver side har datagrundlag og periode i sidefode
 
 De enkelte faner kan også printes hver for sig.
 
-## Deploy til Vercel
+## Udgiv sitet
 
-Projektet er et almindeligt Next.js App Router-projekt uden runtime-afhængigheder
-ud over `data/`-mappen, der bundles med builden.
+Projektet kan udgives to steder. Begge bygges fra den samme kode.
+
+### GitHub Pages (statisk)
+
+`.github/workflows/pages.yml` bygger sitet som statiske filer og udgiver dem ved
+hvert push. Sitet lander på `https://<bruger>.github.io/<repo>/`.
+
+**Engangsopsætning:** gå til repoets **Settings → Pages** og sæt **Source** til
+**GitHub Actions**.
+
+Det er vigtigt. Står kilden på "Deploy from a branch", bygger GitHub med Jekyll i
+stedet. Jekyll kan ikke køre Next.js, finder ingen `index.html` i roden og viser
+derfor kun README-filen – selv om alt andet er sat rigtigt op.
+
+Bygningen sker med `npm run build:pages`, som sætter `STATISK_EKSPORT=1`. Det
+tænder `output: "export"` og `trailingSlash`, så hver rute får sin egen
+`index.html`. Workflowet sætter selv `NEXT_PUBLIC_BASE_PATH` til repo-navnet,
+fordi et projektsite ligger på et underpath.
+
+Alle sider forhåndsgenereres, så en ny ejer kræver et nyt build. Det sker
+automatisk, når JSON-filen pushes.
+
+### Vercel (server)
+
+Ingen kodeændringer nødvendige – `npm run build` bygger som normalt.
 
 1. Opret projektet på Vercel og peg det på dette repo.
-2. Framework detekteres som Next.js. Build-kommando `npm run build`, output
-   håndteres af Vercel.
-3. Valgfrit: sæt `NEXT_PUBLIC_STANDARD_EJER`, hvis forsiden skal vise en anden
-   ejer end `nygaardsholm`.
+2. Framework detekteres som Next.js.
+3. Valgfrit: sæt `NEXT_PUBLIC_STANDARD_EJER`.
 
-Siderne renderes på serveren ved forespørgsel, fordi ejeren kommer fra URL'en.
-Python bruges kun til dataudtrækket lokalt – det kører ikke på Vercel.
+Lad `NEXT_PUBLIC_BASE_PATH` og `STATISK_EKSPORT` være usatte på Vercel; de er
+kun til GitHub Pages.
+
+Python bruges alene til dataudtrækket lokalt og kører ingen af stederne.
 
 ## Datagrundlag og validering
 

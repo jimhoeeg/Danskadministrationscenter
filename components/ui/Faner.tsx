@@ -9,14 +9,19 @@ export interface Fane {
 }
 
 /** Fanenavigation. Skjules i print – printsiden har alle faner i ét dokument. */
+/** Fjerner afsluttende skråstreg, som statisk eksport tilføjer til hver rute. */
+function normaliser(sti: string): string {
+  return sti.length > 1 ? sti.replace(/\/+$/, "") : sti;
+}
+
 export function Faner({ ejerId, faner }: { ejerId: string; faner: Fane[] }) {
-  const sti = usePathname();
+  const sti = normaliser(usePathname());
   return (
     <nav aria-label="Sektioner" className="ingen-print border-b border-linje">
       <ul className="-mb-px flex flex-wrap gap-x-1">
         {faner.map((f) => {
           const href = f.sti ? `/${ejerId}/${f.sti}` : `/${ejerId}`;
-          const aktiv = sti === href;
+          const aktiv = sti === normaliser(href);
           return (
             <li key={f.sti}>
               <Link

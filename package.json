@@ -10,7 +10,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "data": "python3 tools/byg_data.py",
-    "tjek": "tsx tools/tjek_noegletal.ts"
+    "tjek": "tsx tools/tjek_noegletal.ts",
+    "build:pages": "STATISK_EKSPORT=1 next build"
   },
   "dependencies": {
     "next": "15.5.4",

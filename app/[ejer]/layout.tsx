@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { listEjere } from "@/lib/data";
 import { hentEjerEllerIkkeFundet } from "@/lib/hent";
 import { Faner } from "@/components/ui/Faner";
 import { Printknap } from "@/components/ui/Printknap";
@@ -12,6 +13,20 @@ const FANER = [
   { sti: "finansiering", navn: "Finansiering og likviditet" },
   { sti: "tomgang", navn: "Tomgang" },
 ];
+
+/**
+ * Hvilke ejere der skal bygges som statiske sider.
+ *
+ * Listen læses fra data/-mappen, så en ny JSON-fil automatisk får sine egne
+ * sider ved næste build. Gælder både layoutet og alle faner under det.
+ */
+export async function generateStaticParams() {
+  const ejere = await listEjere();
+  return ejere.map((e) => ({ ejer: e.id }));
+}
+
+/* Kun ejere fra data/ findes – alt andet giver 404. */
+export const dynamicParams = false;
 
 export default async function EjerLayout({
   children,
