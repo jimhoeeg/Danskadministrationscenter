@@ -1,0 +1,3407 @@
+{
+  "skema": {
+    "version": "1.0",
+    "genereret": "2026-09-15",
+    "generetAf": "tools/byg_data.py",
+    "kilde": {
+      "fil": "kilde/Nygårdsholm_Ejendomme_Ejendomsrapport.docx",
+      "titel": "Nygårdsholm Ejendomme – overblik",
+      "forfatter": "Peter N. Andersen",
+      "metode": "docx udpakket som zip. Brødtekst læst fra word/document.xml. Diagram 'Lejemål pr. by' læst direkte fra word/charts/chart1.xml. Øvrige tabeller er indklippede Excel-billeder (EMF/PNG) i word/media/, konverteret med LibreOffice til PDF og rasteriseret med pdftoppm ved 600 dpi."
+    },
+    "billedkilder": {
+      "resultatopgoerelse": "word/media/image1.emf (rId8) – side 1",
+      "lejemaal_pr_by": "word/charts/chart1.xml (rId9) – side 1",
+      "lejemaal": "word/media/image2.emf (rId10) – side 2",
+      "vedligeholdelsesplan": "word/media/image3.emf (rId11) – side 3",
+      "gi_indestaaender": "word/media/image4.emf (rId12) – side 3",
+      "vaerdiansaettelse": "word/media/image5.emf (rId13) – side 4",
+      "finansiering": "word/media/image6.emf (rId14) – side 4",
+      "renteprofil": "word/media/image7.png (rId15) – side 4",
+      "afdragsprofil": "word/media/image8.png (rId16) – side 5",
+      "likviditetsbudget": "word/media/image9.emf (rId17) – side 5"
+    }
+  },
+  "ejer": {
+    "id": "nygaardsholm",
+    "navn": "Nygårdsholm Ejendomme",
+    "administrator": "Dansk Administrationscenter",
+    "valuta": "DKK",
+    "regnskabsaar": {
+      "startMaaned": 5,
+      "slutMaaned": 4,
+      "beskrivelse": "1. maj – 30. april",
+      "aktueltLabel": "2026/27",
+      "forrigeLabel": "2025/26"
+    },
+    "rapportperiode": {
+      "maanedLabel": "August 2026",
+      "aarTilDatoMaaneder": 4,
+      "balancedato": "2026-04-30",
+      "datagrundlag": "Data pr. august 2026",
+      "kilde": "DAC"
+    }
+  },
+  "kommentar": {
+    "periodensOverblik": {
+      "kilde": "manuel",
+      "kildebeskrivelse": "Konklusioner fra brødteksten i Nygårdsholm_Ejendomme_Ejendomsrapport.docx",
+      "genereretAf": null,
+      "periode": "August 2026",
+      "afsnit": [
+        "Driftsudgifterne er på niveau med budget, og lejeindtægterne år til dato ligger 1 t.kr. over budget.",
+        "Der er brugt 322 t.kr. mere på vedligehold end budgetteret år til dato. Det skyldes primært periodisering.",
+        "Resultat før skat år til dato er 1.961 t.kr. mod et budget på 2.359 t.kr. Helårsestimatet er 3.375 t.kr. mod et budget på 3.771 t.kr.",
+        "Porteføljen er værdiansat til 253,5 mio. kr. med en realkreditgæld på 155,0 mio. kr."
+      ]
+    },
+    "opmaerksomhedspunkter": [
+      {
+        "id": "afdragsprofil-dannebrogsgade",
+        "alvor": "hoej",
+        "overskrift": "Afdragsprofilen ændres ultimo 2026",
+        "tekst": "Der afdrages i dag på 15 % af realkreditten. Ultimo 2026 øges afdragsprocenten med 17, såfremt lånet i Dannebrogsgade ikke konverteres til nyt 30-årigt lån med indledende 10 års afdragsfrihed.",
+        "kilde": "Brødtekst, side 5"
+      },
+      {
+        "id": "renterisiko",
+        "alvor": "hoej",
+        "overskrift": "73 % af gælden er variabelt forrentet eller F5",
+        "tekst": "27 % af realkreditten er 30-årige lån med fast rente. 48 % er Cibor 3 eller Cibor 6, og de resterende 25 % er F5 med kommende rentetilpasning. Er det den ønskede renterisikoprofil?",
+        "kilde": "Brødtekst og renteprofil, side 4"
+      },
+      {
+        "id": "vedligehold-over-budget",
+        "alvor": "mellem",
+        "overskrift": "Vedligehold 322 t.kr. over budget år til dato",
+        "tekst": "Merforbruget skyldes primært periodisering. Helårsestimatet er 3.581 t.kr. mod et budget på 3.259 t.kr.",
+        "kilde": "Profit & Loss 26/27 og brødtekst, side 1"
+      },
+      {
+        "id": "modernisering-19-1",
+        "alvor": "mellem",
+        "overskrift": "Moderniseringspotentiale i §19.1-lejemålene",
+        "tekst": "Der er potentiale i en gennemgribende modernisering af §19.1-lejemålene, hvilket særligt knytter sig til lejemål i Århus og Skanderborg. Lejlighederne i Skanderborg vedrører dog nyanskaffede ejendomme, der først kan §19.2-moderniseres efter 5 års ejerskab.",
+        "kilde": "Brødtekst, side 2"
+      },
+      {
+        "id": "gi-negative-saldi",
+        "alvor": "mellem",
+        "overskrift": "Negative GI-saldi på §120-kontiene",
+        "tekst": "Seks ejendomme har negativ §120-saldo, i alt −10,7 mio. kr. pr. 30.04.2026. Det er afholdt vedligehold, der endnu ikke er dækket af hensættelser.",
+        "kilde": "Grundejernes Investeringsfond, side 3"
+      },
+      {
+        "id": "tomgang-mangler",
+        "alvor": "info",
+        "overskrift": "Lejerotation og tomgang mangler",
+        "tekst": "Afsnittet er tomt i kilderapporten. Data skal leveres af DAC, før tomgang kan indgå i nøgletallene.",
+        "kilde": "Sektionen 'Lejerotation og tomgang', side 2"
+      }
+    ]
+  },
+  "ejendomme": [
+    {
+      "id": "hostrupvaenget-41",
+      "navn": "Hostrupvænget 41-63",
+      "adresse": "Hostrupvænget 41-63",
+      "by": "Hobro",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Hostrupvænget 41-63",
+        "vedligehold": "Hostrupvænget 41 m.fl.",
+        "gi": "Hostrupvænget 41 m.fl.",
+        "vaerdi": "Hostrupvænget 41 m.fl.",
+        "finansiering": "Hostrupvænget 41 m.fl."
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 57,
+            "m2": 4395,
+            "leje": 3125515,
+            "lejePrM2Kilde": 711
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 57,
+          "m2": 4395,
+          "leje": 3125515,
+          "lejePrM2Kilde": 711
+        }
+      },
+      "areal": {
+        "bolig": 4395,
+        "erhverv": 0,
+        "ialt": 4395
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 57,
+        "indtaegter": 3125717,
+        "nettoleje": 1870617,
+        "vaerdi": 31246146,
+        "vaerdiPrM2Kilde": 7109,
+        "afkastPctKilde": 6.1
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "horsoevej-13",
+      "navn": "Horsøvej 13",
+      "adresse": "Horsøvej 13",
+      "by": "Hobro",
+      "energimaerke": "D",
+      "kildenavne": {
+        "lejemaal": "Horsøvej 13",
+        "vedligehold": "Horsøvej 13",
+        "gi": "Horsøvej 13",
+        "vaerdi": "Horsøvej 13",
+        "finansiering": "Horsøvej 13"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 4,
+            "m2": 240,
+            "leje": 231705,
+            "lejePrM2Kilde": 965
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 1,
+            "m2": 0,
+            "leje": 5400,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 5,
+          "m2": 240,
+          "leje": 237105,
+          "lejePrM2Kilde": 988
+        }
+      },
+      "areal": {
+        "bolig": 240,
+        "erhverv": 0,
+        "ialt": 240
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 5,
+        "indtaegter": 236393,
+        "nettoleje": 145624,
+        "vaerdi": 2201176,
+        "vaerdiPrM2Kilde": 9172,
+        "afkastPctKilde": 6.8
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "adelgade-4",
+      "navn": "Adelgade 4",
+      "adresse": "Adelgade 4",
+      "by": "Randers",
+      "energimaerke": "D",
+      "kildenavne": {
+        "lejemaal": "Adelgade 4",
+        "vedligehold": "Adelgade 4",
+        "gi": "Adelgade 4",
+        "vaerdi": "Adelgade 4",
+        "finansiering": "Adelgade 4"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 10,
+            "m2": 880,
+            "leje": 694593,
+            "lejePrM2Kilde": 789
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 2,
+            "m2": 188,
+            "leje": 146657,
+            "lejePrM2Kilde": 780
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 12,
+          "m2": 1068,
+          "leje": 841250,
+          "lejePrM2Kilde": 788
+        }
+      },
+      "areal": {
+        "bolig": 880,
+        "erhverv": 188,
+        "ialt": 1068
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 12,
+        "indtaegter": 852370,
+        "nettoleje": 488416,
+        "vaerdi": 11501978,
+        "vaerdiPrM2Kilde": 10770,
+        "afkastPctKilde": 4.3
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "noerre-boulevard-74",
+      "navn": "Nørre Boulevard 74 m.fl.",
+      "adresse": "Nørre Boulevard 74 m.fl.",
+      "by": "Randers",
+      "energimaerke": "B/C/D",
+      "kildenavne": {
+        "lejemaal": "Nørre Boulevard 74 m.fl.",
+        "vedligehold": "Nørre Blvd. 74 m.fl.",
+        "gi": "Nørre Blvd. 74 m.fl.",
+        "vaerdi": "Nørre Blvd. 74 m.fl.",
+        "finansiering": "Nørre Blvd. 74 m.fl."
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 82,
+            "m2": 5263,
+            "leje": 3905306,
+            "lejePrM2Kilde": 742
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 8,
+            "m2": 528,
+            "leje": 444930,
+            "lejePrM2Kilde": 843
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 1,
+            "m2": 45,
+            "leje": 38768,
+            "lejePrM2Kilde": 862
+          }
+        ],
+        "kaelderPPladsMvLeje": 5487,
+        "ialt": {
+          "antal": 91,
+          "m2": 5836,
+          "leje": 4394491,
+          "lejePrM2Kilde": 753
+        }
+      },
+      "areal": {
+        "bolig": 5791,
+        "erhverv": 45,
+        "ialt": 5836
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 91,
+        "indtaegter": 4209481,
+        "nettoleje": 2439098,
+        "vaerdi": 56982619,
+        "vaerdiPrM2Kilde": 9764,
+        "afkastPctKilde": 4.4
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": true,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "dannebrogsgade-12",
+      "navn": "Dannebrogsgade 12 A-B / Lundingsgade 20",
+      "adresse": "Dannebrogsgade 12 A-B / Lundingsgade 20",
+      "by": "Århus",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Dannebrogsgade 12 A-B/ Lundingsg… (afkortet i celle)",
+        "vedligehold": "Dannebrogsgade 12 mm",
+        "gi": "Danneborsgade 12/ Lundingsgade 20",
+        "vaerdi": "Danneborsgade 12/ Lundingsgad… (afkortet i celle)",
+        "finansiering": "Danneborsgade 12/ Lundingsgade"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 5,
+            "m2": 325,
+            "leje": 280202,
+            "lejePrM2Kilde": 862
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 19,
+            "m2": 1184,
+            "leje": 1691874,
+            "lejePrM2Kilde": 1429
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 24,
+          "m2": 1509,
+          "leje": 1972076,
+          "lejePrM2Kilde": 1307
+        }
+      },
+      "areal": {
+        "bolig": 1509,
+        "erhverv": 0,
+        "ialt": 1509
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 24,
+        "indtaegter": 2001118,
+        "nettoleje": 1404398,
+        "vaerdi": 37579518,
+        "vaerdiPrM2Kilde": 24904,
+        "afkastPctKilde": 3.8
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": true,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "teglvaerksgade-6",
+      "navn": "Teglværksgade 6",
+      "adresse": "Teglværksgade 6",
+      "by": "Århus",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Teglværksgade 6",
+        "vedligehold": "Teglværksgade 6",
+        "gi": "Teglværksgade 6",
+        "vaerdi": "Teglværksgade 6",
+        "finansiering": "Teglværksgade 6"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 1,
+            "m2": 52,
+            "leje": 35401,
+            "lejePrM2Kilde": 681
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 11,
+            "m2": 674,
+            "leje": 1024482,
+            "lejePrM2Kilde": 1520
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 12,
+          "m2": 726,
+          "leje": 1059883,
+          "lejePrM2Kilde": 1460
+        }
+      },
+      "areal": {
+        "bolig": 726,
+        "erhverv": 0,
+        "ialt": 726
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 12,
+        "indtaegter": 1077255,
+        "nettoleje": 830800,
+        "vaerdi": 22901246,
+        "vaerdiPrM2Kilde": 31544,
+        "afkastPctKilde": 3.7
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": true,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "adelgade-64",
+      "navn": "Adelgade 64",
+      "adresse": "Adelgade 64",
+      "by": "Skanderborg",
+      "energimaerke": null,
+      "kildenavne": {
+        "lejemaal": "Adelgade 64",
+        "vedligehold": "Adelgade 64",
+        "gi": "Adelgade 64",
+        "vaerdi": "Adelgade 64",
+        "finansiering": "Adelgade 64"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 1,
+            "m2": 216,
+            "leje": 87492,
+            "lejePrM2Kilde": 405
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 1,
+          "m2": 216,
+          "leje": 87492,
+          "lejePrM2Kilde": 405
+        }
+      },
+      "areal": {
+        "bolig": 0,
+        "erhverv": 216,
+        "ialt": 216
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 1,
+        "indtaegter": 87492,
+        "nettoleje": 41352,
+        "vaerdi": 714906,
+        "vaerdiPrM2Kilde": 3310,
+        "afkastPctKilde": 6.2
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "vestergade-25",
+      "navn": "Vestergade 25 B-D",
+      "adresse": "Vestergade 25 B-D",
+      "by": "Skanderborg",
+      "energimaerke": "B",
+      "kildenavne": {
+        "lejemaal": "Vestergade 25 B-D",
+        "vedligehold": "Vestergade 5 BD (sic)",
+        "gi": "Vestergade 25B-D, st.",
+        "vaerdi": "Vestergade 25B-D, st.",
+        "finansiering": "Vestergade 25"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 3,
+            "m2": 293,
+            "leje": 322001,
+            "lejePrM2Kilde": 1099
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 3,
+          "m2": 293,
+          "leje": 322001,
+          "lejePrM2Kilde": 1099
+        }
+      },
+      "areal": {
+        "bolig": 293,
+        "erhverv": 0,
+        "ialt": 293
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 3,
+        "indtaegter": 337001,
+        "nettoleje": 226375,
+        "vaerdi": 4990791,
+        "vaerdiPrM2Kilde": 17033,
+        "afkastPctKilde": 4.6
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "vestre-ringgade-45",
+      "navn": "Vestre Ringgade 45",
+      "adresse": "Vestre Ringgade 45",
+      "by": "Århus",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Vestre Ringgade 45",
+        "vedligehold": "Vestre Ringgade 45",
+        "gi": "Vestre Ringgade 45",
+        "vaerdi": "Vestre Ringgade 45",
+        "finansiering": "Vestre Ringgade 45"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 9,
+            "m2": 557,
+            "leje": 785099,
+            "lejePrM2Kilde": 1410
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 9,
+          "m2": 557,
+          "leje": 785099,
+          "lejePrM2Kilde": 1410
+        }
+      },
+      "areal": {
+        "bolig": 557,
+        "erhverv": 0,
+        "ialt": 557
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 9,
+        "indtaegter": 782021,
+        "nettoleje": 570785,
+        "vaerdi": 14738049,
+        "vaerdiPrM2Kilde": 26460,
+        "afkastPctKilde": 4.0
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "tietgens-plads-9",
+      "navn": "Tietgens Plads 9",
+      "adresse": "Tietgens Plads 9",
+      "by": "Århus",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Tietgens Plads 9",
+        "vedligehold": "Tietgens Plads 9",
+        "gi": "Tietgens Plads 9",
+        "vaerdi": "Tietgens Plads 9",
+        "finansiering": "Tietgens Plads 9"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 1,
+            "m2": 82,
+            "leje": 67616,
+            "lejePrM2Kilde": 825
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 10,
+            "m2": 789,
+            "leje": 1209187,
+            "lejePrM2Kilde": 1533
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 11,
+          "m2": 871,
+          "leje": 1276803,
+          "lejePrM2Kilde": 1466
+        }
+      },
+      "areal": {
+        "bolig": 871,
+        "erhverv": 0,
+        "ialt": 871
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 11,
+        "indtaegter": 1281967,
+        "nettoleje": 1009787,
+        "vaerdi": 28718018,
+        "vaerdiPrM2Kilde": 32971,
+        "afkastPctKilde": 3.6
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": true,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "blegdammen-9",
+      "navn": "Blegdammen 9 / Møllestien 59",
+      "adresse": "Blegdammen 9 / Møllestien 59",
+      "by": "Århus",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Blegdammen 9 / Møllestien 59",
+        "vedligehold": "Blegdammen 59/Møllestien 59 (sic)",
+        "gi": "Blegdammen 9/ Møllestien 59",
+        "vaerdi": "Blegdammen 9/ Møllestien 59",
+        "finansiering": "Blegdammen 9/Møllestien 59"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 12,
+            "m2": 821,
+            "leje": 1162136,
+            "lejePrM2Kilde": 1416
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 12,
+          "m2": 821,
+          "leje": 1162136,
+          "lejePrM2Kilde": 1416
+        }
+      },
+      "areal": {
+        "bolig": 821,
+        "erhverv": 0,
+        "ialt": 821
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 13,
+        "indtaegter": 1128136,
+        "nettoleje": 812588,
+        "vaerdi": 23648842,
+        "vaerdiPrM2Kilde": 28805,
+        "afkastPctKilde": 3.5
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": false,
+        "spaerret": false,
+        "spaerretTil": null,
+        "begrundelse": null
+      }
+    },
+    {
+      "id": "asylgade-21",
+      "navn": "Asylgade 21-23",
+      "adresse": "Asylgade 21-23",
+      "by": "Skanderborg",
+      "energimaerke": "C",
+      "kildenavne": {
+        "lejemaal": "Asylgade 21-23",
+        "vedligehold": "Asylgade 21-23",
+        "gi": "Asylgade 21-23",
+        "vaerdi": "Asylgade 21-23",
+        "finansiering": "Asylgade 21-23, Skanderborg"
+      },
+      "lejemaal": {
+        "fordeling": [
+          {
+            "lejetype": "omkostningsbestemt",
+            "navn": "Omkostningsbestemt §19.1",
+            "antal": 3,
+            "m2": 266,
+            "leje": 194848,
+            "lejePrM2Kilde": 733
+          },
+          {
+            "lejetype": "aftalt",
+            "navn": "Aftalt leje / fri leje §19.2",
+            "antal": 15,
+            "m2": 826,
+            "leje": 983991,
+            "lejePrM2Kilde": 1191
+          },
+          {
+            "lejetype": "smaa_huse",
+            "navn": "Små huse",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          },
+          {
+            "lejetype": "erhverv",
+            "navn": "Erhverv",
+            "antal": 0,
+            "m2": 0,
+            "leje": 0,
+            "lejePrM2Kilde": null
+          }
+        ],
+        "kaelderPPladsMvLeje": 0,
+        "ialt": {
+          "antal": 18,
+          "m2": 1092,
+          "leje": 1178839,
+          "lejePrM2Kilde": 1080
+        }
+      },
+      "areal": {
+        "bolig": 1092,
+        "erhverv": 0,
+        "ialt": 1092
+      },
+      "vaerdiansaettelse": {
+        "antalLejemaal": 18,
+        "indtaegter": 1186839,
+        "nettoleje": 877479,
+        "vaerdi": 18250000,
+        "vaerdiPrM2Kilde": 16712,
+        "afkastPctKilde": 4.9
+      },
+      "modernisering": {
+        "harOmkostningsbestemteLejemaal": true,
+        "spaerret": true,
+        "spaerretTil": null,
+        "begrundelse": "Nyanskaffet ejendom – §19.2-modernisering først muligt efter 5 års ejerskab. Dato ikke oplyst i kilden."
+      }
+    }
+  ],
+  "resultatopgoerelse": {
+    "enhed": "tkr",
+    "perioder": [
+      {
+        "id": "maaned",
+        "navn": "August",
+        "kort": "Måned",
+        "kolonner": [
+          {
+            "id": "realiseretForrige",
+            "navn": "25/26 Realis.",
+            "rolle": "realiseret_forrige"
+          },
+          {
+            "id": "budget",
+            "navn": "26/27 Budget",
+            "rolle": "budget"
+          },
+          {
+            "id": "realiseret",
+            "navn": "26/27 Realis.",
+            "rolle": "realiseret"
+          },
+          {
+            "id": "afvigelse",
+            "navn": "26/27 Afv.",
+            "rolle": "afvigelse"
+          }
+        ]
+      },
+      {
+        "id": "aarTilDato",
+        "navn": "År til dato",
+        "kort": "År til dato",
+        "kolonner": [
+          {
+            "id": "realiseretForrige",
+            "navn": "25/26 Realis.",
+            "rolle": "realiseret_forrige"
+          },
+          {
+            "id": "budget",
+            "navn": "26/27 Budget",
+            "rolle": "budget"
+          },
+          {
+            "id": "realiseret",
+            "navn": "26/27 Realis.",
+            "rolle": "realiseret"
+          },
+          {
+            "id": "afvigelse",
+            "navn": "26/27 Afv.",
+            "rolle": "afvigelse"
+          }
+        ]
+      },
+      {
+        "id": "regnskabsaar",
+        "navn": "Regnskabsåret",
+        "kort": "Helår",
+        "kolonner": [
+          {
+            "id": "realiseretForrige",
+            "navn": "25/26 Realis.",
+            "rolle": "realiseret_forrige"
+          },
+          {
+            "id": "budget",
+            "navn": "26/27 Budget",
+            "rolle": "budget"
+          },
+          {
+            "id": "estimat",
+            "navn": "26/27 Estimat",
+            "rolle": "estimat"
+          }
+        ]
+      }
+    ],
+    "linjer": [
+      {
+        "id": "beboelse_omkostningsbestemt",
+        "navn": "Beboelse omkostningsbestemt",
+        "type": "post",
+        "gruppe": "indtaegter",
+        "kildenavn": "Beboelse omkostningsbestemt",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 381,
+            "budget": 381,
+            "realiseret": 380,
+            "afvigelse": -2
+          },
+          "aarTilDato": {
+            "realiseretForrige": 1525,
+            "budget": 1525,
+            "realiseret": 1519,
+            "afvigelse": -6
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 4579,
+            "budget": 4579,
+            "estimat": 4573
+          }
+        }
+      },
+      {
+        "id": "beboelse_aftalt_leje",
+        "navn": "Beboelse aftalt leje",
+        "type": "post",
+        "gruppe": "indtaegter",
+        "kildenavn": "Beboelse aftalt leje",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 882,
+            "budget": 978,
+            "realiseret": 986,
+            "afvigelse": 8
+          },
+          "aarTilDato": {
+            "realiseretForrige": 3541,
+            "budget": 3928,
+            "realiseret": 3949,
+            "afvigelse": 21
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 10752,
+            "budget": 11814,
+            "estimat": 11835
+          }
+        }
+      },
+      {
+        "id": "erhverv",
+        "navn": "Erhverv",
+        "type": "post",
+        "gruppe": "indtaegter",
+        "kildenavn": "Erhverv",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 14,
+            "budget": 14,
+            "realiseret": 14,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 58,
+            "budget": 58,
+            "realiseret": 75,
+            "afvigelse": 17
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 226,
+            "budget": 226,
+            "estimat": 243
+          }
+        }
+      },
+      {
+        "id": "oevrige_indtaegter",
+        "navn": "Øvrige",
+        "type": "post",
+        "gruppe": "indtaegter",
+        "kildenavn": "Øvrige",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 17,
+            "budget": 17,
+            "realiseret": 17,
+            "afvigelse": 1
+          },
+          "aarTilDato": {
+            "realiseretForrige": 80,
+            "budget": 80,
+            "realiseret": 60,
+            "afvigelse": -21
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 247,
+            "budget": 237,
+            "estimat": 216
+          }
+        }
+      },
+      {
+        "id": "lejeindtaegter_brutto",
+        "navn": "Lejeindtægter brutto",
+        "type": "subtotal",
+        "gruppe": "indtaegter",
+        "kildenavn": "Lejeindtægter brutto",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 1293,
+            "budget": 1390,
+            "realiseret": 1398,
+            "afvigelse": 8
+          },
+          "aarTilDato": {
+            "realiseretForrige": 5206,
+            "budget": 5592,
+            "realiseret": 5604,
+            "afvigelse": 11
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 15803,
+            "budget": 16855,
+            "estimat": 16866
+          }
+        }
+      },
+      {
+        "id": "lejetab",
+        "navn": "Lejetab",
+        "type": "post",
+        "gruppe": "indtaegter",
+        "kildenavn": "Lejetab",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -31,
+            "budget": -25,
+            "realiseret": -39,
+            "afvigelse": -14
+          },
+          "aarTilDato": {
+            "realiseretForrige": -123,
+            "budget": -114,
+            "realiseret": -124,
+            "afvigelse": -10
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -357,
+            "budget": -333,
+            "estimat": -343
+          }
+        }
+      },
+      {
+        "id": "lejeindtaegter",
+        "navn": "Lejeindtægter",
+        "type": "subtotal",
+        "gruppe": "indtaegter",
+        "kildenavn": "Lejeindtægter",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 1263,
+            "budget": 1365,
+            "realiseret": 1359,
+            "afvigelse": -7
+          },
+          "aarTilDato": {
+            "realiseretForrige": 5083,
+            "budget": 5478,
+            "realiseret": 5480,
+            "afvigelse": 1
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 15447,
+            "budget": 16522,
+            "estimat": 16524
+          }
+        }
+      },
+      {
+        "id": "ejendomsskatter",
+        "navn": "Ejendomsskatter",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Ejendomsskatter",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": -95,
+            "budget": -97,
+            "realiseret": -98,
+            "afvigelse": -1
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -532,
+            "budget": -377,
+            "estimat": -378
+          }
+        }
+      },
+      {
+        "id": "vand",
+        "navn": "Vand, vandafgift",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Vand, vandafgift",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": -1,
+            "realiseret": 0,
+            "afvigelse": 1
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": -2,
+            "realiseret": 0,
+            "afvigelse": 2
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 0,
+            "budget": -6,
+            "estimat": -4
+          }
+        }
+      },
+      {
+        "id": "renovation",
+        "navn": "Renovation",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Renovation",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -142,
+            "budget": -143,
+            "realiseret": -125,
+            "afvigelse": 19
+          },
+          "aarTilDato": {
+            "realiseretForrige": -150,
+            "budget": -176,
+            "realiseret": -146,
+            "afvigelse": 31
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -638,
+            "budget": -676,
+            "estimat": -646
+          }
+        }
+      },
+      {
+        "id": "ejendomsforsikringer",
+        "navn": "Ejendomsforsikringer",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Ejendomsforsikringer",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -279,
+            "budget": -263,
+            "estimat": -263
+          }
+        }
+      },
+      {
+        "id": "vicevaert",
+        "navn": "Vicevært, trappevask",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Vicevært, trappevask",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -9,
+            "budget": -135,
+            "realiseret": -183,
+            "afvigelse": -47
+          },
+          "aarTilDato": {
+            "realiseretForrige": -36,
+            "budget": -538,
+            "realiseret": -544,
+            "afvigelse": -6
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -862,
+            "budget": -1613,
+            "estimat": -1620
+          }
+        }
+      },
+      {
+        "id": "ejendomsadministration",
+        "navn": "Ejendomsadministration",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Ejendomsadministration",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": -12,
+            "realiseret": -15,
+            "afvigelse": -3
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": -48,
+            "realiseret": -60,
+            "afvigelse": -12
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -60,
+            "budget": -144,
+            "estimat": -156
+          }
+        }
+      },
+      {
+        "id": "varmeregnskab",
+        "navn": "Varmeregnskab",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Varmeregnskab",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "estimat": 0
+          }
+        }
+      },
+      {
+        "id": "oevrige_driftsudgifter",
+        "navn": "Øvrige driftsudgifter",
+        "type": "post",
+        "gruppe": "drift",
+        "kildenavn": "Øvrige driftsudgifter",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -23,
+            "budget": -16,
+            "realiseret": -24,
+            "afvigelse": -8
+          },
+          "aarTilDato": {
+            "realiseretForrige": -153,
+            "budget": -164,
+            "realiseret": -146,
+            "afvigelse": 18
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -771,
+            "budget": -741,
+            "estimat": -723
+          }
+        }
+      },
+      {
+        "id": "driftsudgifter_ialt",
+        "navn": "Driftsudgifter i alt",
+        "type": "subtotal",
+        "gruppe": "drift",
+        "kildenavn": "Driftsudgifter i alt",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -175,
+            "budget": -307,
+            "realiseret": -346,
+            "afvigelse": -39
+          },
+          "aarTilDato": {
+            "realiseretForrige": -435,
+            "budget": -1025,
+            "realiseret": -993,
+            "afvigelse": 32
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -3143,
+            "budget": -3821,
+            "estimat": -3789
+          }
+        }
+      },
+      {
+        "id": "netto_leje_foer_vedligehold",
+        "navn": "Netto leje før vedligehold",
+        "type": "subtotal",
+        "gruppe": "drift",
+        "kildenavn": "Netto leje før vedligehold",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 1088,
+            "budget": 1058,
+            "realiseret": 1012,
+            "afvigelse": -46
+          },
+          "aarTilDato": {
+            "realiseretForrige": 4648,
+            "budget": 4453,
+            "realiseret": 4486,
+            "afvigelse": 33
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 12304,
+            "budget": 12702,
+            "estimat": 12735
+          }
+        }
+      },
+      {
+        "id": "vedligehold",
+        "navn": "Vedligehold",
+        "type": "post",
+        "gruppe": "vedligehold",
+        "kildenavn": "Vedligehold",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -303,
+            "budget": -121,
+            "realiseret": -163,
+            "afvigelse": -42
+          },
+          "aarTilDato": {
+            "realiseretForrige": -861,
+            "budget": -539,
+            "realiseret": -860,
+            "afvigelse": -322
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -2473,
+            "budget": -3259,
+            "estimat": -3581
+          }
+        }
+      },
+      {
+        "id": "planlagt_vedligehold",
+        "navn": "Planlagt vedligehold",
+        "type": "post",
+        "gruppe": "vedligehold",
+        "kildenavn": "Plalagt vedligehold",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "estimat": 0
+          }
+        }
+      },
+      {
+        "id": "netto_leje",
+        "navn": "Netto leje",
+        "type": "subtotal",
+        "gruppe": "vedligehold",
+        "kildenavn": "Netto leje",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 785,
+            "budget": 937,
+            "realiseret": 850,
+            "afvigelse": -87
+          },
+          "aarTilDato": {
+            "realiseretForrige": 3787,
+            "budget": 3915,
+            "realiseret": 3626,
+            "afvigelse": -289
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 9830,
+            "budget": 9443,
+            "estimat": 9154
+          }
+        }
+      },
+      {
+        "id": "reklame",
+        "navn": "Reklame m.m.",
+        "type": "post",
+        "gruppe": "administration",
+        "kildenavn": "Reklame m.m.",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": -2,
+            "budget": 0,
+            "realiseret": -2,
+            "afvigelse": -2
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -55,
+            "budget": -50,
+            "estimat": -52
+          }
+        }
+      },
+      {
+        "id": "oevrige_adm_omk",
+        "navn": "Øvrige adm omk",
+        "type": "post",
+        "gruppe": "administration",
+        "kildenavn": "Øvrige adm omk",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -10,
+            "budget": -82,
+            "realiseret": -97,
+            "afvigelse": -15
+          },
+          "aarTilDato": {
+            "realiseretForrige": -49,
+            "budget": -333,
+            "realiseret": -768,
+            "afvigelse": -435
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -1184,
+            "budget": -1211,
+            "estimat": -1646
+          }
+        }
+      },
+      {
+        "id": "ebitda",
+        "navn": "EBITDA-resultat før renter og afskr.",
+        "type": "subtotal",
+        "gruppe": "resultat",
+        "kildenavn": "EBITDA-resultat før renter og afskr.",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 775,
+            "budget": 855,
+            "realiseret": 753,
+            "afvigelse": -102
+          },
+          "aarTilDato": {
+            "realiseretForrige": 3737,
+            "budget": 3582,
+            "realiseret": 2856,
+            "afvigelse": -725
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 8591,
+            "budget": 8181,
+            "estimat": 7457
+          }
+        }
+      },
+      {
+        "id": "afskrivninger",
+        "navn": "Afskrivninger",
+        "type": "post",
+        "gruppe": "resultat",
+        "kildenavn": "Afskrivninger",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -10,
+            "budget": 0,
+            "estimat": 0
+          }
+        }
+      },
+      {
+        "id": "ebit",
+        "navn": "EBIT-resultat før renter",
+        "type": "subtotal",
+        "gruppe": "resultat",
+        "kildenavn": "EBIT-resultat før renter",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 775,
+            "budget": 855,
+            "realiseret": 753,
+            "afvigelse": -102
+          },
+          "aarTilDato": {
+            "realiseretForrige": 3737,
+            "budget": 3582,
+            "realiseret": 2856,
+            "afvigelse": -725
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 8581,
+            "budget": 8181,
+            "estimat": 7457
+          }
+        }
+      },
+      {
+        "id": "prioritetsrenter",
+        "navn": "Prioritetsrenter",
+        "type": "post",
+        "gruppe": "finansiering",
+        "kildenavn": "Prioritetsrenter",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": -145,
+            "budget": -121,
+            "realiseret": -116,
+            "afvigelse": 6
+          },
+          "aarTilDato": {
+            "realiseretForrige": -1085,
+            "budget": -1223,
+            "realiseret": -1153,
+            "afvigelse": 70
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -3591,
+            "budget": -4392,
+            "estimat": -4322
+          }
+        }
+      },
+      {
+        "id": "oevrige_renter",
+        "navn": "Øvrige renter m.m.",
+        "type": "post",
+        "gruppe": "finansiering",
+        "kildenavn": "Øvrige renter m.m.",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 1,
+            "budget": 0,
+            "realiseret": -28,
+            "afvigelse": -28
+          },
+          "regnskabsaar": {
+            "realiseretForrige": -507,
+            "budget": -18,
+            "estimat": -46
+          }
+        }
+      },
+      {
+        "id": "vaerdiregulering_ejendom",
+        "navn": "Værdiregulering ejendom",
+        "type": "post",
+        "gruppe": "finansiering",
+        "kildenavn": "Værdiregulering ejendom",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "estimat": 0
+          }
+        }
+      },
+      {
+        "id": "tab_gevinst_salg",
+        "navn": "Tab/Gevinst ved salg af ejendom",
+        "type": "post",
+        "gruppe": "finansiering",
+        "kildenavn": "Tab/Gevinst ved salg af ejendom",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 0,
+            "afvigelse": 0
+          },
+          "aarTilDato": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "realiseret": 286,
+            "afvigelse": 286
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 0,
+            "budget": 0,
+            "estimat": 286
+          }
+        }
+      },
+      {
+        "id": "resultat_foer_skat",
+        "navn": "Resultat før skat",
+        "type": "resultat",
+        "gruppe": "resultat",
+        "kildenavn": "Resultat før skat",
+        "vaerdier": {
+          "maaned": {
+            "realiseretForrige": 631,
+            "budget": 733,
+            "realiseret": 637,
+            "afvigelse": -96
+          },
+          "aarTilDato": {
+            "realiseretForrige": 2652,
+            "budget": 2359,
+            "realiseret": 1961,
+            "afvigelse": -398
+          },
+          "regnskabsaar": {
+            "realiseretForrige": 4483,
+            "budget": 3771,
+            "estimat": 3375
+          }
+        }
+      }
+    ],
+    "vandfald": [
+      {
+        "linjeId": "lejeindtaegter",
+        "rolle": "start",
+        "navn": "Lejeindtægter"
+      },
+      {
+        "linjeId": "driftsudgifter_ialt",
+        "rolle": "traek",
+        "navn": "Driftsudgifter"
+      },
+      {
+        "linjeId": "vedligehold",
+        "rolle": "traek",
+        "navn": "Vedligehold"
+      },
+      {
+        "linjeId": "administration",
+        "rolle": "traek",
+        "navn": "Administration",
+        "summerer": [
+          "reklame",
+          "oevrige_adm_omk"
+        ]
+      },
+      {
+        "linjeId": "ebitda",
+        "rolle": "delsum",
+        "navn": "EBITDA"
+      },
+      {
+        "linjeId": "renter",
+        "rolle": "traek",
+        "navn": "Renter",
+        "summerer": [
+          "prioritetsrenter",
+          "oevrige_renter"
+        ]
+      },
+      {
+        "linjeId": "andet",
+        "rolle": "traek",
+        "navn": "Værdiregulering og salg",
+        "summerer": [
+          "vaerdiregulering_ejendom",
+          "tab_gevinst_salg"
+        ]
+      },
+      {
+        "linjeId": "resultat_foer_skat",
+        "rolle": "slutsum",
+        "navn": "Resultat før skat"
+      }
+    ]
+  },
+  "laan": [
+    {
+      "id": "laan-hostrupvaenget-41",
+      "ejendomId": "hostrupvaenget-41",
+      "laangiverKode": "JR",
+      "laangiver": {
+        "kode": "JR",
+        "navn": "JR",
+        "fuldtNavnForslag": "Jyske Realkredit",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 31246146,
+      "restgaeld": 15800410,
+      "gaeldPctKilde": 51,
+      "kursvaerdi": 11702285,
+      "kursvaerdiPctKilde": 37,
+      "rentePct": 1.5,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-horsoevej-13",
+      "ejendomId": "horsoevej-13",
+      "laangiverKode": "JR",
+      "laangiver": {
+        "kode": "JR",
+        "navn": "JR",
+        "fuldtNavnForslag": "Jyske Realkredit",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 2201176,
+      "restgaeld": 1293480,
+      "gaeldPctKilde": 59,
+      "kursvaerdi": 957992,
+      "kursvaerdiPctKilde": 44,
+      "rentePct": 1.5,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-adelgade-4",
+      "ejendomId": "adelgade-4",
+      "laangiverKode": "JR",
+      "laangiver": {
+        "kode": "JR",
+        "navn": "JR",
+        "fuldtNavnForslag": "Jyske Realkredit",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 11501978,
+      "restgaeld": 6179686,
+      "gaeldPctKilde": 54,
+      "kursvaerdi": 4576872,
+      "kursvaerdiPctKilde": 40,
+      "rentePct": 1.5,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-noerre-boulevard-74",
+      "ejendomId": "noerre-boulevard-74",
+      "laangiverKode": "JR",
+      "laangiver": {
+        "kode": "JR",
+        "navn": "JR",
+        "fuldtNavnForslag": "Jyske Realkredit",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 56982619,
+      "restgaeld": 35122545,
+      "gaeldPctKilde": 62,
+      "kursvaerdi": 35332578,
+      "kursvaerdiPctKilde": 62,
+      "rentePct": 3.0,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-dannebrogsgade-12",
+      "ejendomId": "dannebrogsgade-12",
+      "laangiverKode": "JR",
+      "laangiver": {
+        "kode": "JR",
+        "navn": "JR",
+        "fuldtNavnForslag": "Jyske Realkredit",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 37579518,
+      "restgaeld": 26323954,
+      "gaeldPctKilde": 70,
+      "kursvaerdi": 26425564,
+      "kursvaerdiPctKilde": 70,
+      "rentePct": 3.1,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-teglvaerksgade-6",
+      "ejendomId": "teglvaerksgade-6",
+      "laangiverKode": "RD",
+      "laangiver": {
+        "kode": "RD",
+        "navn": "RD",
+        "fuldtNavnForslag": "Realkredit Danmark",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 22901246,
+      "restgaeld": 11477000,
+      "gaeldPctKilde": 50,
+      "kursvaerdi": 10609079,
+      "kursvaerdiPctKilde": 46,
+      "rentePct": 1.8,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-adelgade-64",
+      "ejendomId": "adelgade-64",
+      "laangiverKode": null,
+      "laangiver": null,
+      "bogfoertVaerdi": 714906,
+      "restgaeld": null,
+      "gaeldPctKilde": null,
+      "kursvaerdi": null,
+      "kursvaerdiPctKilde": null,
+      "rentePct": null,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-vestergade-25",
+      "ejendomId": "vestergade-25",
+      "laangiverKode": "RD",
+      "laangiver": {
+        "kode": "RD",
+        "navn": "RD",
+        "fuldtNavnForslag": "Realkredit Danmark",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 4990791,
+      "restgaeld": 3104000,
+      "gaeldPctKilde": 62,
+      "kursvaerdi": 3119021,
+      "kursvaerdiPctKilde": 62,
+      "rentePct": 3.8,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-vestre-ringgade-45",
+      "ejendomId": "vestre-ringgade-45",
+      "laangiverKode": "RD",
+      "laangiver": {
+        "kode": "RD",
+        "navn": "RD",
+        "fuldtNavnForslag": "Realkredit Danmark",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 14738049,
+      "restgaeld": 9191000,
+      "gaeldPctKilde": 62,
+      "kursvaerdi": 9235478,
+      "kursvaerdiPctKilde": 63,
+      "rentePct": 3.8,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-tietgens-plads-9",
+      "ejendomId": "tietgens-plads-9",
+      "laangiverKode": "RD",
+      "laangiver": {
+        "kode": "RD",
+        "navn": "RD",
+        "fuldtNavnForslag": "Realkredit Danmark",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 28718018,
+      "restgaeld": 18382786,
+      "gaeldPctKilde": 64,
+      "kursvaerdi": 14224065,
+      "kursvaerdiPctKilde": 50,
+      "rentePct": 1.6,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-blegdammen-9",
+      "ejendomId": "blegdammen-9",
+      "laangiverKode": "RD",
+      "laangiver": {
+        "kode": "RD",
+        "navn": "RD",
+        "fuldtNavnForslag": "Realkredit Danmark",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 23648842,
+      "restgaeld": 15139000,
+      "gaeldPctKilde": 64,
+      "kursvaerdi": 14303845,
+      "kursvaerdiPctKilde": 60,
+      "rentePct": 2.9,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    },
+    {
+      "id": "laan-asylgade-21",
+      "ejendomId": "asylgade-21",
+      "laangiverKode": "JR",
+      "laangiver": {
+        "kode": "JR",
+        "navn": "JR",
+        "fuldtNavnForslag": "Jyske Realkredit",
+        "bekraeftet": false
+      },
+      "bogfoertVaerdi": 18250000,
+      "restgaeld": 13000000,
+      "gaeldPctKilde": 71,
+      "kursvaerdi": 13097171,
+      "kursvaerdiPctKilde": 72,
+      "rentePct": null,
+      "laanetype": null,
+      "rentetype": null,
+      "afdragsfri": null,
+      "refinansieringsdato": null
+    }
+  ],
+  "renteprofil": {
+    "peridato": "2026-04-30",
+    "poster": [
+      {
+        "label": "Obl. 0,5%",
+        "andelPct": 21,
+        "kategori": "fast"
+      },
+      {
+        "label": "Obl. 1,0%",
+        "andelPct": 6,
+        "kategori": "fast"
+      },
+      {
+        "label": "Obl. 1,5%",
+        "andelPct": 0,
+        "kategori": "fast"
+      },
+      {
+        "label": "Obl. 2,0%",
+        "andelPct": 0,
+        "kategori": "fast"
+      },
+      {
+        "label": "Obl. 0%",
+        "andelPct": 0,
+        "kategori": "fast"
+      },
+      {
+        "label": "Cibor 3",
+        "andelPct": 41,
+        "kategori": "variabel"
+      },
+      {
+        "label": "Cibor 6",
+        "andelPct": 7,
+        "kategori": "variabel"
+      },
+      {
+        "label": "F5",
+        "andelPct": 25,
+        "kategori": "rentetilpasning_kort"
+      },
+      {
+        "label": "Andet",
+        "andelPct": 0,
+        "kategori": "ukendt"
+      }
+    ]
+  },
+  "afdragsprofil": {
+    "peridato": "2026-04-30",
+    "poster": [
+      {
+        "label": "Afdrages nu",
+        "andelPct": 15,
+        "aar": null,
+        "afdragesNu": true
+      },
+      {
+        "label": "2026",
+        "andelPct": 17,
+        "aar": 2026,
+        "afdragesNu": false
+      },
+      {
+        "label": "2027",
+        "andelPct": 0,
+        "aar": 2027,
+        "afdragesNu": false
+      },
+      {
+        "label": "2028",
+        "andelPct": 23,
+        "aar": 2028,
+        "afdragesNu": false
+      },
+      {
+        "label": "2029",
+        "andelPct": 13,
+        "aar": 2029,
+        "afdragesNu": false
+      },
+      {
+        "label": "2030",
+        "andelPct": 0,
+        "aar": 2030,
+        "afdragesNu": false
+      },
+      {
+        "label": "2031",
+        "andelPct": 0,
+        "aar": 2031,
+        "afdragesNu": false
+      },
+      {
+        "label": "2032",
+        "andelPct": 9,
+        "aar": 2032,
+        "afdragesNu": false
+      },
+      {
+        "label": "2033",
+        "andelPct": 15,
+        "aar": 2033,
+        "afdragesNu": false
+      },
+      {
+        "label": "2034",
+        "andelPct": 0,
+        "aar": 2034,
+        "afdragesNu": false
+      },
+      {
+        "label": "2035",
+        "andelPct": 0,
+        "aar": 2035,
+        "afdragesNu": false
+      },
+      {
+        "label": "2036",
+        "andelPct": 8,
+        "aar": 2036,
+        "afdragesNu": false
+      }
+    ]
+  },
+  "vedligeholdelsesplan": {
+    "aar": [
+      {
+        "id": "2026/27",
+        "label": "2026/27",
+        "kildeLabel": "2026/27",
+        "kildeLabelAfviger": false
+      },
+      {
+        "id": "2027/28",
+        "label": "2027/28",
+        "kildeLabel": "2027/28",
+        "kildeLabelAfviger": false
+      },
+      {
+        "id": "2028/29",
+        "label": "2028/29",
+        "kildeLabel": "2028/29",
+        "kildeLabelAfviger": false
+      },
+      {
+        "id": "2029/30",
+        "label": "2029/30",
+        "kildeLabel": "2028/29",
+        "kildeLabelAfviger": true
+      },
+      {
+        "id": "2030/31",
+        "label": "2030/31",
+        "kildeLabel": "2030/31",
+        "kildeLabelAfviger": false
+      },
+      {
+        "id": "2031/32",
+        "label": "2031/32",
+        "kildeLabel": "2031/32",
+        "kildeLabelAfviger": false
+      },
+      {
+        "id": "2032/33",
+        "label": "2032/33",
+        "kildeLabel": "2032/33",
+        "kildeLabelAfviger": false
+      },
+      {
+        "id": "2033/34",
+        "label": "2033/34",
+        "kildeLabel": "2033/34",
+        "kildeLabelAfviger": false
+      }
+    ],
+    "projekter": [
+      {
+        "id": "vh-01",
+        "ejendomId": "hostrupvaenget-41",
+        "kategori": "Vinduer",
+        "projekt": "Nye træ/alu vinduer mod vest. Forventet forbedringsandel: 50%",
+        "aar": "2026/27",
+        "beloeb": 1700000
+      },
+      {
+        "id": "vh-02",
+        "ejendomId": "hostrupvaenget-41",
+        "kategori": "Vinduer",
+        "projekt": "Nye træ/alu vinduer mod øst/nord. Forventet forbedringsandel: 50%",
+        "aar": "2027/28",
+        "beloeb": 1300000
+      },
+      {
+        "id": "vh-03",
+        "ejendomId": "hostrupvaenget-41",
+        "kategori": "Façade",
+        "projekt": "Nye murstensoverligger mod øst",
+        "aar": "2027/28",
+        "beloeb": 250000
+      },
+      {
+        "id": "vh-04",
+        "ejendomId": "hostrupvaenget-41",
+        "kategori": "Tag",
+        "projekt": "Ståltag (Decra) med eternit nedenunder. Tagrende og nedløb i zink",
+        "aar": "2030/31",
+        "beloeb": 400000
+      },
+      {
+        "id": "vh-05",
+        "ejendomId": "horsoevej-13",
+        "kategori": "Vinduer",
+        "projekt": "Plastvinduer fra 2005",
+        "aar": "2031/32",
+        "beloeb": 150000
+      },
+      {
+        "id": "vh-06",
+        "ejendomId": "adelgade-4",
+        "kategori": "Façade",
+        "projekt": "Udvendig trappe på bagfacade skal total renoveres",
+        "aar": "2027/28",
+        "beloeb": 150000
+      },
+      {
+        "id": "vh-07",
+        "ejendomId": "noerre-boulevard-74",
+        "kategori": "Façade",
+        "projekt": "Udført med isolering og facepuds. Skal gennemgås",
+        "aar": "2028/29",
+        "beloeb": 200000
+      },
+      {
+        "id": "vh-08",
+        "ejendomId": "dannebrogsgade-12",
+        "kategori": "Tag",
+        "projekt": "Skifertag mod gade skal skiftes og kviste gennemgås",
+        "aar": "2028/29",
+        "beloeb": 500000
+      },
+      {
+        "id": "vh-09",
+        "ejendomId": "dannebrogsgade-12",
+        "kategori": "Tag",
+        "projekt": "Skifertag mod gade skal skiftes og kviste gennemgås",
+        "aar": "2029/30",
+        "beloeb": 2000000
+      },
+      {
+        "id": "vh-10",
+        "ejendomId": "teglvaerksgade-6",
+        "kategori": "Vinduer",
+        "projekt": "Vinduer fra 2011 skal males",
+        "aar": "2030/31",
+        "beloeb": 200000
+      },
+      {
+        "id": "vh-11",
+        "ejendomId": "adelgade-64",
+        "kategori": "Tag",
+        "projekt": "Tag mod gården er nedslidt eternit tag - skal skiftes",
+        "aar": "2031/32",
+        "beloeb": 100000
+      },
+      {
+        "id": "vh-12",
+        "ejendomId": "vestergade-25",
+        "kategori": "Tag",
+        "projekt": "Tag er belagt med tagpap - skal udskiftes",
+        "aar": "2033/34",
+        "beloeb": 150000
+      },
+      {
+        "id": "vh-13",
+        "ejendomId": "vestre-ringgade-45",
+        "kategori": "Opgang",
+        "projekt": "Nyt dørtelefonanlæg",
+        "aar": "2026/27",
+        "beloeb": 100000
+      },
+      {
+        "id": "vh-14",
+        "ejendomId": "vestre-ringgade-45",
+        "kategori": "Vinduer",
+        "projekt": "Vinduer er 30 år gamle og skal enten males eller udskiftes",
+        "aar": "2028/29",
+        "beloeb": 700000
+      },
+      {
+        "id": "vh-15",
+        "ejendomId": "tietgens-plads-9",
+        "kategori": "Vinduer",
+        "projekt": "Trævinduer ca 20 år gamle - skal males",
+        "aar": "2031/32",
+        "beloeb": 250000
+      },
+      {
+        "id": "vh-16",
+        "ejendomId": "blegdammen-9",
+        "kategori": "Faldstammer",
+        "projekt": "Er af ældre dato - skal udskiftes",
+        "aar": "2032/33",
+        "beloeb": 200000
+      },
+      {
+        "id": "vh-17",
+        "ejendomId": "asylgade-21",
+        "kategori": "Gård",
+        "projekt": "Der skal etableres udvendige cykelskur med opladning",
+        "aar": "2030/31",
+        "beloeb": 200000
+      }
+    ]
+  },
+  "giIndestaaender": {
+    "primoDato": "2026-04-30",
+    "ultimoDato": "2027-04-30",
+    "poster": [
+      {
+        "ejendomId": "hostrupvaenget-41",
+        "indberetningspligtig": false,
+        "saldoPrimo119": null,
+        "saldoPrimo120": null,
+        "hensaettelse119KrPrM2": 0,
+        "hensaettelse120KrPrM2": 0,
+        "aaretsUplanlagteVedligehold": 351600,
+        "planlagtVedligehold": 1700000,
+        "saldoUltimo119": 0,
+        "saldoUltimo120": 0
+      },
+      {
+        "ejendomId": "horsoevej-13",
+        "indberetningspligtig": false,
+        "saldoPrimo119": null,
+        "saldoPrimo120": null,
+        "hensaettelse119KrPrM2": 0,
+        "hensaettelse120KrPrM2": 0,
+        "aaretsUplanlagteVedligehold": 19200,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 0,
+        "saldoUltimo120": 0
+      },
+      {
+        "ejendomId": "adelgade-4",
+        "indberetningspligtig": false,
+        "saldoPrimo119": null,
+        "saldoPrimo120": null,
+        "hensaettelse119KrPrM2": 0,
+        "hensaettelse120KrPrM2": 0,
+        "aaretsUplanlagteVedligehold": 106800,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 0,
+        "saldoUltimo120": 0
+      },
+      {
+        "ejendomId": "noerre-boulevard-74",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 0,
+        "saldoPrimo120": -4978419,
+        "hensaettelse119KrPrM2": 96,
+        "hensaettelse120KrPrM2": 88,
+        "aaretsUplanlagteVedligehold": 466880,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 93376,
+        "saldoUltimo120": -4464851
+      },
+      {
+        "ejendomId": "dannebrogsgade-12",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 0,
+        "saldoPrimo120": -2039367,
+        "hensaettelse119KrPrM2": 101,
+        "hensaettelse120KrPrM2": 92,
+        "aaretsUplanlagteVedligehold": 120720,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 31689,
+        "saldoUltimo120": -1900539
+      },
+      {
+        "ejendomId": "teglvaerksgade-6",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 0,
+        "saldoPrimo120": -1135051,
+        "hensaettelse119KrPrM2": 105,
+        "hensaettelse120KrPrM2": 96,
+        "aaretsUplanlagteVedligehold": 58080,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 18150,
+        "saldoUltimo120": -1065355
+      },
+      {
+        "ejendomId": "adelgade-64",
+        "indberetningspligtig": false,
+        "saldoPrimo119": null,
+        "saldoPrimo120": null,
+        "hensaettelse119KrPrM2": 0,
+        "hensaettelse120KrPrM2": 0,
+        "aaretsUplanlagteVedligehold": 8640,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 0,
+        "saldoUltimo120": 0
+      },
+      {
+        "ejendomId": "vestergade-25",
+        "indberetningspligtig": false,
+        "saldoPrimo119": null,
+        "saldoPrimo120": null,
+        "hensaettelse119KrPrM2": 0,
+        "hensaettelse120KrPrM2": 0,
+        "aaretsUplanlagteVedligehold": 17580,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 0,
+        "saldoUltimo120": 0
+      },
+      {
+        "ejendomId": "vestre-ringgade-45",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 82849,
+        "saldoPrimo120": 225866,
+        "hensaettelse119KrPrM2": 107,
+        "hensaettelse120KrPrM2": 99,
+        "aaretsUplanlagteVedligehold": 44560,
+        "planlagtVedligehold": 100000,
+        "saldoUltimo119": -2112,
+        "saldoUltimo120": 281009
+      },
+      {
+        "ejendomId": "tietgens-plads-9",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 0,
+        "saldoPrimo120": -492171,
+        "hensaettelse119KrPrM2": 109,
+        "hensaettelse120KrPrM2": 100,
+        "aaretsUplanlagteVedligehold": 69680,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 25259,
+        "saldoUltimo120": -405071
+      },
+      {
+        "ejendomId": "blegdammen-9",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 0,
+        "saldoPrimo120": -2674850,
+        "hensaettelse119KrPrM2": 106,
+        "hensaettelse120KrPrM2": 98,
+        "aaretsUplanlagteVedligehold": 65680,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 21346,
+        "saldoUltimo120": -2594392
+      },
+      {
+        "ejendomId": "asylgade-21",
+        "indberetningspligtig": true,
+        "saldoPrimo119": 0,
+        "saldoPrimo120": -438679,
+        "hensaettelse119KrPrM2": 92,
+        "hensaettelse120KrPrM2": 108,
+        "aaretsUplanlagteVedligehold": 87360,
+        "planlagtVedligehold": 0,
+        "saldoUltimo119": 13104,
+        "saldoUltimo120": -328951
+      }
+    ]
+  },
+  "likviditetsbudget": {
+    "aar": [
+      "2026/27",
+      "2027/28",
+      "2028/29",
+      "2029/30",
+      "2030/31",
+      "2031/32",
+      "2032/33",
+      "2033/34",
+      "2034/35",
+      "2035/36"
+    ],
+    "linjer": [
+      {
+        "id": "beboelse_omkostningsbestemt",
+        "navn": "Beboelse omkostningsbestemt",
+        "gruppe": "indtaegter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": 4579000,
+          "2027/28": 4670580,
+          "2028/29": 4763992,
+          "2029/30": 4859271,
+          "2030/31": 4956457,
+          "2031/32": 5055586,
+          "2032/33": 5156698,
+          "2033/34": 5259832,
+          "2034/35": 5365028,
+          "2035/36": 5472329
+        }
+      },
+      {
+        "id": "beboelse_aftalt_leje",
+        "navn": "Beboelse aftalt leje",
+        "gruppe": "indtaegter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": 11814000,
+          "2027/28": 12050280,
+          "2028/29": 12291286,
+          "2029/30": 12537111,
+          "2030/31": 12787854,
+          "2031/32": 13043611,
+          "2032/33": 13304483,
+          "2033/34": 13570572,
+          "2034/35": 13841984,
+          "2035/36": 14118824
+        }
+      },
+      {
+        "id": "erhverv",
+        "navn": "Erhverv",
+        "gruppe": "indtaegter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": 226000,
+          "2027/28": 230520,
+          "2028/29": 235130,
+          "2029/30": 239833,
+          "2030/31": 244630,
+          "2031/32": 249522,
+          "2032/33": 254513,
+          "2033/34": 259603,
+          "2034/35": 264795,
+          "2035/36": 270091
+        }
+      },
+      {
+        "id": "oevrige_indtaegter",
+        "navn": "Øvrige",
+        "gruppe": "indtaegter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": 237000,
+          "2027/28": 241740,
+          "2028/29": 246575,
+          "2029/30": 251506,
+          "2030/31": 256536,
+          "2031/32": 261667,
+          "2032/33": 266900,
+          "2033/34": 272239,
+          "2034/35": 277683,
+          "2035/36": 283237
+        }
+      },
+      {
+        "id": "lejetab",
+        "navn": "Lejetab",
+        "gruppe": "indtaegter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -333000,
+          "2027/28": -339660,
+          "2028/29": -346453,
+          "2029/30": -353382,
+          "2030/31": -360450,
+          "2031/32": -367659,
+          "2032/33": -375012,
+          "2033/34": -382512,
+          "2034/35": -390163,
+          "2035/36": -397966
+        }
+      },
+      {
+        "id": "indtaegter_ialt",
+        "navn": "Indtægter i alt",
+        "gruppe": "indtaegter",
+        "type": "subtotal",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 16523000,
+          "2027/28": 16853460,
+          "2028/29": 17190529,
+          "2029/30": 17534340,
+          "2030/31": 17885027,
+          "2031/32": 18242727,
+          "2032/33": 18607582,
+          "2033/34": 18979733,
+          "2034/35": 19359328,
+          "2035/36": 19746515
+        }
+      },
+      {
+        "id": "ejendomsskatter",
+        "navn": "Ejendomsskatter",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -377000,
+          "2027/28": -384540,
+          "2028/29": -392231,
+          "2029/30": -400075,
+          "2030/31": -408077,
+          "2031/32": -416238,
+          "2032/33": -424563,
+          "2033/34": -433054,
+          "2034/35": -441716,
+          "2035/36": -450550
+        }
+      },
+      {
+        "id": "vand",
+        "navn": "Vand, vandafgift",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -6000,
+          "2027/28": -6120,
+          "2028/29": -6242,
+          "2029/30": -6367,
+          "2030/31": -6495,
+          "2031/32": -6624,
+          "2032/33": -6757,
+          "2033/34": -6892,
+          "2034/35": -7030,
+          "2035/36": -7171
+        }
+      },
+      {
+        "id": "renovation",
+        "navn": "Renovation",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -676000,
+          "2027/28": -689520,
+          "2028/29": -703310,
+          "2029/30": -717377,
+          "2030/31": -731724,
+          "2031/32": -746359,
+          "2032/33": -761286,
+          "2033/34": -776512,
+          "2034/35": -792042,
+          "2035/36": -807883
+        }
+      },
+      {
+        "id": "ejendomsforsikringer",
+        "navn": "Ejendomsforsikringer",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -63000,
+          "2027/28": -64260,
+          "2028/29": -65545,
+          "2029/30": -66856,
+          "2030/31": -68193,
+          "2031/32": -69557,
+          "2032/33": -70948,
+          "2033/34": -72367,
+          "2034/35": -73815,
+          "2035/36": -75291
+        }
+      },
+      {
+        "id": "vicevaert",
+        "navn": "Vicevært, trappevask",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -1613000,
+          "2027/28": -1645260,
+          "2028/29": -1678165,
+          "2029/30": -1711729,
+          "2030/31": -1745963,
+          "2031/32": -1780882,
+          "2032/33": -1816500,
+          "2033/34": -1852830,
+          "2034/35": -1889887,
+          "2035/36": -1927684
+        }
+      },
+      {
+        "id": "ejendomsadministration",
+        "navn": "Ejendomsadministration",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -144000,
+          "2027/28": -146880,
+          "2028/29": -149818,
+          "2029/30": -152814,
+          "2030/31": -155870,
+          "2031/32": -158988,
+          "2032/33": -162167,
+          "2033/34": -165411,
+          "2034/35": -168719,
+          "2035/36": -172093
+        }
+      },
+      {
+        "id": "varmeregnskab",
+        "navn": "Varmeregnskab",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": 0,
+          "2027/28": 0,
+          "2028/29": 0,
+          "2029/30": 0,
+          "2030/31": 0,
+          "2031/32": 0,
+          "2032/33": 0,
+          "2033/34": 0,
+          "2034/35": 0,
+          "2035/36": 0
+        }
+      },
+      {
+        "id": "oevrige_driftsudgifter",
+        "navn": "Øvrige driftsudgifter",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -741000,
+          "2027/28": -755820,
+          "2028/29": -770936,
+          "2029/30": -786355,
+          "2030/31": -802082,
+          "2031/32": -818124,
+          "2032/33": -834486,
+          "2033/34": -851176,
+          "2034/35": -868200,
+          "2035/36": -885564
+        }
+      },
+      {
+        "id": "uplanlagt_vedligehold",
+        "navn": "Uplanlagt vedligehold",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -1459000,
+          "2027/28": -1488180,
+          "2028/29": -1517944,
+          "2029/30": -1548302,
+          "2030/31": -1579269,
+          "2031/32": -1610854,
+          "2032/33": -1643071,
+          "2033/34": -1675932,
+          "2034/35": -1709451,
+          "2035/36": -1743640
+        }
+      },
+      {
+        "id": "planlagt_vedligehold",
+        "navn": "Planlagt vedligehold",
+        "gruppe": "udgifter",
+        "type": "post",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": -1800000,
+          "2027/28": -1700000,
+          "2028/29": -1400000,
+          "2029/30": -2000000,
+          "2030/31": -800000,
+          "2031/32": -500000,
+          "2032/33": -200000,
+          "2033/34": -150000,
+          "2034/35": 0,
+          "2035/36": 0
+        }
+      },
+      {
+        "id": "driftsudgifter_ialt",
+        "navn": "Driftsudgifter i alt",
+        "gruppe": "udgifter",
+        "type": "subtotal",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": -6879000,
+          "2027/28": -6880580,
+          "2028/29": -6684192,
+          "2029/30": -7389875,
+          "2030/31": -6297673,
+          "2031/32": -6107626,
+          "2032/33": -5919779,
+          "2033/34": -5984175,
+          "2034/35": -5950858,
+          "2035/36": -6069875
+        }
+      },
+      {
+        "id": "nettoleje",
+        "navn": "Nettoleje",
+        "gruppe": "resultat",
+        "type": "subtotal",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 9644000,
+          "2027/28": 9972880,
+          "2028/29": 10506338,
+          "2029/30": 10144464,
+          "2030/31": 11587354,
+          "2031/32": 12135101,
+          "2032/33": 12687803,
+          "2033/34": 12995559,
+          "2034/35": 13408470,
+          "2035/36": 13676639
+        }
+      },
+      {
+        "id": "oevrige_adm_omkostninger",
+        "navn": "Øvrige adm. omkostninger",
+        "gruppe": "resultat",
+        "type": "post",
+        "reguleringPct": 2.0,
+        "vaerdier": {
+          "2026/27": -1261000,
+          "2027/28": -1286220,
+          "2028/29": -1311944,
+          "2029/30": -1338183,
+          "2030/31": -1364947,
+          "2031/32": -1392246,
+          "2032/33": -1420091,
+          "2033/34": -1448493,
+          "2034/35": -1477462,
+          "2035/36": -1507012
+        }
+      },
+      {
+        "id": "ebit",
+        "navn": "EBIT",
+        "gruppe": "resultat",
+        "type": "subtotal",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 8383000,
+          "2027/28": 8686660,
+          "2028/29": 9194393,
+          "2029/30": 8806281,
+          "2030/31": 10222407,
+          "2031/32": 10742855,
+          "2032/33": 11267712,
+          "2033/34": 11547066,
+          "2034/35": 11931007,
+          "2035/36": 12169628
+        }
+      },
+      {
+        "id": "afskrivninger",
+        "navn": "Afskrivninger",
+        "gruppe": "resultat",
+        "type": "post",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": -40000,
+          "2027/28": -40000,
+          "2028/29": -40000,
+          "2029/30": -40000,
+          "2030/31": -40000,
+          "2031/32": -40000,
+          "2032/33": -40000,
+          "2033/34": -40000,
+          "2034/35": -40000,
+          "2035/36": -40000
+        }
+      },
+      {
+        "id": "prioritetsrenter",
+        "navn": "Prioritetsrenter",
+        "gruppe": "resultat",
+        "type": "post",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": -4392000,
+          "2027/28": -4392000,
+          "2028/29": -4392000,
+          "2029/30": -4392000,
+          "2030/31": -4392000,
+          "2031/32": -4392000,
+          "2032/33": -4392000,
+          "2033/34": -4392000,
+          "2034/35": -4392000,
+          "2035/36": -4392000
+        }
+      },
+      {
+        "id": "bankrenter",
+        "navn": "Bankrenter mm",
+        "gruppe": "resultat",
+        "type": "post",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 200000,
+          "2027/28": 200000,
+          "2028/29": 200000,
+          "2029/30": 200000,
+          "2030/31": 200000,
+          "2031/32": 200000,
+          "2032/33": 200000,
+          "2033/34": 200000,
+          "2034/35": 200000,
+          "2035/36": 200000
+        }
+      },
+      {
+        "id": "resultat_foer_skat",
+        "navn": "Resultat før skat",
+        "gruppe": "resultat",
+        "type": "subtotal",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 4151000,
+          "2027/28": 4454660,
+          "2028/29": 4962393,
+          "2029/30": 4574281,
+          "2030/31": 5990407,
+          "2031/32": 6510855,
+          "2032/33": 7035712,
+          "2033/34": 7315066,
+          "2034/35": 7699007,
+          "2035/36": 7937628
+        }
+      },
+      {
+        "id": "skat",
+        "navn": "Skat",
+        "gruppe": "resultat",
+        "type": "post",
+        "reguleringPct": 22.0,
+        "vaerdier": {
+          "2026/27": 913220,
+          "2027/28": 980025,
+          "2028/29": 1091727,
+          "2029/30": 1006342,
+          "2030/31": 1317889,
+          "2031/32": 1432388,
+          "2032/33": 1547857,
+          "2033/34": 1609315,
+          "2034/35": 1693782,
+          "2035/36": 1746278
+        }
+      },
+      {
+        "id": "resultat_efter_skat",
+        "navn": "Resultat efter skat",
+        "gruppe": "resultat",
+        "type": "subtotal",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 3237780,
+          "2027/28": 3474635,
+          "2028/29": 3870667,
+          "2029/30": 3567939,
+          "2030/31": 4672517,
+          "2031/32": 5078467,
+          "2032/33": 5487855,
+          "2033/34": 5705752,
+          "2034/35": 6005226,
+          "2035/36": 6191350
+        }
+      },
+      {
+        "id": "afdrag_realkredit",
+        "navn": "Afdrag realkredit",
+        "gruppe": "resultat",
+        "type": "post",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": -914000,
+          "2027/28": -914000,
+          "2028/29": -914000,
+          "2029/30": -914000,
+          "2030/31": -914000,
+          "2031/32": -914000,
+          "2032/33": -914000,
+          "2033/34": -914000,
+          "2034/35": -914000,
+          "2035/36": -914000
+        }
+      },
+      {
+        "id": "likviditet",
+        "navn": "Likviditet",
+        "gruppe": "resultat",
+        "type": "resultat",
+        "reguleringPct": null,
+        "vaerdier": {
+          "2026/27": 2323780,
+          "2027/28": 2560635,
+          "2028/29": 2956667,
+          "2029/30": 2653939,
+          "2030/31": 3758517,
+          "2031/32": 4164467,
+          "2032/33": 4573855,
+          "2033/34": 4791752,
+          "2034/35": 5091226,
+          "2035/36": 5277350
+        }
+      }
+    ],
+    "cashFlow": [
+      {
+        "id": "bank_primo",
+        "navn": "Bank primo",
+        "type": "subtotal",
+        "vaerdier": {
+          "2026/27": 727000,
+          "2027/28": 2924000,
+          "2028/29": 4511440,
+          "2029/30": 6539808,
+          "2030/31": 8068363,
+          "2031/32": 11098427,
+          "2032/33": 14337393,
+          "2033/34": 17986717,
+          "2034/35": 21799926,
+          "2035/36": 25935619
+        }
+      },
+      {
+        "id": "resultat_efter_skat",
+        "navn": "Resultat efter skat",
+        "type": "post",
+        "vaerdier": {
+          "2026/27": 3237780,
+          "2027/28": 3474635,
+          "2028/29": 3870667,
+          "2029/30": 3567939,
+          "2030/31": 4672517,
+          "2031/32": 5078467,
+          "2032/33": 5487855,
+          "2033/34": 5705752,
+          "2034/35": 6005226,
+          "2035/36": 6191350
+        }
+      },
+      {
+        "id": "udbytte",
+        "navn": "Udbytte",
+        "type": "post",
+        "vaerdier": {
+          "2026/27": -1000000,
+          "2027/28": -1000000,
+          "2028/29": -1000000,
+          "2029/30": -1000000,
+          "2030/31": -1000000,
+          "2031/32": -1000000,
+          "2032/33": -1000000,
+          "2033/34": -1000000,
+          "2034/35": -1000000,
+          "2035/36": -1000000
+        }
+      },
+      {
+        "id": "regulering_udskudt_skat",
+        "navn": "Regulering udskudt skat",
+        "type": "post",
+        "vaerdier": {
+          "2026/27": 913220,
+          "2027/28": 66805,
+          "2028/29": 111701,
+          "2029/30": -85385,
+          "2030/31": 311548,
+          "2031/32": 114499,
+          "2032/33": 115469,
+          "2033/34": 61458,
+          "2034/35": 84467,
+          "2035/36": 52496
+        }
+      },
+      {
+        "id": "regulering_deposita",
+        "navn": "Regulering deposita / forudbetalt husleje",
+        "type": "post",
+        "vaerdier": {
+          "2026/27": -40000,
+          "2027/28": -40000,
+          "2028/29": -40000,
+          "2029/30": -40000,
+          "2030/31": -40000,
+          "2031/32": -40000,
+          "2032/33": -40000,
+          "2033/34": -40000,
+          "2034/35": -40000,
+          "2035/36": -40000
+        }
+      },
+      {
+        "id": "afdrag_realkreditlaan",
+        "navn": "Afdrag realkreditlån",
+        "type": "post",
+        "vaerdier": {
+          "2026/27": -914000,
+          "2027/28": -914000,
+          "2028/29": -914000,
+          "2029/30": -914000,
+          "2030/31": -914000,
+          "2031/32": -914000,
+          "2032/33": -914000,
+          "2033/34": -914000,
+          "2034/35": -914000,
+          "2035/36": -914000
+        }
+      },
+      {
+        "id": "bank_ultimo",
+        "navn": "Bank ultimo",
+        "type": "resultat",
+        "vaerdier": {
+          "2026/27": 2924000,
+          "2027/28": 4511440,
+          "2028/29": 6539808,
+          "2029/30": 8068363,
+          "2030/31": 11098427,
+          "2031/32": 14337393,
+          "2032/33": 17986717,
+          "2033/34": 21799926,
+          "2034/35": 25935619,
+          "2035/36": 30225465
+        }
+      }
+    ],
+    "forudsaetninger": [
+      "Indtægter og driftsudgifter fremskrives 2,0 % p.a.",
+      "Planlagt vedligehold følger vedligeholdelsesplanen og fremskrives ikke.",
+      "Prioritetsrenter holdes fast på 4.392 t.kr. i alle 10 år.",
+      "Bankrenter holdes fast på 200 t.kr. i alle 10 år.",
+      "Afdrag på realkredit holdes fast på 914 t.kr. i alle 10 år.",
+      "Selskabsskat 22 %. Udbytte 1.000 t.kr. p.a."
+    ]
+  },
+  "tomgang": {
+    "status": "mangler",
+    "besked": "Data ikke leveret endnu",
+    "beskrivelse": "Sektionen 'Lejerotation og tomgang' er tom i kilderapporten.",
+    "perioder": []
+  },
+  "datakvalitet": [
+    {
+      "id": "Å1",
+      "alvor": "aabent_spoergsmaal",
+      "omraade": "Vedligeholdelsesplan",
+      "tekst": "Kildens kolonneoverskrifter er 2026/27, 2027/28, 2028/29, 2028/29, 2030/31, 2031/32, 2032/33, 2033/34. 2028/29 optræder to gange og 2029/30 mangler. Den fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er normaliseret til 2029/30. Skal bekræftes."
+    },
+    {
+      "id": "Å2",
+      "alvor": "aabent_spoergsmaal",
+      "omraade": "Ejendomsforsikringer",
+      "tekst": "Resultatopgørelsen har −263 t.kr. i budget 26/27, mens likviditetsbudgettet har −63 t.kr. for 2026/27. Begge tal er gengivet som i kilden. Forskellen på 200 t.kr. forklarer hele forskellen mellem P&L-EBIT (8.181 t.kr.) og likviditetsbudgettets EBIT (8.383 t.kr.)."
+    },
+    {
+      "id": "Å3",
+      "alvor": "mangler",
+      "omraade": "Finansiering",
+      "tekst": "Lånetype og rentetype (fast / Cibor 3 / Cibor 6 / F5) findes kun som samlet fordeling i cirkeldiagrammet, ikke pr. ejendom. Felterne laanetype, rentetype, afdragsfri og refinansieringsdato står derfor som null pr. lån."
+    },
+    {
+      "id": "Å4",
+      "alvor": "mangler",
+      "omraade": "Finansiering",
+      "tekst": "Asylgade 21-23 har ingen rentesats i kildetabellen (tom celle), selv om der er 13,0 mio. kr. i realkreditgæld. Rentesatsen mangler."
+    },
+    {
+      "id": "Å5",
+      "alvor": "afviger",
+      "omraade": "Antal lejemål",
+      "tekst": "Lejemålstabellen har 255 lejemål i alt (og 12 på Blegdammen 9 / Møllestien 59), mens værdiansættelsestabellen har 256 i alt (og 13 på samme ejendom). Begge tal er gemt, hver med sin kilde."
+    },
+    {
+      "id": "Å6",
+      "alvor": "afviger",
+      "omraade": "Lejeindtægter",
+      "tekst": "Lejemålstabellens samlede leje er 16.442.690 kr., mens værdiansættelsens 'Indtægter' er 16.305.790 kr. De to opgørelser er ikke identiske pr. ejendom. Dashboardet bruger lejemålstabellen til lejeanalyse og værdiansættelsen til afkast."
+    },
+    {
+      "id": "Å7",
+      "alvor": "afviger",
+      "omraade": "Værdiansættelse",
+      "tekst": "Kildens afkastkolonne kan ikke genskabes som nettoleje / værdi; den ligger systematisk 0,1–0,4 procentpoint højere (i alt 4,3 % mod beregnet 4,2 %). Kildens tal er gemt som afkastPctKilde, og dashboardet beregner selv nettoafkast = nettoleje / værdi."
+    },
+    {
+      "id": "Å8",
+      "alvor": "afviger",
+      "omraade": "Grundejernes Investeringsfond",
+      "tekst": "11 af 12 §119/§120-saldi kan genberegnes som primo + hensættelse pr. m² × areal − afholdt vedligehold. Asylgade 21-23 §120 giver −320.743 kr. mod kildens −328.951 kr.; det svarer til et GI-pligtigt areal på 1.016 m² i stedet for 1.092 m²."
+    },
+    {
+      "id": "Å9",
+      "alvor": "mangler",
+      "omraade": "Modernisering",
+      "tekst": "Kilden oplyser, at Skanderborg-lejlighederne først kan §19.2-moderniseres efter 5 års ejerskab, men angiver hverken anskaffelsesdato eller frigivelsesdato. Feltet moderniseringSpaerretTil står som null."
+    },
+    {
+      "id": "Å10",
+      "alvor": "mangler",
+      "omraade": "Lejerotation og tomgang",
+      "tekst": "Sektionen er helt tom i kildefilen. Ingen data om tomme lejemål eller fraflytninger."
+    },
+    {
+      "id": "Å11",
+      "alvor": "afrunding",
+      "omraade": "Resultatopgørelse",
+      "tekst": "P&L er i hele t.kr. Enkelte subtotaler og afvigelseskolonner afviger 1–2 t.kr. fra den genberegnede værdi, fordi kilden runder hver linje for sig. Summen af de 12 ejendommes bogførte værdi afviger tilsvarende 1 kr. fra kildens total. Ingen af disse forskelle er større end afrundingen tillader."
+    },
+    {
+      "id": "Å12",
+      "alvor": "aabent_spoergsmaal",
+      "omraade": "Finansiering",
+      "tekst": "Långiverkoderne JR og RD er ikke forklaret i kilden. Forslag: JR = Jyske Realkredit, RD = Realkredit Danmark. Ikke bekræftet — vises som kode indtil videre."
+    }
+  ]
+}
