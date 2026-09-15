@@ -7,7 +7,7 @@
  */
 
 import type { EjerData, Laan, Status } from "./types";
-import { resultatvaerdi } from "./data";
+import { resultatvaerdi } from "./opslag";
 import {
   FORUDSAETNINGER,
   NOEGLETAL,

@@ -338,6 +338,80 @@ def byg_gi(ejendomme):
 # ---------------------------------------------------------------------------
 # Likviditetsbudget
 # ---------------------------------------------------------------------------
+def anvend_rettelse_forsikring(linjer, cash):
+    """R1: retter forsikringslinjen til −263 t.kr. og genberegner hele budgettet.
+
+    Kildens oprindelige tal gemmes på hver rørt linje som "kildeVaerdier", så
+    rettelsen altid kan spores tilbage til den originale rapport.
+    """
+    rettelse = next((r for r in K.RETTELSER if r["id"] == "R1"), None)
+    if not rettelse:
+        return []
+    idx = {l["id"]: l for l in linjer}
+    cidx = {c["id"]: c for c in cash}
+    aar = K.LIKVIDITET_AAR
+    roert = []
+
+    def gem_kilde(linje):
+        if "kildeVaerdier" not in linje:
+            linje["kildeVaerdier"] = dict(linje["vaerdier"])
+            linje["rettetAf"] = rettelse["id"]
+            roert.append(linje["id"])
+
+    # 1) Forsikringslinjen: startbeløb fremskrevet 2,0 % p.a. på ikke-afrundede
+    #    værdier, præcis som kilden selv gør det.
+    forsikring = idx[rettelse["linje"]]
+    gem_kilde(forsikring)
+    lob = float(rettelse["startbeloeb"])
+    for i, a in enumerate(aar):
+        if i:
+            lob *= 1 + (forsikring["reguleringPct"] or 0) / 100
+        forsikring["vaerdier"][a] = round(lob)
+
+    # 2) Genberegn alle afledte linjer som eksakte summer af deres bestanddele.
+    kaede = [
+        ("driftsudgifter_ialt", ["ejendomsskatter", "vand", "renovation",
+                                 "ejendomsforsikringer", "vicevaert",
+                                 "ejendomsadministration", "varmeregnskab",
+                                 "oevrige_driftsudgifter", "uplanlagt_vedligehold",
+                                 "planlagt_vedligehold"]),
+        ("nettoleje", ["indtaegter_ialt", "driftsudgifter_ialt"]),
+        ("ebit", ["nettoleje", "oevrige_adm_omkostninger"]),
+        ("resultat_foer_skat", ["ebit", "afskrivninger", "prioritetsrenter", "bankrenter"]),
+    ]
+    for mal, dele in kaede:
+        gem_kilde(idx[mal])
+        for a in aar:
+            idx[mal]["vaerdier"][a] = sum(idx[d]["vaerdier"][a] for d in dele)
+
+    skattesats = (idx["skat"]["reguleringPct"] or 22.0) / 100
+    for navn in ("skat", "resultat_efter_skat", "likviditet"):
+        gem_kilde(idx[navn])
+    for a in aar:
+        rfs = idx["resultat_foer_skat"]["vaerdier"][a]
+        idx["skat"]["vaerdier"][a] = round(rfs * skattesats)
+        idx["resultat_efter_skat"]["vaerdier"][a] = rfs - idx["skat"]["vaerdier"][a]
+        idx["likviditet"]["vaerdier"][a] = (idx["resultat_efter_skat"]["vaerdier"][a]
+                                            + idx["afdrag_realkredit"]["vaerdier"][a])
+
+    # 3) Genberegn cash flowet. Udskudt skat følger årets ændring i skat,
+    #    præcis som i kilden; bankbeholdningen kædes år for år.
+    for navn in ("resultat_efter_skat", "regulering_udskudt_skat", "bank_primo", "bank_ultimo"):
+        gem_kilde(cidx[navn])
+    primo = cidx["bank_primo"]["kildeVaerdier"][aar[0]]
+    for i, a in enumerate(aar):
+        cidx["resultat_efter_skat"]["vaerdier"][a] = idx["resultat_efter_skat"]["vaerdier"][a]
+        cidx["regulering_udskudt_skat"]["vaerdier"][a] = (
+            idx["skat"]["vaerdier"][a] if i == 0
+            else idx["skat"]["vaerdier"][a] - idx["skat"]["vaerdier"][aar[i - 1]])
+        cidx["bank_primo"]["vaerdier"][a] = primo
+        primo += sum(cidx[c]["vaerdier"][a] for c in
+                     ["resultat_efter_skat", "udbytte", "regulering_udskudt_skat",
+                      "regulering_deposita", "afdrag_realkreditlaan"])
+        cidx["bank_ultimo"]["vaerdier"][a] = primo
+    return roert
+
+
 def byg_likviditet():
     linjer = [{"id": lid, "navn": navn, "gruppe": gruppe, "type": typ,
                "reguleringPct": reg,
@@ -345,6 +419,7 @@ def byg_likviditet():
               for lid, navn, gruppe, typ, reg, vals in K.LIKVIDITETSBUDGET]
     cash = [{"id": cid, "navn": navn, "type": typ, "vaerdier": dict(zip(K.LIKVIDITET_AAR, vals))}
             for cid, navn, typ, vals in K.CASH_FLOW]
+    rettede = anvend_rettelse_forsikring(linjer, cash)
     idx = {l["id"]: l for l in linjer}
     cidx = {c["id"]: c for c in cash}
 
@@ -393,6 +468,7 @@ def byg_likviditet():
                 check("Likviditetsbudget", f"{l['navn']} {n} = {f} × 1,02",
                       l["vaerdier"][n], round(l["vaerdier"][f] * 1.02), tolerance=1)
     return {"aar": K.LIKVIDITET_AAR, "linjer": linjer, "cashFlow": cash,
+            "rettedeLinjer": rettede,
             "forudsaetninger": [
                 "Indtægter og driftsudgifter fremskrives 2,0 % p.a.",
                 "Planlagt vedligehold følger vedligeholdelsesplanen og fremskrives ikke.",
@@ -400,13 +476,15 @@ def byg_likviditet():
                 "Bankrenter holdes fast på 200 t.kr. i alle 10 år.",
                 "Afdrag på realkredit holdes fast på 914 t.kr. i alle 10 år.",
                 "Selskabsskat 22 %. Udbytte 1.000 t.kr. p.a.",
+                "Ejendomsforsikringer er rettet fra kildens 63 t.kr. til 263 t.kr. "
+                "jf. resultatopgørelsen (rettelse R1); budgettet er genberegnet.",
             ]}
 
 
 # ---------------------------------------------------------------------------
 # Krydstjek på tværs af tabeller
 # ---------------------------------------------------------------------------
-def krydstjek(ejendomme, resultat):
+def krydstjek(ejendomme, resultat, likviditet):
     # Lejemålstabellens i alt-række
     for noegle, felt, pos in [("19_1", "antal", 0), ("19_2", "antal", 0),
                               ("smaa_huse", "antal", 0), ("erhverv", "antal", 0)]:
@@ -477,13 +555,11 @@ def krydstjek(ejendomme, resultat):
            ("ejendomsadministration", "ejendomsadministration"),
            ("oevrige_driftsudgifter", "oevrige_driftsudgifter"),
            ("prioritetsrenter", "prioritetsrenter")]
-    lik = {lid: dict(zip(K.LIKVIDITET_AAR, vals))
-           for lid, _, _, _, _, vals in K.LIKVIDITETSBUDGET}
+    lik = {l["id"]: l["vaerdier"] for l in likviditet["linjer"]}
     for pl_id, lk_id in par:
         check("Krydstjek", f"Budget 26/27 '{idx[pl_id]['navn']}': P&L (t.kr.) = likviditetsbudget",
               idx[pl_id]["vaerdier"]["regnskabsaar"]["budget"],
-              round(lik[lk_id]["2026/27"] / 1000), tolerance=1,
-              kendt="Å2" if pl_id == "ejendomsforsikringer" else None)
+              round(lik[lk_id]["2026/27"] / 1000), tolerance=1)
     check("Krydstjek", "Kontrolværdi fra opgaven: lejeindtægter budget 26/27 ≈ 16.522 t.kr.",
           16522, idx["lejeindtaegter"]["vaerdier"]["regnskabsaar"]["budget"])
     check("Krydstjek", "Kontrolværdi fra opgaven: EBITDA budget 26/27 ≈ 8.181 t.kr.",
@@ -567,16 +643,15 @@ def byg_kommentarer():
 
 
 DATAKVALITET = [
-    {"id": "Å1", "alvor": "aabent_spoergsmaal", "omraade": "Vedligeholdelsesplan",
+    {"id": "Å1", "alvor": "afklaret", "omraade": "Vedligeholdelsesplan",
      "tekst": "Kildens kolonneoverskrifter er 2026/27, 2027/28, 2028/29, 2028/29, 2030/31, "
-              "2031/32, 2032/33, 2033/34. 2028/29 optræder to gange og 2029/30 mangler. "
-              "Den fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er normaliseret "
-              "til 2029/30. Skal bekræftes."},
-    {"id": "Å2", "alvor": "aabent_spoergsmaal", "omraade": "Ejendomsforsikringer",
-     "tekst": "Resultatopgørelsen har −263 t.kr. i budget 26/27, mens likviditetsbudgettet "
-              "har −63 t.kr. for 2026/27. Begge tal er gengivet som i kilden. Forskellen på "
-              "200 t.kr. forklarer hele forskellen mellem P&L-EBIT (8.181 t.kr.) og "
-              "likviditetsbudgettets EBIT (8.383 t.kr.)."},
+              "2031/32, 2032/33, 2033/34 – 2028/29 optræder to gange og 2029/30 mangler. "
+              "AFKLARET: fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er 2029/30. "
+              "Se rettelse R2."},
+    {"id": "Å2", "alvor": "afklaret", "omraade": "Ejendomsforsikringer",
+     "tekst": "Resultatopgørelsen havde −263 t.kr. i budget 26/27, mens likviditetsbudgettet "
+              "havde −63 t.kr. for 2026/27. AFKLARET: −263 t.kr. er det rigtige. "
+              "Likviditetsbudgettet er rettet og genberegnet. Se rettelse R1."},
     {"id": "Å3", "alvor": "mangler", "omraade": "Finansiering",
      "tekst": "Lånetype og rentetype (fast / Cibor 3 / Cibor 6 / F5) findes kun som samlet "
               "fordeling i cirkeldiagrammet, ikke pr. ejendom. Felterne laanetype, rentetype, "
@@ -628,7 +703,7 @@ def main():
     vedligehold = byg_vedligeholdelsesplan()
     gi = byg_gi(ejendomme)
     likviditet = byg_likviditet()
-    krydstjek(ejendomme, resultat)
+    krydstjek(ejendomme, resultat, likviditet)
 
     # Moderniseringsspærring – kilden nævner Skanderborg, men ikke hvilken dato
     for e in ejendomme:
@@ -685,6 +760,7 @@ def main():
             "perioder": [],
         },
         "datakvalitet": DATAKVALITET,
+        "rettelser": K.RETTELSER,
     }
 
     sti = os.path.join(ROD, "data", "nygaardsholm.json")
@@ -760,9 +836,20 @@ def skriv_validering():
             A(f"| {navn} | {dk(forv)} | {dk(fund)} | {'✅' if status == 'OK' else '⚠️'} |")
     A("")
 
+    A("## Godkendte rettelser\n")
+    A("Kilden er aflæst uændret i `tools/kildedata.py`. Rettelserne herunder er "
+      "besluttet af ejer/DAC og anvendes af `tools/byg_data.py`. Hver rørt linje "
+      "beholder kildens oprindelige tal i JSON-feltet `kildeVaerdier`.\n")
+    A("| Nr. | Vedrører | Område | Godkendt | Rettelse |")
+    A("|---|---|---|---|---|")
+    for r in K.RETTELSER:
+        A(f"| {r['id']} | {r['ref']} | {r['omraade']} | {r['godkendt']} | {r['tekst']} |")
+    A("")
+
     A("## Åbne spørgsmål og kendte uoverensstemmelser\n")
     alvor_tekst = {"aabent_spoergsmaal": "❓ Spørgsmål til DAC", "mangler": "🚫 Data mangler",
-                   "afviger": "⚠️ Uoverensstemmelse i kilden", "afrunding": "ℹ️ Afrunding"}
+                   "afviger": "⚠️ Uoverensstemmelse i kilden", "afrunding": "ℹ️ Afrunding",
+                   "afklaret": "✅ Afklaret – rettet"}
     A("| Nr. | Område | Type | Beskrivelse |")
     A("|---|---|---|---|")
     for d in DATAKVALITET:

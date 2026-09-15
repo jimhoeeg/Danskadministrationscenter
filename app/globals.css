@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #ffffff;
+  color: #0b0b0b;
+}
+
+/* Tal i tabeller og akser skal flugte lodret. */
+.tal {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ */
+/* Print: dashboardet skal kunne sendes direkte til banken som PDF.     */
+/* ------------------------------------------------------------------ */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 12mm 16mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .ingen-print {
+    display: none !important;
+  }
+
+  .kun-print {
+    display: block !important;
+  }
+
+  /*
+   * Kun elementer, der er mindre end en side, får lov at undgå sideskift.
+   * Store tabelkort må gerne brække – ellers efterlader de halvtomme sider.
+   */
+  .print-hel {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Et diagram må aldrig deles på tværs af to sider. */
+  .print-diagram {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* En overskrift må ikke stå alene nederst på en side. */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Tabelrækker holdes samlet, og hovedet gentages på hver side. */
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* To-kolonne-layout bevares på papir, hvor lg: ikke slår igennem. */
+  .print-2kol {
+    display: grid !important;
+    grid-template-columns: 3fr 2fr;
+    gap: 12px !important;
+    align-items: start;
+  }
+
+  .print-kompakt {
+    padding: 12px !important;
+  }
+
+  /* Mindre luft mellem kort på papir end på skærm. */
+  .print-taet > * + * {
+    margin-top: 12px !important;
+  }
+
+  .print-nyside {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .print-ingen-nyside {
+    break-before: auto !important;
+    page-break-before: auto !important;
+  }
+
+  /* Skygger og hover-effekter forsvinder på papir. */
+  .print-flad {
+    box-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+
+  /* Recharts tegner i SVG – sørg for at farverne følger med. */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+.kun-print {
+  display: none;
+}

@@ -445,3 +445,41 @@ CASH_FLOW = [
     ("bank_ultimo", "Bank ultimo", "resultat",
      [2924000, 4511440, 6539808, 8068363, 11098427, 14337393, 17986717, 21799926, 25935619, 30225465]),
 ]
+
+# ---------------------------------------------------------------------------
+# Rettelser godkendt af ejer/DAC.
+#
+# Rådataene ovenfor er aflæst uændret fra kilden. Rettelserne herunder er
+# bevidste korrektioner, som byg_data.py anvender og dokumenterer i
+# VALIDERING.md. Kildens oprindelige tal bevares i JSON'en under
+# "kildeVaerdier", så de altid kan spores.
+# ---------------------------------------------------------------------------
+RETTELSER = [
+    {
+        "id": "R1",
+        "ref": "Å2",
+        "godkendt": "Ejer, 2026-09-15",
+        "omraade": "Likviditetsbudget",
+        "linje": "ejendomsforsikringer",
+        "tekst": (
+            "Likviditetsbudgettet havde −63.000 kr. i 2026/27, mens "
+            "resultatopgørelsen har −263 t.kr. i budget 26/27. −263 t.kr. er "
+            "bekræftet som det rigtige. Forsikringslinjen sættes til −263.000 kr. "
+            "i 2026/27 og fremskrives 2,0 % p.a. som i kilden. Alle afledte "
+            "linjer i budgettet og cash flowet genberegnes."
+        ),
+        "startbeloeb": -263000,
+    },
+    {
+        "id": "R2",
+        "ref": "Å1",
+        "godkendt": "Ejer, 2026-09-15",
+        "omraade": "Vedligeholdelsesplan",
+        "linje": None,
+        "tekst": (
+            "Kildens fjerde kolonneoverskrift er 2028/29 (dubleret) og 2029/30 "
+            "mangler. Bekræftet: fjerde kolonne er 2029/30. Årstallene er "
+            "normaliseret, og kildens egne overskrifter er gemt som kildeLabel."
+        ),
+    },
+]

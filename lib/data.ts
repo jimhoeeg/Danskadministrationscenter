@@ -43,19 +43,20 @@ export class UkendtEjerFejl extends Error {
 /**
  * Læser ejerdata fra JSON-filer i data/.
  *
- * En ny ejer tilføjes ved at lægge `data/<ejer-id>.json` ind og skrive filnavnet
- * i data/ejere.json. Der skal ikke ændres kode.
+ * Mappen skannes ved opslag, og hver fils eget `ejer.id` bestemmer URL'en.
+ * En ny ejer tilføjes derfor ved alene at lægge en JSON-fil i data/ – hverken
+ * kode eller registerfil skal ændres.
  */
 export class JsonDatakilde implements Datakilde {
   readonly navn = "json";
 
   constructor(private readonly mappe = "data") {}
 
-  private async laesRegister(): Promise<{ id: string; fil: string }[]> {
-    const { readFile } = await import("node:fs/promises");
+  private async filer(): Promise<string[]> {
+    const { readdir } = await import("node:fs/promises");
     const { join } = await import("node:path");
-    const raa = await readFile(join(process.cwd(), this.mappe, "ejere.json"), "utf8");
-    return JSON.parse(raa) as { id: string; fil: string }[];
+    const navne = await readdir(join(process.cwd(), this.mappe));
+    return navne.filter((n) => n.endsWith(".json")).sort();
   }
 
   private async laesFil(fil: string): Promise<EjerData> {
@@ -65,32 +66,42 @@ export class JsonDatakilde implements Datakilde {
     return JSON.parse(raa) as EjerData;
   }
 
+  /**
+   * Indlæser alle ejere i mappen. En fil, der ikke er et gyldigt datasæt,
+   * springes over frem for at vælte hele listen.
+   */
+  private async alle(): Promise<{ fil: string; data: EjerData }[]> {
+    const ud: { fil: string; data: EjerData }[] = [];
+    for (const fil of await this.filer()) {
+      try {
+        const data = await this.laesFil(fil);
+        if (data?.ejer?.id) ud.push({ fil, data });
+      } catch {
+        // Ikke et ejerdatasæt – ignoreres.
+      }
+    }
+    return ud;
+  }
+
   async listEjere(): Promise<EjerResume[]> {
-    const register = await this.laesRegister();
-    const ejere = await Promise.all(
-      register.map(async (post) => {
-        const data = await this.laesFil(post.fil);
-        return {
-          id: data.ejer.id,
-          navn: data.ejer.navn,
-          administrator: data.ejer.administrator,
-          periode: data.ejer.rapportperiode.maanedLabel,
-        };
-      }),
-    );
-    return ejere;
+    return (await this.alle()).map(({ data }) => ({
+      id: data.ejer.id,
+      navn: data.ejer.navn,
+      administrator: data.ejer.administrator,
+      periode: data.ejer.rapportperiode.maanedLabel,
+    }));
   }
 
   async hentEjer(ejerId: string): Promise<EjerData> {
-    const register = await this.laesRegister();
-    const post = register.find((p) => p.id === ejerId);
-    if (!post) {
+    const alle = await this.alle();
+    const fundet = alle.find(({ data }) => data.ejer.id === ejerId);
+    if (!fundet) {
       throw new UkendtEjerFejl(
         ejerId,
-        register.map((p) => p.id),
+        alle.map(({ data }) => data.ejer.id),
       );
     }
-    return this.laesFil(post.fil);
+    return fundet.data;
   }
 }
 
@@ -125,54 +136,4 @@ export async function hentEjerData(ejerId: string = STANDARD_EJER): Promise<Ejer
 
 export async function listEjere(): Promise<EjerResume[]> {
   return vaelgKilde().listEjere();
-}
-
-// ---------------------------------------------------------------------------
-// Opslagshjælpere – bruges af beregninger og UI
-// ---------------------------------------------------------------------------
-
-export function ejendomEfterId(data: EjerData, id: string) {
-  return data.ejendomme.find((e) => e.id === id) ?? null;
-}
-
-export function ejendomsnavn(data: EjerData, id: string): string {
-  return ejendomEfterId(data, id)?.navn ?? id;
-}
-
-export function resultatlinje(data: EjerData, id: string) {
-  return data.resultatopgoerelse.linjer.find((l) => l.id === id) ?? null;
-}
-
-/** Henter én celle fra resultatopgørelsen. Returnerer null hvis den ikke findes. */
-export function resultatvaerdi(
-  data: EjerData,
-  linjeId: string,
-  periodeId: string,
-  kolonneId: string,
-): number | null {
-  return resultatlinje(data, linjeId)?.vaerdier[periodeId]?.[kolonneId] ?? null;
-}
-
-export function likviditetslinje(data: EjerData, id: string) {
-  return (
-    data.likviditetsbudget.linjer.find((l) => l.id === id) ??
-    data.likviditetsbudget.cashFlow.find((l) => l.id === id) ??
-    null
-  );
-}
-
-/** Alle byer i porteføljen, i den rækkefølge de optræder. */
-export function byer(data: EjerData): string[] {
-  return [...new Set(data.ejendomme.map((e) => e.by))];
-}
-
-/** Alle lejetyper der faktisk forekommer, i den rækkefølge kilden bruger. */
-export function lejetyper(data: EjerData): { lejetype: string; navn: string }[] {
-  const set = new Map<string, string>();
-  for (const e of data.ejendomme) {
-    for (const f of e.lejemaal.fordeling) {
-      if (!set.has(f.lejetype)) set.set(f.lejetype, f.navn);
-    }
-  }
-  return [...set].map(([lejetype, navn]) => ({ lejetype, navn }));
 }

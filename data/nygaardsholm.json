@@ -2839,6 +2839,18 @@
         "type": "post",
         "reguleringPct": 2.0,
         "vaerdier": {
+          "2026/27": -263000,
+          "2027/28": -268260,
+          "2028/29": -273625,
+          "2029/30": -279098,
+          "2030/31": -284680,
+          "2031/32": -290373,
+          "2032/33": -296181,
+          "2033/34": -302104,
+          "2034/35": -308146,
+          "2035/36": -314309
+        },
+        "kildeVaerdier": {
           "2026/27": -63000,
           "2027/28": -64260,
           "2028/29": -65545,
@@ -2849,7 +2861,8 @@
           "2033/34": -72367,
           "2034/35": -73815,
           "2035/36": -75291
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "vicevaert",
@@ -2972,6 +2985,18 @@
         "type": "subtotal",
         "reguleringPct": null,
         "vaerdier": {
+          "2026/27": -7079000,
+          "2027/28": -7084580,
+          "2028/29": -6892271,
+          "2029/30": -7602117,
+          "2030/31": -6514160,
+          "2031/32": -6328442,
+          "2032/33": -6145011,
+          "2033/34": -6213911,
+          "2034/35": -6185191,
+          "2035/36": -6308894
+        },
+        "kildeVaerdier": {
           "2026/27": -6879000,
           "2027/28": -6880580,
           "2028/29": -6684192,
@@ -2982,7 +3007,8 @@
           "2033/34": -5984175,
           "2034/35": -5950858,
           "2035/36": -6069875
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "nettoleje",
@@ -2991,6 +3017,18 @@
         "type": "subtotal",
         "reguleringPct": null,
         "vaerdier": {
+          "2026/27": 9444000,
+          "2027/28": 9768880,
+          "2028/29": 10298258,
+          "2029/30": 9932223,
+          "2030/31": 11370867,
+          "2031/32": 11914285,
+          "2032/33": 12462571,
+          "2033/34": 12765822,
+          "2034/35": 13174137,
+          "2035/36": 13437621
+        },
+        "kildeVaerdier": {
           "2026/27": 9644000,
           "2027/28": 9972880,
           "2028/29": 10506338,
@@ -3001,7 +3039,8 @@
           "2033/34": 12995559,
           "2034/35": 13408470,
           "2035/36": 13676639
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "oevrige_adm_omkostninger",
@@ -3029,6 +3068,18 @@
         "type": "subtotal",
         "reguleringPct": null,
         "vaerdier": {
+          "2026/27": 8183000,
+          "2027/28": 8482660,
+          "2028/29": 8986314,
+          "2029/30": 8594040,
+          "2030/31": 10005920,
+          "2031/32": 10522039,
+          "2032/33": 11042480,
+          "2033/34": 11317329,
+          "2034/35": 11696675,
+          "2035/36": 11930609
+        },
+        "kildeVaerdier": {
           "2026/27": 8383000,
           "2027/28": 8686660,
           "2028/29": 9194393,
@@ -3039,7 +3090,8 @@
           "2033/34": 11547066,
           "2034/35": 11931007,
           "2035/36": 12169628
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "afskrivninger",
@@ -3105,6 +3157,18 @@
         "type": "subtotal",
         "reguleringPct": null,
         "vaerdier": {
+          "2026/27": 3951000,
+          "2027/28": 4250660,
+          "2028/29": 4754314,
+          "2029/30": 4362040,
+          "2030/31": 5773920,
+          "2031/32": 6290039,
+          "2032/33": 6810480,
+          "2033/34": 7085329,
+          "2034/35": 7464675,
+          "2035/36": 7698609
+        },
+        "kildeVaerdier": {
           "2026/27": 4151000,
           "2027/28": 4454660,
           "2028/29": 4962393,
@@ -3115,7 +3179,8 @@
           "2033/34": 7315066,
           "2034/35": 7699007,
           "2035/36": 7937628
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "skat",
@@ -3124,6 +3189,18 @@
         "type": "post",
         "reguleringPct": 22.0,
         "vaerdier": {
+          "2026/27": 869220,
+          "2027/28": 935145,
+          "2028/29": 1045949,
+          "2029/30": 959649,
+          "2030/31": 1270262,
+          "2031/32": 1383809,
+          "2032/33": 1498306,
+          "2033/34": 1558772,
+          "2034/35": 1642228,
+          "2035/36": 1693694
+        },
+        "kildeVaerdier": {
           "2026/27": 913220,
           "2027/28": 980025,
           "2028/29": 1091727,
@@ -3134,7 +3211,8 @@
           "2033/34": 1609315,
           "2034/35": 1693782,
           "2035/36": 1746278
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "resultat_efter_skat",
@@ -3143,6 +3221,18 @@
         "type": "subtotal",
         "reguleringPct": null,
         "vaerdier": {
+          "2026/27": 3081780,
+          "2027/28": 3315515,
+          "2028/29": 3708365,
+          "2029/30": 3402391,
+          "2030/31": 4503658,
+          "2031/32": 4906230,
+          "2032/33": 5312174,
+          "2033/34": 5526557,
+          "2034/35": 5822447,
+          "2035/36": 6004915
+        },
+        "kildeVaerdier": {
           "2026/27": 3237780,
           "2027/28": 3474635,
           "2028/29": 3870667,
@@ -3153,7 +3243,8 @@
           "2033/34": 5705752,
           "2034/35": 6005226,
           "2035/36": 6191350
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "afdrag_realkredit",
@@ -3181,6 +3272,18 @@
         "type": "resultat",
         "reguleringPct": null,
         "vaerdier": {
+          "2026/27": 2167780,
+          "2027/28": 2401515,
+          "2028/29": 2794365,
+          "2029/30": 2488391,
+          "2030/31": 3589658,
+          "2031/32": 3992230,
+          "2032/33": 4398174,
+          "2033/34": 4612557,
+          "2034/35": 4908447,
+          "2035/36": 5090915
+        },
+        "kildeVaerdier": {
           "2026/27": 2323780,
           "2027/28": 2560635,
           "2028/29": 2956667,
@@ -3191,7 +3294,8 @@
           "2033/34": 4791752,
           "2034/35": 5091226,
           "2035/36": 5277350
-        }
+        },
+        "rettetAf": "R1"
       }
     ],
     "cashFlow": [
@@ -3200,6 +3304,18 @@
         "navn": "Bank primo",
         "type": "subtotal",
         "vaerdier": {
+          "2026/27": 727000,
+          "2027/28": 2724000,
+          "2028/29": 4151440,
+          "2029/30": 6016609,
+          "2030/31": 7378700,
+          "2031/32": 10238971,
+          "2032/33": 13304748,
+          "2033/34": 16777419,
+          "2034/35": 20410442,
+          "2035/36": 24362345
+        },
+        "kildeVaerdier": {
           "2026/27": 727000,
           "2027/28": 2924000,
           "2028/29": 4511440,
@@ -3210,13 +3326,26 @@
           "2033/34": 17986717,
           "2034/35": 21799926,
           "2035/36": 25935619
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "resultat_efter_skat",
         "navn": "Resultat efter skat",
         "type": "post",
         "vaerdier": {
+          "2026/27": 3081780,
+          "2027/28": 3315515,
+          "2028/29": 3708365,
+          "2029/30": 3402391,
+          "2030/31": 4503658,
+          "2031/32": 4906230,
+          "2032/33": 5312174,
+          "2033/34": 5526557,
+          "2034/35": 5822447,
+          "2035/36": 6004915
+        },
+        "kildeVaerdier": {
           "2026/27": 3237780,
           "2027/28": 3474635,
           "2028/29": 3870667,
@@ -3227,7 +3356,8 @@
           "2033/34": 5705752,
           "2034/35": 6005226,
           "2035/36": 6191350
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "udbytte",
@@ -3251,6 +3381,18 @@
         "navn": "Regulering udskudt skat",
         "type": "post",
         "vaerdier": {
+          "2026/27": 869220,
+          "2027/28": 65925,
+          "2028/29": 110804,
+          "2029/30": -86300,
+          "2030/31": 310613,
+          "2031/32": 113547,
+          "2032/33": 114497,
+          "2033/34": 60466,
+          "2034/35": 83456,
+          "2035/36": 51466
+        },
+        "kildeVaerdier": {
           "2026/27": 913220,
           "2027/28": 66805,
           "2028/29": 111701,
@@ -3261,7 +3403,8 @@
           "2033/34": 61458,
           "2034/35": 84467,
           "2035/36": 52496
-        }
+        },
+        "rettetAf": "R1"
       },
       {
         "id": "regulering_deposita",
@@ -3302,6 +3445,18 @@
         "navn": "Bank ultimo",
         "type": "resultat",
         "vaerdier": {
+          "2026/27": 2724000,
+          "2027/28": 4151440,
+          "2028/29": 6016609,
+          "2029/30": 7378700,
+          "2030/31": 10238971,
+          "2031/32": 13304748,
+          "2032/33": 16777419,
+          "2033/34": 20410442,
+          "2034/35": 24362345,
+          "2035/36": 28464726
+        },
+        "kildeVaerdier": {
           "2026/27": 2924000,
           "2027/28": 4511440,
           "2028/29": 6539808,
@@ -3312,8 +3467,23 @@
           "2033/34": 21799926,
           "2034/35": 25935619,
           "2035/36": 30225465
-        }
+        },
+        "rettetAf": "R1"
       }
+    ],
+    "rettedeLinjer": [
+      "ejendomsforsikringer",
+      "driftsudgifter_ialt",
+      "nettoleje",
+      "ebit",
+      "resultat_foer_skat",
+      "skat",
+      "resultat_efter_skat",
+      "likviditet",
+      "resultat_efter_skat",
+      "regulering_udskudt_skat",
+      "bank_primo",
+      "bank_ultimo"
     ],
     "forudsaetninger": [
       "Indtægter og driftsudgifter fremskrives 2,0 % p.a.",
@@ -3321,7 +3491,8 @@
       "Prioritetsrenter holdes fast på 4.392 t.kr. i alle 10 år.",
       "Bankrenter holdes fast på 200 t.kr. i alle 10 år.",
       "Afdrag på realkredit holdes fast på 914 t.kr. i alle 10 år.",
-      "Selskabsskat 22 %. Udbytte 1.000 t.kr. p.a."
+      "Selskabsskat 22 %. Udbytte 1.000 t.kr. p.a.",
+      "Ejendomsforsikringer er rettet fra kildens 63 t.kr. til 263 t.kr. jf. resultatopgørelsen (rettelse R1); budgettet er genberegnet."
     ]
   },
   "tomgang": {
@@ -3333,15 +3504,15 @@
   "datakvalitet": [
     {
       "id": "Å1",
-      "alvor": "aabent_spoergsmaal",
+      "alvor": "afklaret",
       "omraade": "Vedligeholdelsesplan",
-      "tekst": "Kildens kolonneoverskrifter er 2026/27, 2027/28, 2028/29, 2028/29, 2030/31, 2031/32, 2032/33, 2033/34. 2028/29 optræder to gange og 2029/30 mangler. Den fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er normaliseret til 2029/30. Skal bekræftes."
+      "tekst": "Kildens kolonneoverskrifter er 2026/27, 2027/28, 2028/29, 2028/29, 2030/31, 2031/32, 2032/33, 2033/34 – 2028/29 optræder to gange og 2029/30 mangler. AFKLARET: fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er 2029/30. Se rettelse R2."
     },
     {
       "id": "Å2",
-      "alvor": "aabent_spoergsmaal",
+      "alvor": "afklaret",
       "omraade": "Ejendomsforsikringer",
-      "tekst": "Resultatopgørelsen har −263 t.kr. i budget 26/27, mens likviditetsbudgettet har −63 t.kr. for 2026/27. Begge tal er gengivet som i kilden. Forskellen på 200 t.kr. forklarer hele forskellen mellem P&L-EBIT (8.181 t.kr.) og likviditetsbudgettets EBIT (8.383 t.kr.)."
+      "tekst": "Resultatopgørelsen havde −263 t.kr. i budget 26/27, mens likviditetsbudgettet havde −63 t.kr. for 2026/27. AFKLARET: −263 t.kr. er det rigtige. Likviditetsbudgettet er rettet og genberegnet. Se rettelse R1."
     },
     {
       "id": "Å3",
@@ -3402,6 +3573,25 @@
       "alvor": "aabent_spoergsmaal",
       "omraade": "Finansiering",
       "tekst": "Långiverkoderne JR og RD er ikke forklaret i kilden. Forslag: JR = Jyske Realkredit, RD = Realkredit Danmark. Ikke bekræftet — vises som kode indtil videre."
+    }
+  ],
+  "rettelser": [
+    {
+      "id": "R1",
+      "ref": "Å2",
+      "godkendt": "Ejer, 2026-09-15",
+      "omraade": "Likviditetsbudget",
+      "linje": "ejendomsforsikringer",
+      "tekst": "Likviditetsbudgettet havde −63.000 kr. i 2026/27, mens resultatopgørelsen har −263 t.kr. i budget 26/27. −263 t.kr. er bekræftet som det rigtige. Forsikringslinjen sættes til −263.000 kr. i 2026/27 og fremskrives 2,0 % p.a. som i kilden. Alle afledte linjer i budgettet og cash flowet genberegnes.",
+      "startbeloeb": -263000
+    },
+    {
+      "id": "R2",
+      "ref": "Å1",
+      "godkendt": "Ejer, 2026-09-15",
+      "omraade": "Vedligeholdelsesplan",
+      "linje": null,
+      "tekst": "Kildens fjerde kolonneoverskrift er 2028/29 (dubleret) og 2029/30 mangler. Bekræftet: fjerde kolonne er 2029/30. Årstallene er normaliseret, og kildens egne overskrifter er gemt som kildeLabel."
     }
   ]
 }

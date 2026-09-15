@@ -41,12 +41,21 @@ Rådata står i `tools/kildedata.py`, én konstant pr. tabel. Alle aflæste tal 
 | realkreditgæld ca. 155 mio. kr. | 155 | 155 | ✅ |
 | belåning ca. 61 % | 61 | 61 | ✅ |
 
+## Godkendte rettelser
+
+Kilden er aflæst uændret i `tools/kildedata.py`. Rettelserne herunder er besluttet af ejer/DAC og anvendes af `tools/byg_data.py`. Hver rørt linje beholder kildens oprindelige tal i JSON-feltet `kildeVaerdier`.
+
+| Nr. | Vedrører | Område | Godkendt | Rettelse |
+|---|---|---|---|---|
+| R1 | Å2 | Likviditetsbudget | Ejer, 2026-09-15 | Likviditetsbudgettet havde −63.000 kr. i 2026/27, mens resultatopgørelsen har −263 t.kr. i budget 26/27. −263 t.kr. er bekræftet som det rigtige. Forsikringslinjen sættes til −263.000 kr. i 2026/27 og fremskrives 2,0 % p.a. som i kilden. Alle afledte linjer i budgettet og cash flowet genberegnes. |
+| R2 | Å1 | Vedligeholdelsesplan | Ejer, 2026-09-15 | Kildens fjerde kolonneoverskrift er 2028/29 (dubleret) og 2029/30 mangler. Bekræftet: fjerde kolonne er 2029/30. Årstallene er normaliseret, og kildens egne overskrifter er gemt som kildeLabel. |
+
 ## Åbne spørgsmål og kendte uoverensstemmelser
 
 | Nr. | Område | Type | Beskrivelse |
 |---|---|---|---|
-| Å1 | Vedligeholdelsesplan | ❓ Spørgsmål til DAC | Kildens kolonneoverskrifter er 2026/27, 2027/28, 2028/29, 2028/29, 2030/31, 2031/32, 2032/33, 2033/34. 2028/29 optræder to gange og 2029/30 mangler. Den fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er normaliseret til 2029/30. Skal bekræftes. |
-| Å2 | Ejendomsforsikringer | ❓ Spørgsmål til DAC | Resultatopgørelsen har −263 t.kr. i budget 26/27, mens likviditetsbudgettet har −63 t.kr. for 2026/27. Begge tal er gengivet som i kilden. Forskellen på 200 t.kr. forklarer hele forskellen mellem P&L-EBIT (8.181 t.kr.) og likviditetsbudgettets EBIT (8.383 t.kr.). |
+| Å1 | Vedligeholdelsesplan | ✅ Afklaret – rettet | Kildens kolonneoverskrifter er 2026/27, 2027/28, 2028/29, 2028/29, 2030/31, 2031/32, 2032/33, 2033/34 – 2028/29 optræder to gange og 2029/30 mangler. AFKLARET: fjerde kolonne (2,0 mio. kr., Dannebrogsgade skifertag) er 2029/30. Se rettelse R2. |
+| Å2 | Ejendomsforsikringer | ✅ Afklaret – rettet | Resultatopgørelsen havde −263 t.kr. i budget 26/27, mens likviditetsbudgettet havde −63 t.kr. for 2026/27. AFKLARET: −263 t.kr. er det rigtige. Likviditetsbudgettet er rettet og genberegnet. Se rettelse R1. |
 | Å3 | Finansiering | 🚫 Data mangler | Lånetype og rentetype (fast / Cibor 3 / Cibor 6 / F5) findes kun som samlet fordeling i cirkeldiagrammet, ikke pr. ejendom. Felterne laanetype, rentetype, afdragsfri og refinansieringsdato står derfor som null pr. lån. |
 | Å4 | Finansiering | 🚫 Data mangler | Asylgade 21-23 har ingen rentesats i kildetabellen (tom celle), selv om der er 13,0 mio. kr. i realkreditgæld. Rentesatsen mangler. |
 | Å5 | Antal lejemål | ⚠️ Uoverensstemmelse i kilden | Lejemålstabellen har 255 lejemål i alt (og 12 på Blegdammen 9 / Møllestien 59), mens værdiansættelsestabellen har 256 i alt (og 13 på samme ejendom). Begge tal er gemt, hver med sin kilde. |
@@ -60,7 +69,7 @@ Rådata står i `tools/kildedata.py`, én konstant pr. tabel. Alle aflæste tal 
 
 ## Afstemninger
 
-**531 kontroller i alt: 527 stemmer (inden for afrunding), 4 er kendte uoverensstemmelser i kilden, 0 er uforklarede.**
+**531 kontroller i alt: 528 stemmer (inden for afrunding), 3 er kendte uoverensstemmelser i kilden, 0 er uforklarede.**
 
 Summer af t.kr.-afrundede linjer accepteres med en tolerance på halvdelen af antallet af led, fordi hvert led i kilden kan være rundet op til 0,5 t.kr. i hver retning. Alle andre kontroller kræver eksakt overensstemmelse.
 
@@ -71,7 +80,6 @@ Summer af t.kr.-afrundede linjer accepteres med en tolerance på halvdelen af an
 | GI | Asylgade 21-23: saldo 30.04.2027 §120 = primo + 108 kr/m² × 1092 m² | −328.951 | −320.743 | 8.208 | Å8 |
 | Krydstjek | Antal lejemål: værdiansættelse = lejemålstabel | 256 | 255 | −1 | Å5 |
 | Krydstjek | Blegdammen 9 / Møllestien 59: antal lejemål i værdiansættelse = lejemålstabel | 13 | 12 | −1 | Å5 |
-| Krydstjek | Budget 26/27 'Ejendomsforsikringer': P&L (t.kr.) = likviditetsbudget | −263 | −63 | 200 | Å2 |
 
 ### Alle kontroller pr. tabel
 
@@ -361,104 +369,104 @@ Summer af t.kr.-afrundede linjer accepteres med en tolerance på halvdelen af an
 | Kontrol | Kilde | Beregnet | Status |
 |---|---|---|---|
 | 2026/27: Indtægter i alt = sum af underliggende | 16.523.000 | 16.523.000 | ✅ |
-| 2026/27: Driftsudgifter i alt = sum af underliggende | −6.879.000 | −6.879.000 | ✅ |
-| 2026/27: Nettoleje = sum af underliggende | 9.644.000 | 9.644.000 | ✅ |
-| 2026/27: EBIT = sum af underliggende | 8.383.000 | 8.383.000 | ✅ |
-| 2026/27: Resultat før skat = sum af underliggende | 4.151.000 | 4.151.000 | ✅ |
-| 2026/27: Skat = 22 % af resultat før skat | 913.220 | 913.220 | ✅ |
-| 2026/27: Resultat efter skat = før skat − skat | 3.237.780 | 3.237.780 | ✅ |
-| 2026/27: Likviditet = resultat efter skat + afdrag | 2.323.780 | 2.323.780 | ✅ |
-| 2026/27: Bank ultimo = primo + årets bevægelser | 2.924.000 | 2.924.000 | ✅ |
+| 2026/27: Driftsudgifter i alt = sum af underliggende | −7.079.000 | −7.079.000 | ✅ |
+| 2026/27: Nettoleje = sum af underliggende | 9.444.000 | 9.444.000 | ✅ |
+| 2026/27: EBIT = sum af underliggende | 8.183.000 | 8.183.000 | ✅ |
+| 2026/27: Resultat før skat = sum af underliggende | 3.951.000 | 3.951.000 | ✅ |
+| 2026/27: Skat = 22 % af resultat før skat | 869.220 | 869.220 | ✅ |
+| 2026/27: Resultat efter skat = før skat − skat | 3.081.780 | 3.081.780 | ✅ |
+| 2026/27: Likviditet = resultat efter skat + afdrag | 2.167.780 | 2.167.780 | ✅ |
+| 2026/27: Bank ultimo = primo + årets bevægelser | 2.724.000 | 2.724.000 | ✅ |
 | 2027/28: Indtægter i alt = sum af underliggende | 16.853.460 | 16.853.460 | ✅ |
-| 2027/28: Driftsudgifter i alt = sum af underliggende | −6.880.580 | −6.880.580 | ✅ |
-| 2027/28: Nettoleje = sum af underliggende | 9.972.880 | 9.972.880 | ✅ |
-| 2027/28: EBIT = sum af underliggende | 8.686.660 | 8.686.660 | ✅ |
-| 2027/28: Resultat før skat = sum af underliggende | 4.454.660 | 4.454.660 | ✅ |
-| 2027/28: Skat = 22 % af resultat før skat | 980.025 | 980.025 | ✅ |
-| 2027/28: Resultat efter skat = før skat − skat | 3.474.635 | 3.474.635 | ✅ |
-| 2027/28: Likviditet = resultat efter skat + afdrag | 2.560.635 | 2.560.635 | ✅ |
-| 2027/28: Bank ultimo = primo + årets bevægelser | 4.511.440 | 4.511.440 | ✅ |
+| 2027/28: Driftsudgifter i alt = sum af underliggende | −7.084.580 | −7.084.580 | ✅ |
+| 2027/28: Nettoleje = sum af underliggende | 9.768.880 | 9.768.880 | ✅ |
+| 2027/28: EBIT = sum af underliggende | 8.482.660 | 8.482.660 | ✅ |
+| 2027/28: Resultat før skat = sum af underliggende | 4.250.660 | 4.250.660 | ✅ |
+| 2027/28: Skat = 22 % af resultat før skat | 935.145 | 935.145 | ✅ |
+| 2027/28: Resultat efter skat = før skat − skat | 3.315.515 | 3.315.515 | ✅ |
+| 2027/28: Likviditet = resultat efter skat + afdrag | 2.401.515 | 2.401.515 | ✅ |
+| 2027/28: Bank ultimo = primo + årets bevægelser | 4.151.440 | 4.151.440 | ✅ |
 | 2028/29: Indtægter i alt = sum af underliggende | 17.190.529 | 17.190.530 | ✅ |
-| 2028/29: Driftsudgifter i alt = sum af underliggende | −6.684.192 | −6.684.191 | ✅ |
-| 2028/29: Nettoleje = sum af underliggende | 10.506.338 | 10.506.337 | ✅ |
-| 2028/29: EBIT = sum af underliggende | 9.194.393 | 9.194.394 | ✅ |
-| 2028/29: Resultat før skat = sum af underliggende | 4.962.393 | 4.962.393 | ✅ |
-| 2028/29: Skat = 22 % af resultat før skat | 1.091.727 | 1.091.726 | ✅ |
-| 2028/29: Resultat efter skat = før skat − skat | 3.870.667 | 3.870.666 | ✅ |
-| 2028/29: Likviditet = resultat efter skat + afdrag | 2.956.667 | 2.956.667 | ✅ |
-| 2028/29: Bank ultimo = primo + årets bevægelser | 6.539.808 | 6.539.808 | ✅ |
+| 2028/29: Driftsudgifter i alt = sum af underliggende | −6.892.271 | −6.892.271 | ✅ |
+| 2028/29: Nettoleje = sum af underliggende | 10.298.258 | 10.298.258 | ✅ |
+| 2028/29: EBIT = sum af underliggende | 8.986.314 | 8.986.314 | ✅ |
+| 2028/29: Resultat før skat = sum af underliggende | 4.754.314 | 4.754.314 | ✅ |
+| 2028/29: Skat = 22 % af resultat før skat | 1.045.949 | 1.045.949 | ✅ |
+| 2028/29: Resultat efter skat = før skat − skat | 3.708.365 | 3.708.365 | ✅ |
+| 2028/29: Likviditet = resultat efter skat + afdrag | 2.794.365 | 2.794.365 | ✅ |
+| 2028/29: Bank ultimo = primo + årets bevægelser | 6.016.609 | 6.016.609 | ✅ |
 | 2029/30: Indtægter i alt = sum af underliggende | 17.534.340 | 17.534.339 | ✅ |
-| 2029/30: Driftsudgifter i alt = sum af underliggende | −7.389.875 | −7.389.875 | ✅ |
-| 2029/30: Nettoleje = sum af underliggende | 10.144.464 | 10.144.465 | ✅ |
-| 2029/30: EBIT = sum af underliggende | 8.806.281 | 8.806.281 | ✅ |
-| 2029/30: Resultat før skat = sum af underliggende | 4.574.281 | 4.574.281 | ✅ |
-| 2029/30: Skat = 22 % af resultat før skat | 1.006.342 | 1.006.342 | ✅ |
-| 2029/30: Resultat efter skat = før skat − skat | 3.567.939 | 3.567.939 | ✅ |
-| 2029/30: Likviditet = resultat efter skat + afdrag | 2.653.939 | 2.653.939 | ✅ |
-| 2029/30: Bank ultimo = primo + årets bevægelser | 8.068.363 | 8.068.362 | ✅ |
+| 2029/30: Driftsudgifter i alt = sum af underliggende | −7.602.117 | −7.602.117 | ✅ |
+| 2029/30: Nettoleje = sum af underliggende | 9.932.223 | 9.932.223 | ✅ |
+| 2029/30: EBIT = sum af underliggende | 8.594.040 | 8.594.040 | ✅ |
+| 2029/30: Resultat før skat = sum af underliggende | 4.362.040 | 4.362.040 | ✅ |
+| 2029/30: Skat = 22 % af resultat før skat | 959.649 | 959.649 | ✅ |
+| 2029/30: Resultat efter skat = før skat − skat | 3.402.391 | 3.402.391 | ✅ |
+| 2029/30: Likviditet = resultat efter skat + afdrag | 2.488.391 | 2.488.391 | ✅ |
+| 2029/30: Bank ultimo = primo + årets bevægelser | 7.378.700 | 7.378.700 | ✅ |
 | 2030/31: Indtægter i alt = sum af underliggende | 17.885.027 | 17.885.027 | ✅ |
-| 2030/31: Driftsudgifter i alt = sum af underliggende | −6.297.673 | −6.297.673 | ✅ |
-| 2030/31: Nettoleje = sum af underliggende | 11.587.354 | 11.587.354 | ✅ |
-| 2030/31: EBIT = sum af underliggende | 10.222.407 | 10.222.407 | ✅ |
-| 2030/31: Resultat før skat = sum af underliggende | 5.990.407 | 5.990.407 | ✅ |
-| 2030/31: Skat = 22 % af resultat før skat | 1.317.889 | 1.317.890 | ✅ |
-| 2030/31: Resultat efter skat = før skat − skat | 4.672.517 | 4.672.518 | ✅ |
-| 2030/31: Likviditet = resultat efter skat + afdrag | 3.758.517 | 3.758.517 | ✅ |
-| 2030/31: Bank ultimo = primo + årets bevægelser | 11.098.427 | 11.098.428 | ✅ |
+| 2030/31: Driftsudgifter i alt = sum af underliggende | −6.514.160 | −6.514.160 | ✅ |
+| 2030/31: Nettoleje = sum af underliggende | 11.370.867 | 11.370.867 | ✅ |
+| 2030/31: EBIT = sum af underliggende | 10.005.920 | 10.005.920 | ✅ |
+| 2030/31: Resultat før skat = sum af underliggende | 5.773.920 | 5.773.920 | ✅ |
+| 2030/31: Skat = 22 % af resultat før skat | 1.270.262 | 1.270.262 | ✅ |
+| 2030/31: Resultat efter skat = før skat − skat | 4.503.658 | 4.503.658 | ✅ |
+| 2030/31: Likviditet = resultat efter skat + afdrag | 3.589.658 | 3.589.658 | ✅ |
+| 2030/31: Bank ultimo = primo + årets bevægelser | 10.238.971 | 10.238.971 | ✅ |
 | 2031/32: Indtægter i alt = sum af underliggende | 18.242.727 | 18.242.727 | ✅ |
-| 2031/32: Driftsudgifter i alt = sum af underliggende | −6.107.626 | −6.107.626 | ✅ |
-| 2031/32: Nettoleje = sum af underliggende | 12.135.101 | 12.135.101 | ✅ |
-| 2031/32: EBIT = sum af underliggende | 10.742.855 | 10.742.855 | ✅ |
-| 2031/32: Resultat før skat = sum af underliggende | 6.510.855 | 6.510.855 | ✅ |
-| 2031/32: Skat = 22 % af resultat før skat | 1.432.388 | 1.432.388 | ✅ |
-| 2031/32: Resultat efter skat = før skat − skat | 5.078.467 | 5.078.467 | ✅ |
-| 2031/32: Likviditet = resultat efter skat + afdrag | 4.164.467 | 4.164.467 | ✅ |
-| 2031/32: Bank ultimo = primo + årets bevægelser | 14.337.393 | 14.337.393 | ✅ |
+| 2031/32: Driftsudgifter i alt = sum af underliggende | −6.328.442 | −6.328.442 | ✅ |
+| 2031/32: Nettoleje = sum af underliggende | 11.914.285 | 11.914.285 | ✅ |
+| 2031/32: EBIT = sum af underliggende | 10.522.039 | 10.522.039 | ✅ |
+| 2031/32: Resultat før skat = sum af underliggende | 6.290.039 | 6.290.039 | ✅ |
+| 2031/32: Skat = 22 % af resultat før skat | 1.383.809 | 1.383.809 | ✅ |
+| 2031/32: Resultat efter skat = før skat − skat | 4.906.230 | 4.906.230 | ✅ |
+| 2031/32: Likviditet = resultat efter skat + afdrag | 3.992.230 | 3.992.230 | ✅ |
+| 2031/32: Bank ultimo = primo + årets bevægelser | 13.304.748 | 13.304.748 | ✅ |
 | 2032/33: Indtægter i alt = sum af underliggende | 18.607.582 | 18.607.582 | ✅ |
-| 2032/33: Driftsudgifter i alt = sum af underliggende | −5.919.779 | −5.919.778 | ✅ |
-| 2032/33: Nettoleje = sum af underliggende | 12.687.803 | 12.687.803 | ✅ |
-| 2032/33: EBIT = sum af underliggende | 11.267.712 | 11.267.712 | ✅ |
-| 2032/33: Resultat før skat = sum af underliggende | 7.035.712 | 7.035.712 | ✅ |
-| 2032/33: Skat = 22 % af resultat før skat | 1.547.857 | 1.547.857 | ✅ |
-| 2032/33: Resultat efter skat = før skat − skat | 5.487.855 | 5.487.855 | ✅ |
-| 2032/33: Likviditet = resultat efter skat + afdrag | 4.573.855 | 4.573.855 | ✅ |
-| 2032/33: Bank ultimo = primo + årets bevægelser | 17.986.717 | 17.986.717 | ✅ |
+| 2032/33: Driftsudgifter i alt = sum af underliggende | −6.145.011 | −6.145.011 | ✅ |
+| 2032/33: Nettoleje = sum af underliggende | 12.462.571 | 12.462.571 | ✅ |
+| 2032/33: EBIT = sum af underliggende | 11.042.480 | 11.042.480 | ✅ |
+| 2032/33: Resultat før skat = sum af underliggende | 6.810.480 | 6.810.480 | ✅ |
+| 2032/33: Skat = 22 % af resultat før skat | 1.498.306 | 1.498.306 | ✅ |
+| 2032/33: Resultat efter skat = før skat − skat | 5.312.174 | 5.312.174 | ✅ |
+| 2032/33: Likviditet = resultat efter skat + afdrag | 4.398.174 | 4.398.174 | ✅ |
+| 2032/33: Bank ultimo = primo + årets bevægelser | 16.777.419 | 16.777.419 | ✅ |
 | 2033/34: Indtægter i alt = sum af underliggende | 18.979.733 | 18.979.734 | ✅ |
-| 2033/34: Driftsudgifter i alt = sum af underliggende | −5.984.175 | −5.984.174 | ✅ |
-| 2033/34: Nettoleje = sum af underliggende | 12.995.559 | 12.995.558 | ✅ |
-| 2033/34: EBIT = sum af underliggende | 11.547.066 | 11.547.066 | ✅ |
-| 2033/34: Resultat før skat = sum af underliggende | 7.315.066 | 7.315.066 | ✅ |
-| 2033/34: Skat = 22 % af resultat før skat | 1.609.315 | 1.609.315 | ✅ |
-| 2033/34: Resultat efter skat = før skat − skat | 5.705.752 | 5.705.751 | ✅ |
-| 2033/34: Likviditet = resultat efter skat + afdrag | 4.791.752 | 4.791.752 | ✅ |
-| 2033/34: Bank ultimo = primo + årets bevægelser | 21.799.926 | 21.799.927 | ✅ |
+| 2033/34: Driftsudgifter i alt = sum af underliggende | −6.213.911 | −6.213.911 | ✅ |
+| 2033/34: Nettoleje = sum af underliggende | 12.765.822 | 12.765.822 | ✅ |
+| 2033/34: EBIT = sum af underliggende | 11.317.329 | 11.317.329 | ✅ |
+| 2033/34: Resultat før skat = sum af underliggende | 7.085.329 | 7.085.329 | ✅ |
+| 2033/34: Skat = 22 % af resultat før skat | 1.558.772 | 1.558.772 | ✅ |
+| 2033/34: Resultat efter skat = før skat − skat | 5.526.557 | 5.526.557 | ✅ |
+| 2033/34: Likviditet = resultat efter skat + afdrag | 4.612.557 | 4.612.557 | ✅ |
+| 2033/34: Bank ultimo = primo + årets bevægelser | 20.410.442 | 20.410.442 | ✅ |
 | 2034/35: Indtægter i alt = sum af underliggende | 19.359.328 | 19.359.327 | ✅ |
-| 2034/35: Driftsudgifter i alt = sum af underliggende | −5.950.858 | −5.950.860 | ✅ |
-| 2034/35: Nettoleje = sum af underliggende | 13.408.470 | 13.408.470 | ✅ |
-| 2034/35: EBIT = sum af underliggende | 11.931.007 | 11.931.008 | ✅ |
-| 2034/35: Resultat før skat = sum af underliggende | 7.699.007 | 7.699.007 | ✅ |
-| 2034/35: Skat = 22 % af resultat før skat | 1.693.782 | 1.693.782 | ✅ |
-| 2034/35: Resultat efter skat = før skat − skat | 6.005.226 | 6.005.225 | ✅ |
-| 2034/35: Likviditet = resultat efter skat + afdrag | 5.091.226 | 5.091.226 | ✅ |
-| 2034/35: Bank ultimo = primo + årets bevægelser | 25.935.619 | 25.935.619 | ✅ |
+| 2034/35: Driftsudgifter i alt = sum af underliggende | −6.185.191 | −6.185.191 | ✅ |
+| 2034/35: Nettoleje = sum af underliggende | 13.174.137 | 13.174.137 | ✅ |
+| 2034/35: EBIT = sum af underliggende | 11.696.675 | 11.696.675 | ✅ |
+| 2034/35: Resultat før skat = sum af underliggende | 7.464.675 | 7.464.675 | ✅ |
+| 2034/35: Skat = 22 % af resultat før skat | 1.642.228 | 1.642.228 | ✅ |
+| 2034/35: Resultat efter skat = før skat − skat | 5.822.447 | 5.822.447 | ✅ |
+| 2034/35: Likviditet = resultat efter skat + afdrag | 4.908.447 | 4.908.447 | ✅ |
+| 2034/35: Bank ultimo = primo + årets bevægelser | 24.362.345 | 24.362.345 | ✅ |
 | 2035/36: Indtægter i alt = sum af underliggende | 19.746.515 | 19.746.515 | ✅ |
-| 2035/36: Driftsudgifter i alt = sum af underliggende | −6.069.875 | −6.069.876 | ✅ |
-| 2035/36: Nettoleje = sum af underliggende | 13.676.639 | 13.676.640 | ✅ |
-| 2035/36: EBIT = sum af underliggende | 12.169.628 | 12.169.627 | ✅ |
-| 2035/36: Resultat før skat = sum af underliggende | 7.937.628 | 7.937.628 | ✅ |
-| 2035/36: Skat = 22 % af resultat før skat | 1.746.278 | 1.746.278 | ✅ |
-| 2035/36: Resultat efter skat = før skat − skat | 6.191.350 | 6.191.350 | ✅ |
-| 2035/36: Likviditet = resultat efter skat + afdrag | 5.277.350 | 5.277.350 | ✅ |
-| 2035/36: Bank ultimo = primo + årets bevægelser | 30.225.465 | 30.225.465 | ✅ |
-| Bank primo 2027/28 = bank ultimo 2026/27 | 2.924.000 | 2.924.000 | ✅ |
-| Bank primo 2028/29 = bank ultimo 2027/28 | 4.511.440 | 4.511.440 | ✅ |
-| Bank primo 2029/30 = bank ultimo 2028/29 | 6.539.808 | 6.539.808 | ✅ |
-| Bank primo 2030/31 = bank ultimo 2029/30 | 8.068.363 | 8.068.363 | ✅ |
-| Bank primo 2031/32 = bank ultimo 2030/31 | 11.098.427 | 11.098.427 | ✅ |
-| Bank primo 2032/33 = bank ultimo 2031/32 | 14.337.393 | 14.337.393 | ✅ |
-| Bank primo 2033/34 = bank ultimo 2032/33 | 17.986.717 | 17.986.717 | ✅ |
-| Bank primo 2034/35 = bank ultimo 2033/34 | 21.799.926 | 21.799.926 | ✅ |
-| Bank primo 2035/36 = bank ultimo 2034/35 | 25.935.619 | 25.935.619 | ✅ |
+| 2035/36: Driftsudgifter i alt = sum af underliggende | −6.308.894 | −6.308.894 | ✅ |
+| 2035/36: Nettoleje = sum af underliggende | 13.437.621 | 13.437.621 | ✅ |
+| 2035/36: EBIT = sum af underliggende | 11.930.609 | 11.930.609 | ✅ |
+| 2035/36: Resultat før skat = sum af underliggende | 7.698.609 | 7.698.609 | ✅ |
+| 2035/36: Skat = 22 % af resultat før skat | 1.693.694 | 1.693.694 | ✅ |
+| 2035/36: Resultat efter skat = før skat − skat | 6.004.915 | 6.004.915 | ✅ |
+| 2035/36: Likviditet = resultat efter skat + afdrag | 5.090.915 | 5.090.915 | ✅ |
+| 2035/36: Bank ultimo = primo + årets bevægelser | 28.464.726 | 28.464.726 | ✅ |
+| Bank primo 2027/28 = bank ultimo 2026/27 | 2.724.000 | 2.724.000 | ✅ |
+| Bank primo 2028/29 = bank ultimo 2027/28 | 4.151.440 | 4.151.440 | ✅ |
+| Bank primo 2029/30 = bank ultimo 2028/29 | 6.016.609 | 6.016.609 | ✅ |
+| Bank primo 2030/31 = bank ultimo 2029/30 | 7.378.700 | 7.378.700 | ✅ |
+| Bank primo 2031/32 = bank ultimo 2030/31 | 10.238.971 | 10.238.971 | ✅ |
+| Bank primo 2032/33 = bank ultimo 2031/32 | 13.304.748 | 13.304.748 | ✅ |
+| Bank primo 2033/34 = bank ultimo 2032/33 | 16.777.419 | 16.777.419 | ✅ |
+| Bank primo 2034/35 = bank ultimo 2033/34 | 20.410.442 | 20.410.442 | ✅ |
+| Bank primo 2035/36 = bank ultimo 2034/35 | 24.362.345 | 24.362.345 | ✅ |
 | Beboelse omkostningsbestemt 2027/28 = 2026/27 × 1,02 | 4.670.580 | 4.670.580 | ✅ |
 | Beboelse omkostningsbestemt 2028/29 = 2027/28 × 1,02 | 4.763.992 | 4.763.992 | ✅ |
 | Beboelse omkostningsbestemt 2029/30 = 2028/29 × 1,02 | 4.859.271 | 4.859.272 | ✅ |
@@ -531,15 +539,15 @@ Summer af t.kr.-afrundede linjer accepteres med en tolerance på halvdelen af an
 | Renovation 2033/34 = 2032/33 × 1,02 | −776.512 | −776.512 | ✅ |
 | Renovation 2034/35 = 2033/34 × 1,02 | −792.042 | −792.042 | ✅ |
 | Renovation 2035/36 = 2034/35 × 1,02 | −807.883 | −807.883 | ✅ |
-| Ejendomsforsikringer 2027/28 = 2026/27 × 1,02 | −64.260 | −64.260 | ✅ |
-| Ejendomsforsikringer 2028/29 = 2027/28 × 1,02 | −65.545 | −65.545 | ✅ |
-| Ejendomsforsikringer 2029/30 = 2028/29 × 1,02 | −66.856 | −66.856 | ✅ |
-| Ejendomsforsikringer 2030/31 = 2029/30 × 1,02 | −68.193 | −68.193 | ✅ |
-| Ejendomsforsikringer 2031/32 = 2030/31 × 1,02 | −69.557 | −69.557 | ✅ |
-| Ejendomsforsikringer 2032/33 = 2031/32 × 1,02 | −70.948 | −70.948 | ✅ |
-| Ejendomsforsikringer 2033/34 = 2032/33 × 1,02 | −72.367 | −72.367 | ✅ |
-| Ejendomsforsikringer 2034/35 = 2033/34 × 1,02 | −73.815 | −73.814 | ✅ |
-| Ejendomsforsikringer 2035/36 = 2034/35 × 1,02 | −75.291 | −75.291 | ✅ |
+| Ejendomsforsikringer 2027/28 = 2026/27 × 1,02 | −268.260 | −268.260 | ✅ |
+| Ejendomsforsikringer 2028/29 = 2027/28 × 1,02 | −273.625 | −273.625 | ✅ |
+| Ejendomsforsikringer 2029/30 = 2028/29 × 1,02 | −279.098 | −279.098 | ✅ |
+| Ejendomsforsikringer 2030/31 = 2029/30 × 1,02 | −284.680 | −284.680 | ✅ |
+| Ejendomsforsikringer 2031/32 = 2030/31 × 1,02 | −290.373 | −290.374 | ✅ |
+| Ejendomsforsikringer 2032/33 = 2031/32 × 1,02 | −296.181 | −296.180 | ✅ |
+| Ejendomsforsikringer 2033/34 = 2032/33 × 1,02 | −302.104 | −302.105 | ✅ |
+| Ejendomsforsikringer 2034/35 = 2033/34 × 1,02 | −308.146 | −308.146 | ✅ |
+| Ejendomsforsikringer 2035/36 = 2034/35 × 1,02 | −314.309 | −314.309 | ✅ |
 | Vicevært, trappevask 2027/28 = 2026/27 × 1,02 | −1.645.260 | −1.645.260 | ✅ |
 | Vicevært, trappevask 2028/29 = 2027/28 × 1,02 | −1.678.165 | −1.678.165 | ✅ |
 | Vicevært, trappevask 2029/30 = 2028/29 × 1,02 | −1.711.729 | −1.711.728 | ✅ |
@@ -628,7 +636,7 @@ Summer af t.kr.-afrundede linjer accepteres med en tolerance på halvdelen af an
 
 </details>
 
-<details><summary><strong>Krydstjek</strong> – 48 kontroller (45 stemmer, 3 kendt afvigelse, 0 uforklaret)</summary>
+<details><summary><strong>Krydstjek</strong> – 48 kontroller (46 stemmer, 2 kendt afvigelse, 0 uforklaret)</summary>
 
 | Kontrol | Kilde | Beregnet | Status |
 |---|---|---|---|
@@ -666,7 +674,7 @@ Summer af t.kr.-afrundede linjer accepteres med en tolerance på halvdelen af an
 | Budget 26/27 'Ejendomsskatter': P&L (t.kr.) = likviditetsbudget | −377 | −377 | ✅ |
 | Budget 26/27 'Vand, vandafgift': P&L (t.kr.) = likviditetsbudget | −6 | −6 | ✅ |
 | Budget 26/27 'Renovation': P&L (t.kr.) = likviditetsbudget | −676 | −676 | ✅ |
-| Budget 26/27 'Ejendomsforsikringer': P&L (t.kr.) = likviditetsbudget | −263 | −63 | ⚠️ Å2 |
+| Budget 26/27 'Ejendomsforsikringer': P&L (t.kr.) = likviditetsbudget | −263 | −263 | ✅ |
 | Budget 26/27 'Vicevært, trappevask': P&L (t.kr.) = likviditetsbudget | −1.613 | −1.613 | ✅ |
 | Budget 26/27 'Ejendomsadministration': P&L (t.kr.) = likviditetsbudget | −144 | −144 | ✅ |
 | Budget 26/27 'Øvrige driftsudgifter': P&L (t.kr.) = likviditetsbudget | −741 | −741 | ✅ |
