@@ -6,6 +6,7 @@ import { Drift } from "@/components/sektioner/Drift";
 import { Portefoelje } from "@/components/sektioner/Portefoelje";
 import { Vedligehold } from "@/components/sektioner/Vedligehold";
 import { Finansiering } from "@/components/sektioner/Finansiering";
+import { Simulering } from "@/components/sektioner/Simulering";
 import { Tomgang } from "@/components/sektioner/Tomgang";
 import { Printknap } from "@/components/ui/Printknap";
 import { Statusmaerke } from "@/components/ui/Statusmaerke";
@@ -36,6 +37,11 @@ export default async function PrintSide({ params }: { params: Promise<{ ejer: st
       id: "finansiering",
       titel: "Finansiering og likviditet",
       indhold: <Finansiering data={data} startAaben />,
+    },
+    {
+      id: "simulering",
+      titel: "Hvad hvis? – likviditet under pres",
+      indhold: <Simulering data={data} startAaben />,
     },
     { id: "tomgang", titel: "Lejerotation og tomgang", indhold: <Tomgang data={data} /> },
   ];

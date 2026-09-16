@@ -17,6 +17,7 @@ const MENU: Menugruppe[] = [
     punkter: [
       { sti: "drift", navn: "Drift", ikon: "drift" },
       { sti: "finansiering", navn: "Finansiering og likviditet", ikon: "finansiering" },
+      { sti: "simulering", navn: "Hvad hvis?", ikon: "kurve" },
     ],
   },
   {

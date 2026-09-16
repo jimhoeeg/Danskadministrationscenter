@@ -22,9 +22,11 @@ body {
   border-radius: 4px;
 }
 
-/* Skyderen i stresstesten. */
+/* Skydere: grøn, med et hit-område der er til at ramme. */
 input[type="range"] {
   accent-color: #00422e;
+  height: 22px;
+  cursor: pointer;
 }
 
 /* Tal i tabeller og akser skal flugte lodret. */

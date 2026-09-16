@@ -88,6 +88,39 @@ brugerfladen, indtil de er aftalt med banken. Samme fil rummer
 beregningsforudsætningerne, blandt andet om F-lån med rentetilpasning tæller med i
 "andel variabel rente" (med F5: 73 %, uden: 48 %).
 
+## Likviditetssimulator
+
+`/<ejer>/simulering` svarer på ét spørgsmål: holder pengene? Tre håndtag —
+rentestigning, fald i udlejningsprocent og udbytte — plus et valg om, hvorvidt
+afdragsprofilen skal regnes med. Seks færdige scenarier fra "Som budgetteret"
+til "Alt på én gang".
+
+Motoren i `lib/simulering.ts` adskiller sig fra det leverede budget på to punkter:
+
+1. **Afdragene.** Budgettet holder afdrag fast på 914 t.kr. i alle ti år, men
+   afdragsprofilen siger, at andelen af gælden der afdrages stiger fra 15 % til
+   100 % hen over perioden. Regnes profilen med, går bankbeholdningen fra
+   +28,5 mio. kr. til omkring nul.
+2. **Horisonten.** Budgettet stopper efter ti år. Simulatoren fremskriver fem
+   år mere.
+
+Renterne beregnes af den faktiske restgæld, så afdrag også sænker renten, og
+rentestresset lægges kun på den rentefølsomme del af gælden.
+
+**Alle antagelser er afledt, ikke oplyst.** De står som redigerbare felter i
+brugerfladen og kan rettes, når de faktiske lånevilkår foreligger:
+
+| Antagelse | Afledt som | Værdi |
+|---|---|---|
+| Afdragstakt | budgettets afdrag / den gæld der afdrages i dag | 3,93 % p.a. |
+| Effektiv rente | budgettets prioritetsrenter / realkreditgælden | 2,83 % |
+| Fremskrivning | budgettets egen sats | 2,0 % p.a. |
+| Vedligehold efter 2033/34 | gennemsnittet af vedligeholdelsesplanens år | 1.069 t.kr./år |
+
+Kortet "Hvornår sker der noget med gælden" udleder gældskalenderen af
+afdragsprofilen. Kun 2026-trinnet er dateret i kildeteksten — resten kommer fra
+cirkeldiagrammets årstal.
+
 ## Nøgletal
 
 De seks nøgletal beregnes af rådata i `lib/noegletal.ts` – ingen af dem er
