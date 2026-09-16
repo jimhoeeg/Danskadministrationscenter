@@ -1,7 +1,7 @@
 "use client";
 
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, ReferenceLine, Tooltip, XAxis, YAxis } from "recharts";
-import { ACCENT, AKSE, GITTER } from "./tema";
+import { AKSE, GITTER, SOEJLE } from "./tema";
 import { Diagramramme, Legende, Vaerktoejstip } from "./Ramme";
 
 export interface Soejlepunkt {
@@ -50,7 +50,7 @@ export function Soejler({
           />
           <YAxis {...AKSE} width={60} tickFormatter={akseFormater ?? formater} />
           <Tooltip
-            cursor={{ fill: "rgba(42,120,214,0.06)" }}
+            cursor={{ fill: "rgba(11,91,65,0.06)" }}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null;
               const p = payload[0].payload as Soejlepunkt;
@@ -58,7 +58,7 @@ export function Soejler({
                 <Vaerktoejstip
                   titel={p.navn}
                   linjer={[
-                    { navn: "Værdi", vaerdi: formater(p.vaerdi), farve: p.farve ?? ACCENT },
+                    { navn: "Værdi", vaerdi: formater(p.vaerdi), farve: p.farve ?? SOEJLE },
                     ...(p.detaljer ?? []),
                   ]}
                 />
@@ -67,7 +67,7 @@ export function Soejler({
           />
           <Bar dataKey="vaerdi" radius={[4, 4, 0, 0]} isAnimationActive={false} maxBarSize={72}>
             {punkter.map((p) => (
-              <Cell key={p.navn} fill={p.farve ?? ACCENT} />
+              <Cell key={p.navn} fill={p.farve ?? SOEJLE} />
             ))}
             {visLabels && (
               <LabelList
@@ -76,7 +76,7 @@ export function Soejler({
                 offset={8}
                 className="tal"
                 formatter={(v: number) => formater(v)}
-                style={{ fontSize: 11, fill: "#52514e" }}
+                style={{ fontSize: 11, fill: "#5A6059" }}
               />
             )}
           </Bar>
@@ -120,19 +120,19 @@ export function VandretteSoejler({
           dataKey="navn"
           {...AKSE}
           width={200}
-          tick={{ fill: "#52514e", fontSize: 11 }}
+          tick={{ fill: "#5A6059", fontSize: 11 }}
         />
         {reference && (
           <ReferenceLine
             x={reference.vaerdi}
-            stroke="#52514e"
+            stroke="#5A6059"
             strokeWidth={1.5}
             ifOverflow="extendDomain"
             label={(props: { viewBox?: { x?: number; y?: number } }) => (
               <text
                 x={(props.viewBox?.x ?? 0) + 6}
                 y={(props.viewBox?.y ?? 0) - 8}
-                fill="#52514e"
+                fill="#5A6059"
                 fontSize={11}
               >
                 {reference.navn}
@@ -141,7 +141,7 @@ export function VandretteSoejler({
           />
         )}
         <Tooltip
-          cursor={{ fill: "rgba(42,120,214,0.06)" }}
+          cursor={{ fill: "rgba(11,91,65,0.06)" }}
           content={({ active, payload }) => {
             if (!active || !payload?.length) return null;
             const p = payload[0].payload as Soejlepunkt;
@@ -149,7 +149,7 @@ export function VandretteSoejler({
               <Vaerktoejstip
                 titel={p.navn}
                 linjer={[
-                  { navn: "Værdi", vaerdi: formater(p.vaerdi), farve: p.farve ?? ACCENT },
+                  { navn: "Værdi", vaerdi: formater(p.vaerdi), farve: p.farve ?? SOEJLE },
                   ...(p.detaljer ?? []),
                 ]}
               />
@@ -158,7 +158,7 @@ export function VandretteSoejler({
         />
         <Bar dataKey="vaerdi" radius={[0, 4, 4, 0]} isAnimationActive={false} barSize={16}>
           {punkter.map((p) => (
-            <Cell key={p.navn} fill={p.farve ?? ACCENT} />
+            <Cell key={p.navn} fill={p.farve ?? SOEJLE} />
           ))}
           <LabelList
             dataKey="vaerdi"
@@ -166,7 +166,7 @@ export function VandretteSoejler({
             offset={8}
             className="tal"
             formatter={(v: number) => formater(v)}
-            style={{ fontSize: 11, fill: "#52514e" }}
+            style={{ fontSize: 11, fill: "#5A6059" }}
           />
         </Bar>
       </BarChart>

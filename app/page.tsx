@@ -25,13 +25,13 @@ export default async function Forside() {
           <li key={e.id}>
             <Link
               href={`/${e.id}`}
-              className="flex items-center justify-between rounded-lg border border-linje bg-white p-4 transition-colors hover:border-accent"
+              className="flex items-center justify-between rounded-kort border border-linje bg-flade-kort p-4 transition-colors hover:border-jyske-groen"
             >
               <span>
                 <span className="block font-medium text-blaek">{e.navn}</span>
                 <span className="mt-0.5 block text-sm text-blaek-sekundaer">{e.periode}</span>
               </span>
-              <span aria-hidden="true" className="text-accent">
+              <span aria-hidden="true" className="text-jyske-groen">
                 →
               </span>
             </Link>

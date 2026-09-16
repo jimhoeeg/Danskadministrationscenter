@@ -84,8 +84,8 @@ export function Vedligehold({
                 aria-pressed={valgtAar === null}
                 className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
                   valgtAar === null
-                    ? "bg-accent text-white"
-                    : "bg-neutral-100 text-blaek-sekundaer hover:text-blaek"
+                    ? "bg-jyske-groen text-white"
+                    : "bg-flade-daempet text-blaek-sekundaer hover:text-blaek"
                 }`}
               >
                 Alle år
@@ -100,8 +100,8 @@ export function Vedligehold({
                     aria-pressed={valgtAar === a.aar}
                     className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
                       valgtAar === a.aar
-                        ? "bg-accent text-white"
-                        : "bg-neutral-100 text-blaek-sekundaer hover:text-blaek"
+                        ? "bg-jyske-groen text-white"
+                        : "bg-flade-daempet text-blaek-sekundaer hover:text-blaek"
                     }`}
                   >
                     {a.aar}
@@ -188,7 +188,7 @@ export function Vedligehold({
                   g.indestaaende === null ? (
                     "–"
                   ) : (
-                    <span className={g.indestaaende < 0 ? "text-[#a8502a]" : undefined}>
+                    <span className={g.indestaaende < 0 ? "text-status-roed-tekst" : undefined}>
                       {beloeb(g.indestaaende)}
                     </span>
                   ),
@@ -213,7 +213,7 @@ export function Vedligehold({
                   g.daekning === null ? (
                     "–"
                   ) : (
-                    <span className={g.daekning < 0 ? "text-[#a8502a]" : undefined}>
+                    <span className={g.daekning < 0 ? "text-status-roed-tekst" : undefined}>
                       {beloeb(g.daekning)}
                     </span>
                   ),

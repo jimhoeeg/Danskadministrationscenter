@@ -35,11 +35,11 @@ export function Afvigelsessoejler({
             dataKey="navn"
             {...AKSE}
             width={160}
-            tick={{ fill: "#52514e", fontSize: 11 }}
+            tick={{ fill: "#5A6059", fontSize: 11 }}
           />
-          <ReferenceLine x={0} stroke="#c3c2b7" />
+          <ReferenceLine x={0} stroke="#D6D3CC" />
           <Tooltip
-            cursor={{ fill: "rgba(42,120,214,0.06)" }}
+            cursor={{ fill: "rgba(11,91,65,0.06)" }}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null;
               const a = payload[0].payload as Budgetafvigelse;
@@ -74,7 +74,7 @@ export function Afvigelsessoejler({
               offset={8}
               className="tal"
               formatter={(v: number) => fraTkr(v)}
-              style={{ fontSize: 11, fill: "#52514e" }}
+              style={{ fontSize: 11, fill: "#5A6059" }}
             />
           </Bar>
         </BarChart>

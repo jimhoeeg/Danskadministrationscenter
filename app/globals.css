@@ -11,8 +11,20 @@ html {
 }
 
 body {
-  background: #ffffff;
-  color: #0b0b0b;
+  background: #fafaf8;
+  color: #11150f;
+}
+
+/* Fokusmarkering i Jyske-grøn – synlig, men diskret. */
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid #00422e;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skyderen i stresstesten. */
+input[type="range"] {
+  accent-color: #00422e;
 }
 
 /* Tal i tabeller og akser skal flugte lodret. */
@@ -32,6 +44,34 @@ body {
   html,
   body {
     background: #ffffff !important;
+  }
+
+  /*
+   * Appens ramme hører til skærmen; på papir står dokumentet alene.
+   * Skallen scroller indeni på skærmen, så alle højde- og overflow-grænser
+   * skal slås fra – ellers printes kun det, der er synligt.
+   */
+  .app-skal,
+  .app-skal * {
+    overflow: visible !important;
+  }
+
+  .app-skal {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .app-indhold {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    flex: none !important;
+  }
+
+  .app-indhold > div {
+    padding: 0 !important;
+    max-width: none !important;
   }
 
   .ingen-print {

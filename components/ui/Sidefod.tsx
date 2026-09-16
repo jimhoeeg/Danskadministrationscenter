@@ -7,7 +7,7 @@ import type { EjerData } from "@/lib/types";
 export function Sidefod({ data }: { data: EjerData }) {
   const { rapportperiode } = data.ejer;
   return (
-    <footer className="mt-10 border-t border-linje pt-4 text-xs text-blaek-daempet">
+    <footer className="mt-8 border-t border-linje pt-4 text-[11px] leading-relaxed text-blaek-daempet">
       <p>
         {rapportperiode.datagrundlag} · Kilde: {rapportperiode.kilde} · {data.ejer.navn}
       </p>

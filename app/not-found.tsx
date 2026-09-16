@@ -13,7 +13,7 @@ export default function IkkeFundet() {
       </p>
       <Link
         href={`/${STANDARD_EJER}`}
-        className="mt-6 inline-flex w-fit items-center rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-moerk"
+        className="mt-6 inline-flex w-fit items-center rounded-md bg-jyske-groen px-4 py-2 text-sm font-medium text-white hover:bg-jyske-moerk"
       >
         Gå til dashboardet
       </Link>

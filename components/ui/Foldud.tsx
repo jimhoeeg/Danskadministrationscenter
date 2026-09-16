@@ -9,20 +9,23 @@ import { useState, type ReactNode } from "react";
 export function Foldud({
   titel,
   startAaben = false,
+  bar = false,
   children,
 }: {
   titel: string;
   startAaben?: boolean;
+  /** Uden topstreg og topmargen – når udfoldningen står alene i et kort. */
+  bar?: boolean;
   children: ReactNode;
 }) {
   const [aaben, setAaben] = useState(startAaben);
   return (
-    <div className="mt-4 border-t border-linje pt-3">
+    <div className={bar ? "" : "mt-4 border-t border-linje pt-3"}>
       <button
         type="button"
         onClick={() => setAaben((v) => !v)}
         aria-expanded={aaben}
-        className="ingen-print flex w-full items-center gap-2 text-left text-sm font-medium text-accent hover:text-accent-moerk"
+        className="ingen-print flex w-full items-center gap-2 text-left text-[13px] font-medium text-jyske-groen hover:underline"
       >
         <span
           aria-hidden="true"

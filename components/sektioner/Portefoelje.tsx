@@ -189,7 +189,7 @@ export function Portefoelje({ data, startAaben = false }: { data: EjerData; star
                 <span>
                   {m.navn}
                   {m.spaerret && (
-                    <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-status-gul-bund px-2 py-0.5 text-[11px] font-medium text-[#8a5d00] ring-1 ring-status-gul/40">
+                    <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-status-gul-bund px-2 py-0.5 text-[11px] font-medium text-status-gul-tekst ring-1 ring-status-gul/30">
                       <span aria-hidden="true">▲</span> Spærret
                     </span>
                   )}
@@ -227,8 +227,8 @@ export function Portefoelje({ data, startAaben = false }: { data: EjerData; star
         />
 
         {spaerrede.length > 0 && (
-          <div className="mt-4 rounded-md border border-status-gul/40 bg-status-gul-bund p-3">
-            <p className="text-sm font-medium text-[#8a5d00]">
+          <div className="mt-4 rounded-lg border border-status-gul/30 bg-status-gul-bund p-3">
+            <p className="text-sm font-medium text-status-gul-tekst">
               <span aria-hidden="true">▲ </span>
               {spaerrede.length === 1
                 ? "Én ejendom kan endnu ikke moderniseres"

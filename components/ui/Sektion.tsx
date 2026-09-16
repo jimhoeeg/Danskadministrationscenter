@@ -1,20 +1,35 @@
 import type { ReactNode } from "react";
 
-/** Overskrift for en fane eller et afsnit på printsiden. */
+/** Sidehoved. `fremhaevet` giver den store velkomst på forsiden. */
 export function Sektionsoverskrift({
   titel,
+  fremhaevet,
   beskrivelse,
+  ekstra,
   handling,
 }: {
   titel: string;
+  /** Vises i dæmpet grøn efter titlen, fx ejerens navn. */
+  fremhaevet?: string;
   beskrivelse?: string;
+  ekstra?: ReactNode;
   handling?: ReactNode;
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-blaek">{titel}</h1>
-        {beskrivelse && <p className="mt-1 text-sm text-blaek-sekundaer">{beskrivelse}</p>}
+        <h1
+          className={`font-bold tracking-tight text-blaek ${
+            fremhaevet ? "text-[26px] leading-tight" : "text-[20px]"
+          }`}
+        >
+          {titel}
+          {fremhaevet && <span className="text-jyske-groen/50"> {fremhaevet}</span>}
+        </h1>
+        {beskrivelse && (
+          <p className="mt-1 text-[13px] leading-relaxed text-blaek-sekundaer">{beskrivelse}</p>
+        )}
+        {ekstra}
       </div>
       {handling && <div className="ingen-print">{handling}</div>}
     </div>
@@ -32,11 +47,11 @@ export function Pladsholder({
   beskrivelse?: string;
 }) {
   return (
-    <div className="print-hel rounded-lg border border-dashed border-linje-kraftig bg-neutral-50/60 p-8 text-center">
-      <p className="text-sm font-medium text-blaek-sekundaer">{overskrift}</p>
-      <p className="mt-2 text-lg font-semibold text-blaek">{besked}</p>
+    <div className="print-hel rounded-kort border border-dashed border-linje-kraftig bg-flade-daempet p-10 text-center">
+      <p className="text-[13px] font-medium text-blaek-sekundaer">{overskrift}</p>
+      <p className="mt-2 text-lg font-bold text-blaek">{besked}</p>
       {beskrivelse && (
-        <p className="mx-auto mt-2 max-w-xl text-sm text-blaek-sekundaer">{beskrivelse}</p>
+        <p className="mx-auto mt-2 max-w-xl text-[13px] text-blaek-sekundaer">{beskrivelse}</p>
       )}
     </div>
   );

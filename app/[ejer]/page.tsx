@@ -1,5 +1,5 @@
 import { hentEjerEllerIkkeFundet } from "@/lib/hent";
-import { Bankoverblik } from "@/components/sektioner/Bankoverblik";
+import { Bankoverblik, Portefoeljestribe } from "@/components/sektioner/Bankoverblik";
 import { Sektionsoverskrift } from "@/components/ui/Sektion";
 
 export default async function BankoverblikSide({
@@ -12,8 +12,10 @@ export default async function BankoverblikSide({
   return (
     <>
       <Sektionsoverskrift
-        titel="Bankoverblik"
-        beskrivelse="Seks nøgletal, periodens konklusion og de forhold der kræver en beslutning."
+        titel="Velkommen tilbage,"
+        fremhaevet={data.ejer.navn}
+        beskrivelse={`Overblik over porteføljen pr. ${data.ejer.rapportperiode.maanedLabel.toLowerCase()}`}
+        ekstra={<Portefoeljestribe data={data} />}
       />
       <Bankoverblik data={data} />
     </>

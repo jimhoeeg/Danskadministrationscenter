@@ -49,7 +49,7 @@ export function StabledeSoejler({
           <XAxis dataKey="navn" {...AKSE} interval={0} height={40} tickMargin={8} />
           <YAxis {...AKSE} width={56} tickFormatter={akseFormater ?? formater} />
           <Tooltip
-            cursor={{ fill: "rgba(42,120,214,0.06)" }}
+            cursor={{ fill: "rgba(11,91,65,0.06)" }}
             content={({ active, payload, label }) => {
               if (!active || !payload?.length) return null;
               const linjer = payload

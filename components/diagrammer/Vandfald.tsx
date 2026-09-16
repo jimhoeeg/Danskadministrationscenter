@@ -46,7 +46,7 @@ export function Vandfald({
           <XAxis dataKey="navn" {...AKSE} interval={0} height={48} tickMargin={8} />
           <YAxis {...AKSE} width={56} tickFormatter={(v: number) => fraTkr(v)} />
           <Tooltip
-            cursor={{ fill: "rgba(42,120,214,0.06)" }}
+            cursor={{ fill: "rgba(11,91,65,0.06)" }}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null;
               const p = payload[0].payload as (typeof data)[number];
@@ -78,7 +78,7 @@ export function Vandfald({
               offset={8}
               className="tal"
               formatter={(v: number) => fraTkr(v)}
-              style={{ fontSize: 11, fill: "#52514e" }}
+              style={{ fontSize: 11, fill: "#5A6059" }}
             />
           </Bar>
         </BarChart>

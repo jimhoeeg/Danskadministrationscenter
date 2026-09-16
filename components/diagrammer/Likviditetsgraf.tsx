@@ -48,12 +48,12 @@ export function Likviditetsgraf({
               value: "mio. kr.",
               angle: -90,
               position: "insideLeft",
-              style: { fill: "#898781", fontSize: 11 },
+              style: { fill: "#8B918A", fontSize: 11 },
             }}
           />
-          <ReferenceLine y={0} stroke="#c3c2b7" />
+          <ReferenceLine y={0} stroke="#D6D3CC" />
           <Tooltip
-            cursor={{ stroke: "#c3c2b7", strokeWidth: 1 }}
+            cursor={{ stroke: "#D6D3CC", strokeWidth: 1 }}
             content={({ active, payload, label }) => {
               if (!active || !payload?.length) return null;
               return (

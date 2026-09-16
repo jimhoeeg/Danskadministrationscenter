@@ -38,7 +38,7 @@ export function Tomgang({ data }: { data: EjerData }) {
             imod tallene, og denne side skifter selv fra pladsholder til indhold, når listen ikke
             længere er tom.
           </p>
-          <p className="mt-4 rounded-md border border-linje bg-neutral-50/60 p-3 text-xs leading-relaxed text-blaek-daempet">
+          <p className="mt-4 rounded-lg border border-linje bg-flade-daempet p-3 text-xs leading-relaxed text-blaek-daempet">
             Indtil videre er lejetab den eneste indikator i rapporten: budget 26/27 lyder på 333
             t.kr., og år til dato er der bogført 124 t.kr. mod et budget på 114 t.kr.
           </p>

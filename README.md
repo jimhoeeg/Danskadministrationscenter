@@ -112,7 +112,10 @@ Browserens "Gem som PDF" giver den fil, der kan sendes videre – omkring 12 A4-
 
 Printreglerne står i `app/globals.css`: hver sektion starter på ny side, diagrammer
 og tabelrækker brækkes aldrig midt over, tabelhoveder gentages på hver side, og
-navigation og knapper udelades. Hver side har datagrundlag og periode i sidefoden.
+navigation og knapper udelades. App-skallen scroller indeni på skærmen, så dens
+højde- og overflow-grænser slås fra i print – ellers ville kun den synlige del
+komme med. Ejernavn og periode indsættes som et sidehoved, der kun vises på
+papir, og hver side har datagrundlag i sidefoden.
 
 De enkelte faner kan også printes hver for sig.
 
@@ -183,18 +186,43 @@ feltet `kildeVaerdier`.
 
 ## Designlinje
 
-Hvid baggrund, én accentfarve (blå) og grøn/gul/rød udelukkende til status.
-Statusfarven står aldrig alene – den følges altid af symbol og tekst, fordi gul kun
-har 1,8:1 kontrast mod hvid.
+Layoutet er et roligt app-layout: fast venstremenu, topbjælke og indhold i
+midten. Paletten er Jyske Banks.
 
-Diagramfarverne er valideret mod hvid baggrund: den kategoriske palette (seks
-slots) og den ordinale blå rampe består alle checks, herunder farveblindhedstest.
-Tre kategoriske farver ligger under 3:1 kontrast, og derfor har hvert diagram både
-synlig legende og en tabel med de præcise tal.
+| Rolle | Farve | Brug |
+|---|---|---|
+| Primær | `#00422E` | Aktivt menupunkt, primærknap, fremhævet tekst |
+| Lime | `#A0D169` | Sparsom accent |
+| Mint | `#ECFBDB` | Lyse flader, sekundær markering |
+| Creme | `#FAF6F0` | Varm papirtone |
+
+Skrifttypen er **Hanken Grotesk** – den frie erstatning for Jyske Banks egen
+skrift. Store tal i vægt 700, overskrifter 600, brødtekst 400.
+
+Den dybe Jyske-grøn bruges som blæk og primærfarve, ikke som "grøn betyder
+godt". Den er både for mørk og for lav i kulørstyrke til at bære identitet i et
+diagram, og den ville kollidere med statusfarverne. Status har derfor sit eget
+sæt, og en statusfarve optræder aldrig uden symbol og tekst – gul har kun 1,8:1
+kontrast mod hvid og kan ikke bære betydning alene.
+
+Diagramfarverne er valideret mod hvid kortbaggrund med dataviz-validatoren:
+
+- **Kategorisk** (identitet – lejetyper, vedligeholdskategorier):
+  `#2A8F6A · #7A5BA6 · #E0722F · #3C7FB0 · #C99A1E · #C2504A`.
+  Alle checks består, værste nabopar ΔE 13,2 ved deuteranopi.
+- **Ordinal grøn rampe** (rangordnet data, fx renterisiko):
+  `#7FBBA1 · #2A8F6A · #0B5B41`. Alle checks består.
+- **Divergerende** (budgetafvigelser): grøn for bedre end budget, orange for
+  dårligere.
+
+Guld ligger under 3:1 kontrast mod hvid, så hvert diagram har både synlig
+legende og en tabel med de præcise tal.
 
 Hver graf har en overskrift, der er en konklusion – "Vedligehold 322 t.kr. over
-budget år til dato", ikke "Vedligehold". Beløb vises i t.kr. eller mio. kr., aldrig
-som rå kroner i et nøgletal.
+budget år til dato", ikke "Vedligehold". Beløb vises i t.kr. eller mio. kr.,
+aldrig som rå kroner i et nøgletal.
+
+Der er ingen dark mode. Det er et bankdokument.
 
 ## Senere faser
 

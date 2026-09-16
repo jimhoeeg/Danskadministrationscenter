@@ -15,6 +15,7 @@
  */
 
 import type { Retning } from "@/lib/types";
+import type { IkonNavn } from "@/components/ui/Ikon";
 
 export interface Taerskel {
   /** Grænsen for grøn. */
@@ -32,6 +33,8 @@ export interface Noegletalsdefinition {
   /** Hvordan tallet regnes ud – vises ved udfoldning, så banken kan følge med. */
   beregning: string;
   enhed: "procent" | "gange" | "kroner";
+  /** Ikonet på nøgletalskortet. */
+  ikon: IkonNavn;
   taerskel: Taerskel | null;
   /** Sand indtil grænserne er aftalt med banken. */
   erForslag: boolean;
@@ -40,6 +43,7 @@ export interface Noegletalsdefinition {
 export const NOEGLETAL: Noegletalsdefinition[] = [
   {
     id: "ltv",
+    ikon: "skjold",
     navn: "Belåningsgrad (LTV)",
     forklaring:
       "Hvor stor en del af ejendommenes værdi der er lånt. Jo lavere, jo mere " +
@@ -51,6 +55,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "icr",
+    ikon: "procent",
     navn: "Rentedækning (ICR)",
     forklaring:
       "Hvor mange gange driftsresultatet kan betale renterne. Under 1,0x kan " +
@@ -62,6 +67,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "nettoafkast",
+    ikon: "kurve",
     navn: "Nettoafkast",
     forklaring:
       "Hvad ejendommene forrenter sig med efter drift, men før finansiering. " +
@@ -73,6 +79,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "variabel_rente",
+    ikon: "advarsel",
     navn: "Andel variabel rente",
     forklaring:
       "Hvor stor en del af gælden der bliver dyrere, hvis renten stiger. " +
@@ -85,6 +92,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "drift_mod_budget",
+    ikon: "drift",
     navn: "Drift mod budget",
     forklaring:
       "Hvor meget resultatet år til dato afviger fra budgettet. Viser om året " +
@@ -96,6 +104,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "likviditet",
+    ikon: "finansiering",
     navn: "Likviditet",
     forklaring:
       "Bankbeholdningen i dag og det laveste punkt i 10-årsprognosen, målt mod " +

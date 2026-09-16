@@ -78,7 +78,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
               l.type === "resultat"
                 ? "font-semibold"
                 : negativAfvigelse
-                  ? "text-[#a8502a]"
+                  ? "text-status-roed-tekst"
                   : undefined
             }
           >
@@ -95,7 +95,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
         <div
           role="group"
           aria-label="Vælg periode"
-          className="inline-flex rounded-md border border-linje-kraftig p-0.5"
+          className="inline-flex rounded-lg border border-linje p-0.5"
         >
           {perioder.map((p) => (
             <button
@@ -105,7 +105,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
               aria-pressed={p.id === periodeId}
               className={`rounded px-3 py-1.5 text-sm font-medium transition-colors ${
                 p.id === periodeId
-                  ? "bg-accent text-white"
+                  ? "bg-jyske-groen text-white"
                   : "text-blaek-sekundaer hover:text-blaek"
               }`}
             >
@@ -117,7 +117,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
         <div
           role="group"
           aria-label="Vælg kolonne til vandfald"
-          className="inline-flex rounded-md border border-linje-kraftig p-0.5"
+          className="inline-flex rounded-lg border border-linje p-0.5"
         >
           {(harAfvigelse
             ? ([
@@ -136,7 +136,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
               aria-pressed={k.id === aktivKolonne}
               className={`rounded px-3 py-1.5 text-sm font-medium transition-colors ${
                 k.id === aktivKolonne
-                  ? "bg-accent-bund text-accent-moerk"
+                  ? "bg-jyske-mint font-semibold text-jyske-groen ring-1 ring-inset ring-jyske-groen/25"
                   : "text-blaek-sekundaer hover:text-blaek"
               }`}
             >

@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
 /**
- * Basiskort. Overskriften skal være en konklusion – ikke en beskrivelse.
- * Fx "Vedligehold 322 t.kr. over budget år til dato", ikke "Vedligehold".
+ * Basiskort: hvid flade, hårfin kant, ingen skygge.
+ * Overskriften skal være en konklusion – ikke en beskrivelse.
  */
 export function Kort({
   overskrift,
@@ -10,25 +10,31 @@ export function Kort({
   handling,
   children,
   className = "",
+  polstring = "p-5",
 }: {
   overskrift?: ReactNode;
   underoverskrift?: ReactNode;
   handling?: ReactNode;
   children: ReactNode;
   className?: string;
+  polstring?: string;
 }) {
   return (
     <section
-      className={`print-kompakt rounded-lg border border-linje bg-white p-5 shadow-[0_1px_2px_rgba(11,11,11,0.04)] print-flad ${className}`}
+      className={`print-kompakt rounded-kort border border-linje bg-flade-kort ${polstring} ${className}`}
     >
       {(overskrift || handling) && (
         <header className="mb-4 flex items-start justify-between gap-4">
           <div>
             {overskrift && (
-              <h2 className="text-base font-semibold leading-snug text-blaek">{overskrift}</h2>
+              <h2 className="text-[15px] font-semibold leading-snug tracking-tight text-blaek">
+                {overskrift}
+              </h2>
             )}
             {underoverskrift && (
-              <p className="mt-1 text-sm text-blaek-sekundaer">{underoverskrift}</p>
+              <p className="mt-1 text-[13px] leading-relaxed text-blaek-sekundaer">
+                {underoverskrift}
+              </p>
             )}
           </div>
           {handling && <div className="ingen-print shrink-0">{handling}</div>}

@@ -34,12 +34,12 @@ export function Tabel<R>({
     <div className="-mx-1 overflow-x-auto">
       <table className="w-full min-w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-linje-kraftig">
+          <tr className="border-b border-linje">
             {kolonner.map((k) => (
               <th
                 key={k.id}
                 scope="col"
-                className={`${pad} text-xs font-medium uppercase tracking-wide text-blaek-daempet ${
+                className={`${pad} text-etiket font-semibold uppercase text-blaek-daempet ${
                   k.taljustering ? "text-right" : "text-left"
                 } ${k.klasse ?? ""}`}
               >
@@ -67,7 +67,7 @@ export function Tabel<R>({
         {sumraekke && (
           <tfoot>
             <tr
-              className={`border-t-2 border-linje-kraftig ${
+              className={`border-t border-linje-kraftig ${
                 fremhaevSum ? "font-semibold" : ""
               }`}
             >

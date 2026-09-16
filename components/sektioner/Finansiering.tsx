@@ -240,7 +240,7 @@ export function Finansiering({
               { navn: "Afdrag starter senere", farve: ACCENT_LYS },
             ]}
           />
-          <div className="mt-3 rounded-md border border-status-gul/40 bg-status-gul-bund p-3">
+          <div className="mt-3 rounded-lg border border-status-gul/30 bg-status-gul-bund p-3">
             <p className="text-xs leading-relaxed text-blaek-sekundaer">
               <span aria-hidden="true">▲ </span>
               Ultimo 2026 øges afdragsprocenten med 17, såfremt lånet i Dannebrogsgade ikke
@@ -337,7 +337,7 @@ export function Finansiering({
             step={FORUDSAETNINGER.stresstest.trin}
             value={stigning}
             onChange={(e) => setStigning(Number(e.target.value))}
-            className="mt-2 w-full accent-accent"
+            className="mt-2 w-full accent-jyske-groen"
             aria-describedby="stresstest-forudsaetninger"
           />
           <div className="tal mt-1 flex justify-between text-xs text-blaek-daempet">
@@ -386,7 +386,7 @@ export function Finansiering({
 
         <div
           id="stresstest-forudsaetninger"
-          className="mt-5 rounded-md border border-linje bg-neutral-50/60 p-4"
+          className="mt-5 rounded-lg border border-linje bg-flade-daempet p-4"
         >
           <p className="text-sm font-medium text-blaek">Beregningen bygger på</p>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-xs leading-relaxed text-blaek-sekundaer">
@@ -429,7 +429,7 @@ export function Finansiering({
                 navn: "Resultat før skat",
                 taljustering: true,
                 celle: (r) => (
-                  <span className={(r.resultatEfter ?? 0) < 0 ? "text-[#a12a2a]" : undefined}>
+                  <span className={(r.resultatEfter ?? 0) < 0 ? "text-status-roed-tekst" : undefined}>
                     {tkr(r.resultatEfter)}
                   </span>
                 ),
@@ -457,7 +457,7 @@ function Stressfelt({
   advar?: boolean;
 }) {
   return (
-    <div className={`rounded-md border p-3 ${advar ? "border-status-roed/30 bg-status-roed-bund" : "border-linje bg-white"}`}>
+    <div className={`rounded-md border p-3 ${advar ? "border-status-roed/30 bg-status-roed-bund" : "border-linje bg-flade-kort"}`}>
       <dt className="text-xs font-medium text-blaek-sekundaer">{navn}</dt>
       <dd className="tal mt-1 text-lg font-semibold text-blaek">
         {advar && (
