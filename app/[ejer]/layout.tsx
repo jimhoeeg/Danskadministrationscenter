@@ -9,6 +9,7 @@ const MENU: Menugruppe[] = [
     titel: "Oversigt",
     punkter: [
       { sti: "", navn: "Bankoverblik", ikon: "oversigt" },
+      { sti: "beslutninger", navn: "Beslutninger", ikon: "skjold" },
       { sti: "portefoelje", navn: "Portefølje", ikon: "portefoelje" },
     ],
   },

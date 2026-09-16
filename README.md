@@ -88,6 +88,28 @@ brugerfladen, indtil de er aftalt med banken. Samme fil rummer
 beregningsforudsætningerne, blandt andet om F-lån med rentetilpasning tæller med i
 "andel variabel rente" (med F5: 73 %, uden: 48 %).
 
+## Beslutninger
+
+`/<ejer>/beslutninger` samler det, ejeren skal tage stilling til. Listen er
+**udledt af data** – der er ingen håndskrevne poster. En post opstår, fordi
+tallene siger, at nogen skal gøre noget:
+
+- et trin i afdragsprofilen med en frist
+- en renterisiko, kilden selv stiller spørgsmål ved
+- et vedligeholdsprojekt der skal bestilles i år
+- et moderniseringspotentiale uden spærring
+- et datahul der spærrer for en beregning
+
+Datahullerne står i samme liste under "Vi venter på data fra DAC". De er også
+opgaver – de er bare administratorens og ikke ejerens. Det gør manglerne
+synlige for begge parter i stedet for at gemme dem i en valideringsrapport.
+
+Hver post har en ansvarlig, en frist, hvad der er på spil i kroner, og et link
+til den side der uddyber. Forsiden viser de fire øverste.
+
+Logikken ligger i `lib/beslutninger.ts`. Tilføjes nye datakilder, kommer nye
+poster af sig selv.
+
 ## Likviditetssimulator
 
 `/<ejer>/simulering` svarer på ét spørgsmål: holder pengene? Tre håndtag —

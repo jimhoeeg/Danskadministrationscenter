@@ -17,7 +17,7 @@ export default async function BankoverblikSide({
         beskrivelse={`Overblik over porteføljen pr. ${data.ejer.rapportperiode.maanedLabel.toLowerCase()}`}
         ekstra={<Portefoeljestribe data={data} />}
       />
-      <Bankoverblik data={data} />
+      <Bankoverblik data={data} ejerId={ejer} />
     </>
   );
 }

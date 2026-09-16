@@ -5,6 +5,7 @@ import { Noegletalskort, Noegletalsforklaringer } from "@/components/ui/Noegleta
 import { Kort } from "@/components/ui/Kort";
 import { Foldud } from "@/components/ui/Foldud";
 import { Ikon } from "@/components/ui/Ikon";
+import { Beslutningsresume } from "./Beslutninger";
 
 const ALVORSSTIL: Record<string, { flade: string; prik: string; maerkat: string }> = {
   hoej: { flade: "border-status-roed/25 bg-status-roed-bund", prik: "bg-status-roed", maerkat: "Høj" },
@@ -17,9 +18,17 @@ const ALVORSSTIL: Record<string, { flade: string; prik: string; maerkat: string 
  * Forsiden: seks nøgletal, periodens konklusion og opmærksomhedspunkterne.
  * Alt andet ligger i menuen, så siden kan læses på under et minut.
  */
-export function Bankoverblik({ data, startAaben = false }: { data: EjerData; startAaben?: boolean }) {
+export function Bankoverblik({
+  data,
+  ejerId,
+  startAaben = false,
+}: {
+  data: EjerData;
+  ejerId: string;
+  startAaben?: boolean;
+}) {
   const noegletal = beregnNoegletal(data);
-  const { periodensOverblik, opmaerksomhedspunkter } = data.kommentar;
+  const { periodensOverblik } = data.kommentar;
 
   return (
     <div className="space-y-6">
@@ -64,35 +73,9 @@ export function Bankoverblik({ data, startAaben = false }: { data: EjerData; sta
           </p>
         </Kort>
 
-        <Kort
-          overskrift="Opmærksomhedspunkter"
-          underoverskrift={`${opmaerksomhedspunkter.length} forhold at være opmærksom på`}
-          className="lg:col-span-2"
-        >
-          <ul className="space-y-2.5">
-            {opmaerksomhedspunkter.map((p) => {
-              const stil = ALVORSSTIL[p.alvor] ?? ALVORSSTIL.info;
-              return (
-                <li key={p.id} className={`rounded-lg border p-3 ${stil.flade}`}>
-                  <div className="flex items-start gap-2">
-                    <span
-                      aria-hidden="true"
-                      className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${stil.prik}`}
-                    />
-                    <div>
-                      <p className="text-[13px] font-semibold text-blaek">
-                        {p.overskrift}
-                        <span className="sr-only"> (alvor: {stil.maerkat})</span>
-                      </p>
-                      <p className="mt-1 text-xs leading-relaxed text-blaek-sekundaer">{p.tekst}</p>
-                      <p className="mt-1.5 text-[11px] text-blaek-daempet">{p.kilde}</p>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </Kort>
+        <div className="lg:col-span-2">
+          <Beslutningsresume data={data} ejerId={ejerId} />
+        </div>
       </div>
     </div>
   );

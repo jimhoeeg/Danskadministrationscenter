@@ -2,6 +2,7 @@ import { hentEjerEllerIkkeFundet } from "@/lib/hent";
 import { beregnNoegletal } from "@/lib/noegletal";
 import { noegletalsvaerdi } from "@/lib/format";
 import { Bankoverblik } from "@/components/sektioner/Bankoverblik";
+import { Beslutninger } from "@/components/sektioner/Beslutninger";
 import { Drift } from "@/components/sektioner/Drift";
 import { Portefoelje } from "@/components/sektioner/Portefoelje";
 import { Vedligehold } from "@/components/sektioner/Vedligehold";
@@ -25,7 +26,12 @@ export default async function PrintSide({ params }: { params: Promise<{ ejer: st
   const noegletal = beregnNoegletal(data);
 
   const sektioner = [
-    { id: "overblik", titel: "Bankoverblik", indhold: <Bankoverblik data={data} /> },
+    { id: "overblik", titel: "Bankoverblik", indhold: <Bankoverblik data={data} ejerId={ejer} /> },
+    {
+      id: "beslutninger",
+      titel: "Beslutninger",
+      indhold: <Beslutninger data={data} ejerId={ejer} />,
+    },
     { id: "drift", titel: "Drift", indhold: <Drift data={data} startAaben /> },
     { id: "portefoelje", titel: "Portefølje", indhold: <Portefoelje data={data} startAaben /> },
     {
