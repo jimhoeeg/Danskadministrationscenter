@@ -104,7 +104,7 @@ function Beslutningskort({ b, ejerId }: { b: Beslutning; ejerId: string }) {
         {b.link && (
           <Link
             href={`/${ejerId}/${b.link.sti}`}
-            className="ingen-print inline-flex items-center gap-1 text-[13px] font-medium text-jyske-groen hover:underline"
+            className="ingen-print inline-flex items-center gap-1 text-[13px] font-medium text-dac-petrol hover:underline"
           >
             {b.link.tekst}
             <Ikon navn="pil" størrelse={14} />
@@ -137,7 +137,7 @@ export function Beslutningsresume({
       handling={
         <Link
           href={`/${ejerId}/beslutninger`}
-          className="inline-flex items-center gap-1 text-[13px] font-medium text-jyske-groen hover:underline"
+          className="inline-flex items-center gap-1 text-[13px] font-medium text-dac-petrol hover:underline"
         >
           Se alle
           <Ikon navn="pil" størrelse={14} />
@@ -166,7 +166,7 @@ export function Beslutningsresume({
       </ul>
       {resten > 0 && (
         <p className="mt-3 text-[12px] text-blaek-sekundaer">
-          <Link href={`/${ejerId}/beslutninger`} className="text-jyske-groen hover:underline">
+          <Link href={`/${ejerId}/beslutninger`} className="text-dac-petrol hover:underline">
             {resten} punkter mere
           </Link>{" "}
           med længere frist.

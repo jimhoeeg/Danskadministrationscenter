@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import type { Likviditetspunkt } from "@/lib/beregninger";
 import { mio } from "@/lib/format";
-import { ACCENT, ACCENT_LYS, AKSE, GITTER } from "./tema";
+import { ACCENT, ACCENT_LYS, AKSE, BLAEK, CHROME, GITTER } from "./tema";
 import { Diagramramme, Legende, Vaerktoejstip } from "./Ramme";
 
 /**
@@ -48,12 +48,12 @@ export function Likviditetsgraf({
               value: "mio. kr.",
               angle: -90,
               position: "insideLeft",
-              style: { fill: "#8B918A", fontSize: 11 },
+              style: { fill: BLAEK.daempet, fontSize: 11 },
             }}
           />
-          <ReferenceLine y={0} stroke="#D6D3CC" />
+          <ReferenceLine y={0} stroke={CHROME.akse} />
           <Tooltip
-            cursor={{ stroke: "#D6D3CC", strokeWidth: 1 }}
+            cursor={{ stroke: CHROME.akse, strokeWidth: 1 }}
             content={({ active, payload, label }) => {
               if (!active || !payload?.length) return null;
               return (

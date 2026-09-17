@@ -11,20 +11,20 @@ html {
 }
 
 body {
-  background: #fafaf8;
-  color: #11150f;
+  background: #f7f9f9;
+  color: #1b2322;
 }
 
 /* Fokusmarkering i Jyske-grøn – synlig, men diskret. */
 :where(a, button, input, [tabindex]):focus-visible {
-  outline: 2px solid #00422e;
+  outline: 2px solid #005a5b;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* Skydere: grøn, med et hit-område der er til at ramme. */
 input[type="range"] {
-  accent-color: #00422e;
+  accent-color: #005a5b;
   height: 22px;
   cursor: pointer;
 }

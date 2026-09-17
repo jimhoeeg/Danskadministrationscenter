@@ -115,7 +115,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
               aria-pressed={p.id === periodeId}
               className={`rounded px-3 py-1.5 text-sm font-medium transition-colors ${
                 p.id === periodeId
-                  ? "bg-jyske-groen text-white"
+                  ? "bg-dac-petrol text-white"
                   : "text-blaek-sekundaer hover:text-blaek"
               }`}
             >
@@ -146,7 +146,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
               aria-pressed={k.id === aktivKolonne}
               className={`rounded px-3 py-1.5 text-sm font-medium transition-colors ${
                 k.id === aktivKolonne
-                  ? "bg-jyske-mint font-semibold text-jyske-groen ring-1 ring-inset ring-jyske-groen/25"
+                  ? "bg-dac-lys font-semibold text-dac-petrol ring-1 ring-inset ring-dac-petrol/25"
                   : "text-blaek-sekundaer hover:text-blaek"
               }`}
             >

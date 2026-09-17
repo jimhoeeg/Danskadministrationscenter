@@ -106,7 +106,7 @@ export function Simulering({ data, startAaben = false }: { data: EjerData; start
               aria-pressed={valgtPreset?.id === p.id}
               className={`rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors ${
                 valgtPreset?.id === p.id
-                  ? "bg-jyske-groen text-white"
+                  ? "bg-dac-petrol text-white"
                   : "bg-flade-daempet text-blaek-sekundaer hover:text-blaek"
               }`}
             >
@@ -128,7 +128,9 @@ export function Simulering({ data, startAaben = false }: { data: EjerData; start
           trin={0.25}
           yderpunkter={["+0", "+4 procentpoint"]}
           onSkift={(v) => saet({ rentestigningPp: v })}
-          hjaelp={`Rammer kun de ${pct(ramt, 0)} af gælden, der er variabelt forrentet eller F-lån – ${mio((gaeld * ramt) / 100)} af ${mio(gaeld)}.`}
+          hjaelp={saetning(
+            `Rammer kun de ${pct(ramt, 0)} af gælden, der er variabelt forrentet eller F-lån – ${mio((gaeld * ramt) / 100)} af ${mio(gaeld)}.`,
+          )}
         />
         <Skyder
           id="tomgang"
@@ -165,7 +167,7 @@ export function Simulering({ data, startAaben = false }: { data: EjerData; start
           type="checkbox"
           checked={s.medregnAfdragsprofil}
           onChange={(e) => saet({ medregnAfdragsprofil: e.target.checked })}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-jyske-groen"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-dac-petrol"
         />
         <span>
           <span className="text-[13px] font-medium text-blaek">
@@ -322,7 +324,7 @@ export function Simulering({ data, startAaben = false }: { data: EjerData; start
             <button
               type="button"
               onClick={() => setF(standard)}
-              className="rounded-lg border border-linje px-3 py-1.5 text-[13px] font-medium text-blaek-sekundaer transition-colors hover:border-jyske-groen hover:text-jyske-groen"
+              className="rounded-lg border border-linje px-3 py-1.5 text-[13px] font-medium text-blaek-sekundaer transition-colors hover:border-dac-petrol hover:text-dac-petrol"
             >
               Nulstil til de afledte værdier
             </button>

@@ -24,7 +24,9 @@ export function Sektionsoverskrift({
           }`}
         >
           {titel}
-          {fremhaevet && <span className="text-jyske-groen/50"> {fremhaevet}</span>}
+          {/* /65 og ikke /50: ved 50 % rammer ejerens navn kun 2,5:1 mod hvid,
+              under de 3:1 der kræves for stor tekst. */}
+          {fremhaevet && <span className="text-dac-petrol/65"> {fremhaevet}</span>}
         </h1>
         {beskrivelse && (
           <p className="mt-1 text-[13px] leading-relaxed text-blaek-sekundaer">{beskrivelse}</p>

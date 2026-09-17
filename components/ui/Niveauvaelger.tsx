@@ -24,7 +24,7 @@ export function Niveauvaelger() {
           aria-pressed={niveau === v}
           className={`rounded px-2.5 py-1 text-[13px] font-medium transition-colors ${
             niveau === v
-              ? "bg-jyske-groen text-white"
+              ? "bg-dac-petrol text-white"
               : "text-blaek-sekundaer hover:text-blaek"
           }`}
         >

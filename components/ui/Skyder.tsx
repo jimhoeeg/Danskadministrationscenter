@@ -36,7 +36,7 @@ export function Skyder({
         <label htmlFor={id} className="text-[13px] font-medium text-blaek">
           {spoergsmaal}
         </label>
-        <span className="tal shrink-0 text-lg font-bold tracking-tight text-jyske-groen">
+        <span className="tal shrink-0 text-lg font-bold tracking-tight text-dac-petrol">
           {visning}
         </span>
       </div>

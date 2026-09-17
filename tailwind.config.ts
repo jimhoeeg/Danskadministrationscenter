@@ -1,42 +1,49 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Designlinje: Jyske Banks palette lagt ind i et lyst, roligt app-layout.
+ * Designlinje: Dansk Administrationscenters egen palette i et lyst app-layout.
  *
- * Den dybe Jyske-grøn (#00422E) fungerer som blæk og primærfarve – ikke som
- * "grøn betyder godt". Statusfarverne er et selvstændigt sæt, og de optræder
- * aldrig uden symbol og tekst.
+ * Farverne er trukket direkte ud af logofilen: petrol (#005A5B) er den mørke
+ * bygning, turkis (#009DA7) er wordmarket. Petrol er blæk og primærfarve –
+ * ikke "grøn betyder godt".
  *
- * Diagramfarverne er valideret mod hvid kortbaggrund med dataviz-validatoren:
- * kategorisk (6 slots) og den ordinale grønne rampe består alle checks.
+ * Det er netop pointen i skiftet fra den tidligere Jyske-grøn: da primærfarven
+ * var grøn, kunne en grøn flade både betyde "her er du" og "det går godt".
+ * Med petrol som brand er grøn frigjort til kun at være status.
+ *
+ * Statusfarverne er et selvstændigt sæt og optræder aldrig uden symbol og
+ * tekst. Diagramfarverne ligger i components/diagrammer/tema.ts og er
+ * valideret med dataviz-validatoren.
  */
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        /* Jyske Banks faste palette */
-        jyske: {
-          groen: "#00422E",
-          moerk: "#002F20",
-          lime: "#A0D169",
-          mint: "#ECFBDB",
-          creme: "#FAF6F0",
+        /* DAC's egen palette, aflæst i logofilen */
+        dac: {
+          petrol: "#005A5B",
+          moerk: "#00423F",
+          turkis: "#009DA7",
+          /* Turkis er 3,3:1 mod hvid – for lav til tekst. Denne er 5,4:1. */
+          "turkis-tekst": "#00767D",
+          lys: "#E4F4F4",
+          antracit: "#393937",
         },
         /* Flader */
         flade: {
-          side: "#FAFAF8",
+          side: "#F7F9F9",
           kort: "#FFFFFF",
-          daempet: "#F5F4F0",
+          daempet: "#EFF4F4",
         },
         linje: {
-          DEFAULT: "#EAE8E3",
-          kraftig: "#D6D3CC",
+          DEFAULT: "#E2E9E9",
+          kraftig: "#CBD6D6",
         },
         blaek: {
-          DEFAULT: "#11150F",
-          sekundaer: "#5A6059",
-          daempet: "#8B918A",
+          DEFAULT: "#1B2322",
+          sekundaer: "#556160",
+          daempet: "#87918F",
         },
         /* Status – altid sammen med symbol og tekst */
         status: {

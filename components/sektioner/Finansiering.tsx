@@ -18,7 +18,7 @@ import { Tabel } from "@/components/ui/Tabel";
 import { Ringdiagram } from "@/components/diagrammer/Ringdiagram";
 import { Soejler, VandretteSoejler } from "@/components/diagrammer/Soejler";
 import { Likviditetsgraf } from "@/components/diagrammer/Likviditetsgraf";
-import { ACCENT, ACCENT_LYS, RAMPE, seriefarve } from "@/components/diagrammer/tema";
+import { ACCENT, ACCENT_LYS, OEVRIGE, RAMPE, seriefarve } from "@/components/diagrammer/tema";
 
 const RENTEKATEGORI_NAVN: Record<string, string> = {
   fast: "Fast rente",
@@ -31,7 +31,7 @@ const RENTEKATEGORI_FARVE: Record<string, string> = {
   fast: RAMPE[0],
   rentetilpasning_kort: RAMPE[1],
   variabel: RAMPE[2],
-  ukendt: "#c3c2b7",
+  ukendt: OEVRIGE,
 };
 
 export function Finansiering({
@@ -337,7 +337,7 @@ export function Finansiering({
             step={FORUDSAETNINGER.stresstest.trin}
             value={stigning}
             onChange={(e) => setStigning(Number(e.target.value))}
-            className="mt-2 w-full accent-jyske-groen"
+            className="mt-2 w-full accent-dac-petrol"
             aria-describedby="stresstest-forudsaetninger"
           />
           <div className="tal mt-1 flex justify-between text-xs text-blaek-daempet">

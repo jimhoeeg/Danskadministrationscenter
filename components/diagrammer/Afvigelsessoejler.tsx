@@ -3,7 +3,7 @@
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, ReferenceLine, Tooltip, XAxis, YAxis } from "recharts";
 import type { Budgetafvigelse } from "@/lib/beregninger";
 import { afvigelsePct, fraTkr } from "@/lib/format";
-import { AKSE, DIVERGERENDE, GITTER } from "./tema";
+import { AKSE, BLAEK, CHROME, DIVERGERENDE, GITTER } from "./tema";
 import { Diagramramme, Legende, Vaerktoejstip } from "./Ramme";
 
 /**
@@ -35,9 +35,9 @@ export function Afvigelsessoejler({
             dataKey="navn"
             {...AKSE}
             width={160}
-            tick={{ fill: "#5A6059", fontSize: 11 }}
+            tick={{ fill: BLAEK.sekundaer, fontSize: 11 }}
           />
-          <ReferenceLine x={0} stroke="#D6D3CC" />
+          <ReferenceLine x={0} stroke={CHROME.akse} />
           <Tooltip
             cursor={{ fill: "rgba(11,91,65,0.06)" }}
             content={({ active, payload }) => {
@@ -74,7 +74,7 @@ export function Afvigelsessoejler({
               offset={8}
               className="tal"
               formatter={(v: number) => fraTkr(v)}
-              style={{ fontSize: 11, fill: "#5A6059" }}
+              style={{ fontSize: 11, fill: BLAEK.sekundaer }}
             />
           </Bar>
         </BarChart>

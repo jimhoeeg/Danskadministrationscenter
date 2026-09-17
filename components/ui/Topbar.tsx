@@ -72,7 +72,7 @@ export function Ejervaelger({
               <a
                 href={`/${e.id}`}
                 className={`block px-3 py-2 text-sm transition-colors hover:bg-flade-daempet ${
-                  e.id === aktuel ? "font-semibold text-jyske-groen" : "text-blaek-sekundaer"
+                  e.id === aktuel ? "font-semibold text-dac-petrol" : "text-blaek-sekundaer"
                 }`}
               >
                 {e.navn}

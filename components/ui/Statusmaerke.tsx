@@ -72,6 +72,6 @@ export function statustekst(status: Status): string {
 
 export function statusfarve(status: Status): string {
   return (
-    { groen: "#1E7F52", gul: "#E0A020", roed: "#C2504A", ukendt: "#8B918A" } as const
+    { groen: "#1E7F52", gul: "#E0A020", roed: "#C2504A", ukendt: "#87918F" } as const
   )[status];
 }

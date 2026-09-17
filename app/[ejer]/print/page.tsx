@@ -54,7 +54,7 @@ export default async function PrintSide({ params }: { params: Promise<{ ejer: st
 
   return (
     <>
-      <div className="ingen-print mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-jyske-groen/20 bg-jyske-mint p-4">
+      <div className="ingen-print mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-dac-petrol/20 bg-dac-lys p-4">
         <p className="text-sm text-blaek-sekundaer">
           Hele rapporten i ét dokument med alle tabeller foldet ud. Udskriv til PDF, og send den
           direkte videre.

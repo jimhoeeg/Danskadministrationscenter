@@ -22,8 +22,8 @@ export function Fortaelling({ data, ejerId }: { data: EjerData; ejerId: string }
   const vigtigste = udledBeslutninger(data).find((b) => !b.manglerData);
 
   return (
-    <section className="print-hel rounded-kort border border-jyske-groen/15 bg-jyske-mint/40 p-5">
-      <h2 className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-wide text-jyske-groen">
+    <section className="print-hel rounded-kort border border-dac-petrol/15 bg-dac-lys/40 p-5">
+      <h2 className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-wide text-dac-petrol">
         <Ikon navn="oversigt" størrelse={15} />
         Sådan står det til
       </h2>
@@ -53,7 +53,7 @@ export function Fortaelling({ data, ejerId }: { data: EjerData; ejerId: string }
             Det vigtigste lige nu:{" "}
             <Link
               href={`/${ejerId}/beslutninger`}
-              className="font-semibold text-jyske-groen underline decoration-jyske-groen/30 underline-offset-2 hover:decoration-jyske-groen"
+              className="font-semibold text-dac-petrol underline decoration-dac-petrol/30 underline-offset-2 hover:decoration-dac-petrol"
             >
               {vigtigste.titel}
             </Link>

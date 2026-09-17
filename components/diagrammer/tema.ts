@@ -2,59 +2,79 @@
  * Fælles farver og akseopsætning for alle diagrammer.
  *
  * Paletterne er valideret med dataviz-validatoren mod hvid kortbaggrund:
- * - kategorisk (6 slots): alle checks PASS, værste nabopar ΔE 13,2 (deutan)
- * - ordinal grøn rampe (3 trin): alle checks PASS
  *
- * Jyske-grøn (#00422E) er bevidst ikke en dataserie. Den er for mørk og for
- * lav i kulørstyrke til at bære identitet i et diagram og bruges derfor som
- * blæk, aktiv menuflade og primærknap.
+ *   kategorisk (4 slots), --pairs all .... alle checks PASS
+ *                                          værste par ΔE 11,2 (deutan),
+ *                                          normalsyn 18,5
+ *   ordinal turkis-rampe (3 trin) ........ alle checks PASS
  *
- * Guld (#C99A1E) ligger under 3:1 kontrast mod hvid, så hvert diagram har
- * både synlig legende og en tabel med de præcise tal.
+ * To ting er bevidste valg og ikke forglemmelser:
+ *
+ * 1. Petrol (#005A5B) er ikke en dataserie. Den er for mørk til at bære
+ *    identitet i et diagram og bruges som blæk, aktiv menuflade og primærknap.
+ *
+ * 2. Der er fire kategoriske slots, ikke seks. Et femte og sjette slot kunne
+ *    ikke findes, uden at et par faldt under normalsynsgrænsen – og data har
+ *    fire lejetyper. Flere kategorier foldes derfor sammen til "Øvrige"
+ *    fremfor at få en opfundet farve; se seriefarve().
+ *
+ * Guld (#C99A1E) ligger på 2,58:1 mod hvid, altså under 3:1. Validatorens
+ * betingede lempelse gælder, fordi hvert diagram har både synlig legende og
+ * en tabel med de præcise tal.
  */
 
 /** Kategoriske farver – identitet. Tildeles i fast rækkefølge, aldrig cyklisk. */
-export const SERIE = ["#2A8F6A", "#7A5BA6", "#E0722F", "#3C7FB0", "#C99A1E", "#C2504A"] as const;
+export const SERIE = ["#009DA7", "#7A5BA6", "#C99A1E", "#C2504A"] as const;
 
-/** Ordinal grøn rampe – til data med naturlig rangorden, fx renterisiko. */
-export const RAMPE = ["#7FBBA1", "#2A8F6A", "#0B5B41"] as const;
+/**
+ * Opsamlingsfarve til "Øvrige". Bevidst gråtonet: den ligger under
+ * kulørgulvet, netop så den træder tilbage og ikke læses som en egen kategori.
+ * Den optræder aldrig uden etiket.
+ */
+export const OEVRIGE = "#8A9290";
 
-/** Brandfarver. */
-export const JYSKE = {
-  groen: "#00422E",
-  lime: "#A0D169",
-  mint: "#ECFBDB",
-  creme: "#FAF6F0",
-} as const;
+/** Ordinal turkis-rampe – til data med naturlig rangorden, fx renterisiko. */
+export const RAMPE = ["#6FB9BE", "#009DA7", "#00545A"] as const;
 
 /**
  * Primær dataserie og dens lysere modstykke.
- * ACCENT er den mørke grøn til linjer, niveauer og fremhævede søjler.
- * SOEJLE er standardfyldet for en enkelt serie – lysere, så en række søjler
+ * ACCENT er petrol til linjer, niveauer og fremhævede søjler.
+ * SOEJLE er standardfyldet for en enkelt serie – turkis, så en række søjler
  * ikke bliver en tung blok.
  */
-export const ACCENT = "#0B5B41";
-export const SOEJLE = "#2A8F6A";
-export const ACCENT_LYS = "#7FBBA1";
+export const ACCENT = "#005A5B";
+export const SOEJLE = "#009DA7";
+export const ACCENT_LYS = "#6FB9BE";
 
-/** Divergerende par: grøn = bedre end budget, orange = dårligere. */
+/**
+ * Divergerende par: grøn = bedre end budget, orange = dårligere.
+ *
+ * Parret ligger på ΔE 6,9 under deutan, altså i gulvbåndet. Det er tilladt,
+ * fordi søjlerne desuden koder fortegnet ved at pege hver sin vej ud fra nul,
+ * og fordi legenden altid står der.
+ */
 export const DIVERGERENDE = { bedre: "#2A8F6A", vaerre: "#E0722F" } as const;
 
 export const BLAEK = {
-  primaer: "#11150F",
-  sekundaer: "#5A6059",
-  daempet: "#8B918A",
+  primaer: "#1B2322",
+  sekundaer: "#556160",
+  daempet: "#87918F",
 } as const;
 
 export const CHROME = {
   overflade: "#ffffff",
-  gitter: "#EAE8E3",
-  akse: "#D6D3CC",
+  gitter: "#E2E9E9",
+  akse: "#CBD6D6",
 } as const;
 
-/** Farve til en kategori ud fra dens plads i en fast sorteret liste. */
+/**
+ * Farve til en kategori ud fra dens plads i en fast sorteret liste.
+ *
+ * Ud over fjerde plads returneres opsamlingsfarven. Der cykles aldrig: to
+ * kategorier med samme farve er værre end en ærlig "Øvrige"-gruppe.
+ */
 export function seriefarve(indeks: number): string {
-  return SERIE[indeks % SERIE.length];
+  return SERIE[indeks] ?? OEVRIGE;
 }
 
 /** Hairline-gitter, aldrig stiplet. */

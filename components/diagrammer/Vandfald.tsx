@@ -3,7 +3,7 @@
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, Tooltip, XAxis, YAxis } from "recharts";
 import type { Vandfaldspunkt } from "@/lib/beregninger";
 import { fraTkr } from "@/lib/format";
-import { ACCENT, ACCENT_LYS, AKSE, GITTER } from "./tema";
+import { ACCENT, ACCENT_LYS, AKSE, BLAEK, GITTER } from "./tema";
 import { Diagramramme, Legende, Vaerktoejstip } from "./Ramme";
 
 /**
@@ -78,7 +78,7 @@ export function Vandfald({
               offset={8}
               className="tal"
               formatter={(v: number) => fraTkr(v)}
-              style={{ fontSize: 11, fill: "#5A6059" }}
+              style={{ fontSize: 11, fill: BLAEK.sekundaer }}
             />
           </Bar>
         </BarChart>

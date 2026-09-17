@@ -69,7 +69,7 @@ export function Sidebar({
                         aria-current={aktiv ? "page" : undefined}
                         className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors ${
                           aktiv
-                            ? "bg-jyske-groen font-semibold text-white"
+                            ? "bg-dac-petrol font-semibold text-white"
                             : "text-blaek-sekundaer hover:bg-flade-daempet hover:text-blaek"
                         }`}
                       >

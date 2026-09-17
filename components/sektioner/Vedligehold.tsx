@@ -85,7 +85,7 @@ export function Vedligehold({
                 aria-pressed={valgtAar === null}
                 className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
                   valgtAar === null
-                    ? "bg-jyske-groen text-white"
+                    ? "bg-dac-petrol text-white"
                     : "bg-flade-daempet text-blaek-sekundaer hover:text-blaek"
                 }`}
               >
@@ -101,7 +101,7 @@ export function Vedligehold({
                     aria-pressed={valgtAar === a.aar}
                     className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
                       valgtAar === a.aar
-                        ? "bg-jyske-groen text-white"
+                        ? "bg-dac-petrol text-white"
                         : "bg-flade-daempet text-blaek-sekundaer hover:text-blaek"
                     }`}
                   >

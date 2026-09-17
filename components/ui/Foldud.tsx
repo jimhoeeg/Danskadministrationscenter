@@ -25,7 +25,7 @@ export function Foldud({
         type="button"
         onClick={() => setAaben((v) => !v)}
         aria-expanded={aaben}
-        className="ingen-print flex w-full items-center gap-2 text-left text-[13px] font-medium text-jyske-groen hover:underline"
+        className="ingen-print flex w-full items-center gap-2 text-left text-[13px] font-medium text-dac-petrol hover:underline"
       >
         <span
           aria-hidden="true"

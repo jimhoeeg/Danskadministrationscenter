@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { mio } from "@/lib/format";
-import { ACCENT, ACCENT_LYS, AKSE, GITTER } from "./tema";
+import { ACCENT, ACCENT_LYS, AKSE, BLAEK, CHROME, GITTER } from "./tema";
 import { Diagramramme, Legende, Vaerktoejstip } from "./Ramme";
 
 export interface Simuleringspunkt {
@@ -48,12 +48,12 @@ export function Simuleringsgraf({
             <ReferenceArea
               x1={foersteFremskrevne}
               x2={sidste}
-              fill="#11150F"
+              fill={BLAEK.primaer}
               fillOpacity={0.035}
               label={{
                 value: "Fremskrevet",
                 position: "insideTop",
-                fill: "#8B918A",
+                fill: BLAEK.daempet,
                 fontSize: 11,
               }}
             />
@@ -67,7 +67,7 @@ export function Simuleringsgraf({
               value: "mio. kr.",
               angle: -90,
               position: "insideLeft",
-              style: { fill: "#8B918A", fontSize: 11 },
+              style: { fill: BLAEK.daempet, fontSize: 11 },
             }}
           />
           <ReferenceLine
@@ -82,7 +82,7 @@ export function Simuleringsgraf({
             }}
           />
           <Tooltip
-            cursor={{ stroke: "#D6D3CC", strokeWidth: 1 }}
+            cursor={{ stroke: CHROME.akse, strokeWidth: 1 }}
             content={({ active, payload, label }) => {
               if (!active || !payload?.length) return null;
               const p = payload[0].payload as Simuleringspunkt;

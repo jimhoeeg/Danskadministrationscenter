@@ -1,7 +1,7 @@
 "use client";
 
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, ReferenceLine, Tooltip, XAxis, YAxis } from "recharts";
-import { AKSE, GITTER, SOEJLE } from "./tema";
+import { AKSE, BLAEK, GITTER, SOEJLE } from "./tema";
 import { Diagramramme, Legende, Vaerktoejstip } from "./Ramme";
 
 export interface Soejlepunkt {
@@ -76,7 +76,7 @@ export function Soejler({
                 offset={8}
                 className="tal"
                 formatter={(v: number) => formater(v)}
-                style={{ fontSize: 11, fill: "#5A6059" }}
+                style={{ fontSize: 11, fill: BLAEK.sekundaer }}
               />
             )}
           </Bar>
@@ -120,19 +120,19 @@ export function VandretteSoejler({
           dataKey="navn"
           {...AKSE}
           width={200}
-          tick={{ fill: "#5A6059", fontSize: 11 }}
+          tick={{ fill: BLAEK.sekundaer, fontSize: 11 }}
         />
         {reference && (
           <ReferenceLine
             x={reference.vaerdi}
-            stroke="#5A6059"
+            stroke={BLAEK.sekundaer}
             strokeWidth={1.5}
             ifOverflow="extendDomain"
             label={(props: { viewBox?: { x?: number; y?: number } }) => (
               <text
                 x={(props.viewBox?.x ?? 0) + 6}
                 y={(props.viewBox?.y ?? 0) - 8}
-                fill="#5A6059"
+                fill={BLAEK.sekundaer}
                 fontSize={11}
               >
                 {reference.navn}
@@ -166,7 +166,7 @@ export function VandretteSoejler({
             offset={8}
             className="tal"
             formatter={(v: number) => formater(v)}
-            style={{ fontSize: 11, fill: "#5A6059" }}
+            style={{ fontSize: 11, fill: BLAEK.sekundaer }}
           />
         </Bar>
       </BarChart>
