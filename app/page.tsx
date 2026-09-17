@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { listEjere } from "@/lib/data";
+import { Logo } from "@/components/ui/Logo";
 
 /**
  * Forsiden viser de ejere, der ligger i data/.
@@ -12,10 +13,8 @@ export default async function Forside() {
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-16">
-      <p className="text-xs font-medium uppercase tracking-wider text-blaek-daempet">
-        Dansk Administrationscenter
-      </p>
-      <h1 className="mt-1 text-2xl font-semibold tracking-tight text-blaek">Ejendomsdashboard</h1>
+      <Logo bredde={210} />
+      <h1 className="mt-6 text-2xl font-semibold tracking-tight text-blaek">Ejendomsdashboard</h1>
       <p className="mt-2 text-sm leading-relaxed text-blaek-sekundaer">
         Vælg en ejer for at se seneste rapport.
       </p>

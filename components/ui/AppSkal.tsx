@@ -7,6 +7,7 @@ import { Sidebar, type Menugruppe } from "./Sidebar";
 import { Topbar, Ejervaelger } from "./Topbar";
 import { Printknap } from "./Printknap";
 import { Ikon } from "./Ikon";
+import { Logo } from "./Logo";
 import { Niveauvaelger } from "./Niveauvaelger";
 import { Detaljeniveauudbyder } from "@/lib/detaljeniveau";
 
@@ -68,14 +69,21 @@ export function AppSkal({
         <main className="app-indhold flex-1 overflow-y-auto">
           <div className="mx-auto max-w-indhold px-5 py-6 sm:px-7">
             {/* Sidehoved til PDF'en – skærmen har topbjælken i stedet. */}
+            {/*
+              Selve .kun-print-elementet tvinges til display:block i print,
+              så flex-layoutet skal ligge et niveau inde.
+            */}
             <div className="kun-print mb-6 border-b border-linje pb-3">
-              <p className="text-etiket font-semibold uppercase text-blaek-daempet">
-                {sidehoved.administrator}
-              </p>
-              <p className="mt-0.5 text-lg font-bold tracking-tight text-blaek">
-                {sidehoved.navn}
-              </p>
-              <p className="text-[13px] text-blaek-sekundaer">{sidehoved.periode}</p>
+              <div className="flex items-end justify-between gap-6">
+                <div>
+                  <p className="text-lg font-bold tracking-tight text-blaek">{sidehoved.navn}</p>
+                  <p className="text-[13px] text-blaek-sekundaer">{sidehoved.periode}</p>
+                  <p className="mt-1 text-[11px] text-blaek-daempet">
+                    Administreret af {sidehoved.administrator}
+                  </p>
+                </div>
+                <Logo bredde={150} className="shrink-0" />
+              </div>
             </div>
             {children}
           </div>

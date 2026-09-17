@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Ikon, type IkonNavn } from "./Ikon";
+import { Logo } from "./Logo";
 
 export interface Menupunkt {
   sti: string;
@@ -43,25 +44,13 @@ export function Sidebar({
       aria-label="Hovedmenu"
     >
       <div className="w-[248px]">
-        <div className="flex h-16 items-center gap-3 border-b border-linje px-5">
-          <span
-            aria-hidden="true"
-            className="grid h-8 w-8 place-items-center rounded-lg bg-jyske-groen text-jyske-mint"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M4 20h16M7 20V10l5-4 5 4v10"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-          <span className="text-etiket font-semibold uppercase text-blaek-sekundaer">
-            Investorportal
-          </span>
-        </div>
+        <Link
+          href={`/${ejerId}`}
+          className="flex h-16 items-center border-b border-linje px-5"
+          aria-label="Forside"
+        >
+          <Logo bredde={168} />
+        </Link>
 
         <nav className="px-3 py-4">
           {grupper.map((gruppe) => (
