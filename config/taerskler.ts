@@ -35,6 +35,11 @@ export interface Noegletalsdefinition {
   enhed: "procent" | "gange" | "kroner";
   /** Ikonet på nøgletalskortet. */
   ikon: IkonNavn;
+  /**
+   * Nøgletallet formuleret som det spørgsmål, ejeren faktisk stiller.
+   * Bruges på det simple niveau i stedet for fagudtrykket.
+   */
+  simpelNavn: string;
   taerskel: Taerskel | null;
   /** Sand indtil grænserne er aftalt med banken. */
   erForslag: boolean;
@@ -43,6 +48,7 @@ export interface Noegletalsdefinition {
 export const NOEGLETAL: Noegletalsdefinition[] = [
   {
     id: "ltv",
+    simpelNavn: "Hvor meget er lånt?",
     ikon: "skjold",
     navn: "Belåningsgrad (LTV)",
     forklaring:
@@ -55,6 +61,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "icr",
+    simpelNavn: "Kan driften betale renterne?",
     ikon: "procent",
     navn: "Rentedækning (ICR)",
     forklaring:
@@ -67,6 +74,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "nettoafkast",
+    simpelNavn: "Hvad forrenter ejendommene?",
     ikon: "kurve",
     navn: "Nettoafkast",
     forklaring:
@@ -79,6 +87,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "variabel_rente",
+    simpelNavn: "Hvor følsom er du over for renten?",
     ikon: "advarsel",
     navn: "Andel variabel rente",
     forklaring:
@@ -92,6 +101,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "drift_mod_budget",
+    simpelNavn: "Går året som planlagt?",
     ikon: "drift",
     navn: "Drift mod budget",
     forklaring:
@@ -104,6 +114,7 @@ export const NOEGLETAL: Noegletalsdefinition[] = [
   },
   {
     id: "likviditet",
+    simpelNavn: "Er der penge på kontoen?",
     ikon: "finansiering",
     navn: "Likviditet",
     forklaring:

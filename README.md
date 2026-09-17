@@ -88,6 +88,30 @@ brugerfladen, indtil de er aftalt med banken. Samme fil rummer
 beregningsforudsætningerne, blandt andet om F-lån med rentetilpasning tæller med i
 "andel variabel rente" (med F5: 73 %, uden: 48 %).
 
+## To detaljeniveauer
+
+Brugerfladen har en vælger i topbjælken: **Enkel** og **Detaljeret**. Enkel er
+standard, og valget gemmes i browseren.
+
+På det enkle niveau:
+
+- Nøgletallene bærer det spørgsmål, ejeren faktisk stiller — "Hvor meget er
+  lånt?" frem for "Belåningsgrad (LTV)" — og svaret står i almindeligt dansk
+  under tallet.
+- Hovedtallet skifter, hvor fagenheden ikke siger noget. "1,05x" bliver til
+  "727 t.kr.", og "1,73x" bliver til "1,7 gange".
+- Fagudtryk i graferne oversættes. EBITDA hedder "Overskud før renter".
+- De tunge afsnit er skjult: hele resultatopgørelsen, GI-tabellen med §119 og
+  §120, og simulatorens antagelsespanel.
+
+Forsiden åbner med **"Sådan står det til"** — porteføljen i fire sætninger uden
+et eneste fagudtryk, med de vigtigste tal fremhævet og et link til den mest
+presserende beslutning. Alt er udledt.
+
+Det skjulte indhold er **ikke** fjernet fra dokumentet: `KunDetaljeret` lader det
+stå med klassen `kun-print`, så den samlede rapport til banken altid indeholder
+alt, uanset hvilket niveau ejeren har valgt på skærmen.
+
 ## Beslutninger
 
 `/<ejer>/beslutninger` samler det, ejeren skal tage stilling til. Listen er

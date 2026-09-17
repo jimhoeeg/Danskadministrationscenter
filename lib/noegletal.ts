@@ -17,6 +17,14 @@ import {
 
 export interface Noegletal {
   definition: Noegletalsdefinition;
+  /** Svaret i almindeligt dansk – bruges på det simple niveau. */
+  simpelSvar: string;
+  /**
+   * Et andet hovedtal på det simple niveau, hvor fagenheden ikke siger noget.
+   * "1,05x" betyder intet for en ejer – beløbet på kontoen gør. Null betyder,
+   * at det almindelige tal bruges.
+   */
+  simpelVaerdi: string | null;
   /** Den beregnede værdi i definitionens enhed. Null når data mangler. */
   vaerdi: number | null;
   status: Status;
@@ -301,6 +309,8 @@ export function beregnNoegletal(data: EjerData): Noegletal[] {
 
     ud.push({
       definition: def,
+      simpelSvar: simpeltSvar(data, def.id, vaerdi),
+      simpelVaerdi: simpeltHovedtal(data, def.id, vaerdi),
       vaerdi,
       status: statusFor(vaerdi, def.taerskel),
       grundlag,
@@ -309,6 +319,59 @@ export function beregnNoegletal(data: EjerData): Noegletal[] {
     });
   }
   return ud;
+}
+
+/**
+ * Hovedtallet på det simple niveau, når fagenheden ikke siger noget.
+ * Gange-tal er det klassiske eksempel: "1,05x" er en brøk, ikke et svar.
+ */
+function simpeltHovedtal(data: EjerData, id: string, v: number | null): string | null {
+  if (v === null) return null;
+  if (id === "icr") {
+    return `${v.toLocaleString("da-DK", { maximumFractionDigits: 1 })} gange`;
+  }
+  if (id === "likviditet") {
+    const b = likviditetsbillede(data);
+    return `${((b.bankNu ?? 0) / 1000).toLocaleString("da-DK", {
+      maximumFractionDigits: 0,
+    })} t.kr.`;
+  }
+  return null;
+}
+
+/**
+ * Nøgletallet sagt i almindeligt dansk.
+ *
+ * Et tal alene svarer ikke på noget. "1,73x" bliver til "ja, driften tjener
+ * 1,7 gange renterne", og "1,05x" bliver til et beløb og et antal måneder.
+ */
+function simpeltSvar(data: EjerData, id: string, v: number | null): string {
+  if (v === null) return "Vi mangler data";
+  const tal = (n: number, d = 1) =>
+    n.toLocaleString("da-DK", { minimumFractionDigits: d, maximumFractionDigits: d })
+      .replace("-", "\u2212");
+
+  switch (id) {
+    case "ltv":
+      return `${tal(v, 0)} % af ejendommenes værdi`;
+    case "icr":
+      return v >= 1
+        ? `Ja, driften tjener ${tal(v)} gange renterne`
+        : `Nej, driften dækker kun ${tal(v)} gange renterne`;
+    case "nettoafkast":
+      return `${tal(v)} % om året efter driftsudgifter`;
+    case "variabel_rente":
+      return `${tal(v, 0)} % af gælden følger renten`;
+    case "drift_mod_budget":
+      if (Math.abs(v) < 0.5) return "Ja, stort set som budgetteret";
+      return v < 0
+        ? `Nej, ${tal(Math.abs(v))} % under budget`
+        : `Ja, ${tal(v)} % bedre end budget`;
+    case "likviditet":
+      return `Rækker til cirka ${tal(v)} måneds udgifter`;
+    default:
+      return "";
+  }
 }
 
 // ---------------------------------------------------------------------------

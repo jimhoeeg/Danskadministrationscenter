@@ -18,6 +18,7 @@ import { Foldud } from "@/components/ui/Foldud";
 import { Tabel } from "@/components/ui/Tabel";
 import { Skyder, Resultatfelt } from "@/components/ui/Skyder";
 import { Simuleringsgraf, type Simuleringspunkt } from "@/components/diagrammer/Simuleringsgraf";
+import { KunDetaljeret } from "@/lib/detaljeniveau";
 
 /**
  * "Hvad hvis?" – likviditeten under forskellige forudsætninger.
@@ -270,6 +271,7 @@ export function Simulering({ data, startAaben = false }: { data: EjerData; start
         </p>
       </Kort>
 
+      <KunDetaljeret>
       <Kort overskrift="Antagelser bag beregningen" polstring="p-4">
         <p className="mb-3 text-[13px] leading-relaxed text-blaek-sekundaer">
           Ingen af tallene herunder står i kilderapporten. De er udledt af budgettet og kan
@@ -386,6 +388,7 @@ export function Simulering({ data, startAaben = false }: { data: EjerData; start
           />
         </Foldud>
       </Kort>
+      </KunDetaljeret>
     </div>
   );
 }

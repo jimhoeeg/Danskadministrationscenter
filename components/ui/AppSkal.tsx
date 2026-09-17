@@ -7,6 +7,8 @@ import { Sidebar, type Menugruppe } from "./Sidebar";
 import { Topbar, Ejervaelger } from "./Topbar";
 import { Printknap } from "./Printknap";
 import { Ikon } from "./Ikon";
+import { Niveauvaelger } from "./Niveauvaelger";
+import { Detaljeniveauudbyder } from "@/lib/detaljeniveau";
 
 /**
  * App-rammen: menu til venstre, topbjælke og indhold.
@@ -38,6 +40,7 @@ export function AppSkal({
   });
 
   return (
+    <Detaljeniveauudbyder>
     <div className="app-skal flex h-screen overflow-hidden">
       <Sidebar ejerId={ejerId} grupper={grupper} aaben={menuAaben} />
 
@@ -48,6 +51,7 @@ export function AppSkal({
           panelAabent={menuAaben}
           handlinger={
             <>
+              <Niveauvaelger />
               <Ejervaelger ejere={ejere} aktuel={ejerId} />
               <Link
                 href={`/${ejerId}/print`}
@@ -78,5 +82,6 @@ export function AppSkal({
         </main>
       </div>
     </div>
+    </Detaljeniveauudbyder>
   );
 }

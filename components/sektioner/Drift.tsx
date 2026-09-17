@@ -8,13 +8,23 @@ import { Kort } from "@/components/ui/Kort";
 import { Foldud } from "@/components/ui/Foldud";
 import { Tabel, type Kolonnedef } from "@/components/ui/Tabel";
 import { Vandfald } from "@/components/diagrammer/Vandfald";
+import { KunDetaljeret, useDetaljeniveau } from "@/lib/detaljeniveau";
 import { Afvigelsessoejler } from "@/components/diagrammer/Afvigelsessoejler";
 
 /**
  * Driftsfanen: vandfald, budgetafvigelser og hele resultatopgørelsen.
  * Perioden vælges øverst og gælder alle tre elementer.
  */
+/** Fagudtryk oversat til det simple niveau. Tallene er de samme. */
+const SIMPLE_TRINNAVNE: Record<string, string> = {
+  EBITDA: "Overskud før renter",
+  "Resultat før skat": "Tilbage før skat",
+  "Værdiregulering og salg": "Salg og regulering",
+};
+
 export function Drift({ data, startAaben = false }: { data: EjerData; startAaben?: boolean }) {
+  const { niveau } = useDetaljeniveau();
+  const simpel = niveau === "simpel";
   const perioder = data.resultatopgoerelse.perioder;
   const [periodeId, setPeriodeId] = useState(perioder[1]?.id ?? perioder[0].id);
   const periode = perioder.find((p) => p.id === periodeId) ?? perioder[0];
@@ -156,7 +166,13 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
         }
         underoverskrift={`${periode.navn} · fra lejeindtægter til resultat, alle tal i t.kr.`}
       >
-        <Vandfald punkter={punkter} />
+        <Vandfald
+          punkter={
+            simpel
+              ? punkter.map((p) => ({ ...p, navn: SIMPLE_TRINNAVNE[p.navn] ?? p.navn }))
+              : punkter
+          }
+        />
       </Kort>
 
       <Kort
@@ -215,6 +231,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
         )}
       </Kort>
 
+      <KunDetaljeret>
       <Kort
         overskrift="Hele resultatopgørelsen"
         underoverskrift={`${periode.navn} · alle linjer, i t.kr.`}
@@ -228,6 +245,7 @@ export function Drift({ data, startAaben = false }: { data: EjerData; startAaben
           />
         </Foldud>
       </Kort>
+      </KunDetaljeret>
     </div>
   );
 }

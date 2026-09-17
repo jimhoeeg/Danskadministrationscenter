@@ -6,6 +6,8 @@ import { Kort } from "@/components/ui/Kort";
 import { Foldud } from "@/components/ui/Foldud";
 import { Ikon } from "@/components/ui/Ikon";
 import { Beslutningsresume } from "./Beslutninger";
+import { Fortaelling } from "./Fortaelling";
+import { KunDetaljeret } from "@/lib/detaljeniveau";
 
 const ALVORSSTIL: Record<string, { flade: string; prik: string; maerkat: string }> = {
   hoej: { flade: "border-status-roed/25 bg-status-roed-bund", prik: "bg-status-roed", maerkat: "Høj" },
@@ -31,7 +33,9 @@ export function Bankoverblik({
   const { periodensOverblik } = data.kommentar;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
+      <Fortaelling data={data} ejerId={ejerId} />
+
       <section aria-labelledby="noegletal-overskrift">
         <h2 id="noegletal-overskrift" className="sr-only">
           Nøgletal
@@ -42,6 +46,7 @@ export function Bankoverblik({
           ))}
         </div>
 
+        <KunDetaljeret>
         <Kort className="mt-3" polstring="px-4 py-3">
           <Foldud titel="Sådan er nøgletallene beregnet" startAaben={startAaben} bar>
             <Noegletalsforklaringer noegletal={noegletal} />
@@ -51,6 +56,7 @@ export function Bankoverblik({
             </p>
           </Foldud>
         </Kort>
+        </KunDetaljeret>
       </section>
 
       <div className="print-2kol grid grid-cols-1 items-start gap-4 lg:grid-cols-5">

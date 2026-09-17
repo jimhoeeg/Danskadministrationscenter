@@ -9,6 +9,7 @@ import { Foldud } from "@/components/ui/Foldud";
 import { Tabel } from "@/components/ui/Tabel";
 import { StabledeSoejler, type Stabelpunkt } from "@/components/diagrammer/StabledeSoejler";
 import { VandretteSoejler } from "@/components/diagrammer/Soejler";
+import { KunDetaljeret } from "@/lib/detaljeniveau";
 import { ACCENT, ACCENT_LYS } from "@/components/diagrammer/tema";
 
 /**
@@ -171,6 +172,7 @@ export function Vedligehold({
           formater={(v) => formatTal(v)}
         />
 
+        <KunDetaljeret>
         <Foldud titel="Vis GI-indeståender og planlagt vedligehold pr. ejendom" startAaben={startAaben}>
           <Tabel
             kolonner={[
@@ -231,6 +233,7 @@ export function Vedligehold({
             ]}
           />
         </Foldud>
+        </KunDetaljeret>
 
         <p className="mt-3 text-xs leading-relaxed text-blaek-daempet">
           Indeståendet er §119 og §120 lagt sammen. Negative saldi er afholdt vedligehold, der
